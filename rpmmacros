@@ -1,0 +1,10 @@
+# Create the following files under the %_topdir directory:
+#   %_topdir/BUILD
+#   %_topdir/RPMS
+#   %_topdir/SOURCES
+#   %_topdir/SPECS
+#   %_topdir/SRPMS
+
+%packager   Jeff Ramnani <jefframnani@yahoo.com>
+
+%_topdir    /home/jramnani/rpmbuild

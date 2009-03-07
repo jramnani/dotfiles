@@ -1,0 +1,8 @@
+[ui]
+username=jramnani@nyse.com
+
+[email]
+from = Jeff Ramnani <jramnani@nyse.com>
+
+[smtp]
+host = arcamailrelay.tradearca.com

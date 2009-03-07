@@ -1,0 +1,35 @@
+" Specific options to include for MSWin gVim configurations.
+" Can be added to $HOME/.vimrc.local if you're using the main vimrc.
+
+" Set GUI font.
+:set gfn=Lucida_Sans_Typewriter:h10:cANSI
+
+" These defaults make sure that Windows keyboard shortcuts work. i.e.
+" Ctrl+A, Ctrl+C, Ctrl+V, etc.
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+" Set the backup dir for Vim's backup files.
+set bdir=c:\\tmp\vim,c:\\temp\vim
+" Set the swap dir where vim puts it's ~ files.
+set dir=c:\\tmp\vim,c:\\temp\vim
+
+" tab mappings
+" # Ctrl + # gets you to individual tabs.
+nmap <c-1> 1gt
+nmap <c-2> 2gt
+nmap <c-3> 3gt
+nmap <c-4> 4gt
+nmap <c-5> 5gt
+nmap <c-6> 6gt
+nmap <c-7> 7gt
+nmap <c-8> 8gt
+nmap <c-9> 9gt
+" # Use Ctrl + arrow keys to move betw tabs.
+nmap <c-Left> :tabp<CR>
+nmap <c-Right> :tabn<CR>
+" # Use FireFox behavior for opening and closing tabs.
+nmap <c-t> :tabnew<CR>
+nmap <c-w> :tabclose<CR>

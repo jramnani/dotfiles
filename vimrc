@@ -1,0 +1,318 @@
+"------------------------------------------------------------------------------
+" File: $HOME/.vimrc
+" Author: Uwe Hermann <uwe@hermann-uwe.de>
+" URL: http://www.hermann-uwe.de/files/vimrc
+" Modified by: Jeff Ramnani
+"------------------------------------------------------------------------------
+
+"------------------------------------------------------------------------------
+" Standard stuff.
+"------------------------------------------------------------------------------
+
+set nocompatible        " Disable vi compatibility.
+set nobackup            " Do not keep a backup file.
+set history=100         " Number of lines of command line history.
+set undolevels=200      " Number of undo levels.
+set textwidth=0         " Don't wrap words by default.
+set showcmd             " Show (partial) command in status line.
+set showmatch           " Show matching brackets.
+set showmode            " Show current mode.
+set ruler               " Show the line and column numbers of the cursor.
+set ignorecase          " Case insensitive matching.
+set incsearch           " Incremental search.
+" set noautoindent        " I indent my code myself.
+" set nocindent           " I indent my code myself.
+set scrolloff=5         " Keep a context when scrolling.
+set noerrorbells        " No beeps.
+" set nomodeline          " Disable modeline.
+set modeline            " Enable modeline.
+set esckeys             " Cursor keys in insert mode.
+" set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set magic               " Use 'magic' patterns (extended regular expressions).
+set tabstop=4           " Number of spaces <tab> counts for.
+set shiftwidth=4        " number of spaces the lines will be shifted with >> or << 
+set expandtab			" Use spaces instead of <tab> when using the <Tab> key.
+set smarttab            " Allows you to backspace through a unit of shiftwidth.
+set ttyscroll=0         " Turn off scrolling (this is faster).
+set ttyfast             " We have a fast terminal connection.
+set hlsearch            " Highlight search matches.
+set foldmethod=marker   " Set markers for manual folding.  Hopefully this won't b0rk default filetype 
+                        " folding behavior.
+" set encoding=utf-8      " Set default encoding to UTF-8.
+" set showbreak=+         " Show a '+' if a line is longer than the screen.
+" set laststatus=2        " When to show a statusline.
+" set autowrite           " Automatically save before :next, :make etc.
+
+set nostartofline       " Do not jump to first character with page commands,
+                        " i.e., keep the cursor in the current column.
+set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
+                        " 50 lines of registers.
+
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
+
+" Tell vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines. VERY useful!
+set listchars=tab:>-,trail:·,eol:$
+
+" Path/file expansion in colon-mode.
+set wildmode=list:longest
+set wildchar=<TAB>
+
+" Enable syntax-highlighting.
+if has("syntax")
+  syntax on
+endif
+
+" Set color scheme based on the background of your terminal.
+if &term =~ "xterm"
+  set background=light
+endif
+
+"------------------------------------------------------------------------------
+" Buffer behavior.
+"------------------------------------------------------------------------------
+
+" Move between buffers using <Ctrl+h> and <Ctrl+l>. Minimize the other buffers when switching betw them.
+nmap <c-h> <c-w>h<c-w><bar>
+nmap <c-l> <c-w>l<c-w><bar>
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+
+"------------------------------------------------------------------------------
+" Function keys.
+"------------------------------------------------------------------------------
+
+" F1: Toggle hlsearch (highlight search matches).
+nmap <F1> :set hls!<CR>
+
+" F2: Toggle list (display unprintable characters).
+nnoremap <F2> :set list!<CR>
+
+" F3: Toggle expansion of tabs to spaces.
+nmap <F3> :set expandtab!<CR>
+
+" F4: Write a ChangeLog entry.
+map <F4> :r !date<CR>Jeff Ramnani <jefframnani@yahoo.com> <CR><CR> * |
+
+" F5: Insert current date.
+map <F5> :r !date<CR>
+
+" F6: Comment and Un-comment blocks of source code.
+map <silent> <F6> :call Comment()<CR>
+imap <silent <F6> <ESC><F6>i
+map <silent> <S-F6> :call UnComment()<CR>
+imap <silent> <S-F6> <ESC><S-F6>i
+
+"------------------------------------------------------------------------------
+" Correct typos.
+"------------------------------------------------------------------------------
+
+" English.
+
+iab beacuse    because
+iab becuase    because
+iab acn        can
+iab cna        can
+iab centre     center
+iab chnage     change
+iab chnages    changes
+iab chnaged    changed
+iab chnagelog  changelog
+iab Chnage     Change
+iab Chnages    Changes
+iab ChnageLog  ChangeLog
+iab debain     debian
+iab Debain     Debian
+iab definately definitely
+iab defualt    default
+iab Defualt    Default
+iab differnt   different
+iab diffrent   different
+iab emial      email
+iab Emial      Email
+iab figth      fight
+iab figther    fighter
+iab fro        for
+iab fucntion   function
+iab ahve       have
+iab homepgae   homepage
+iab hte        the
+iab inot       into
+iab logifle    logfile
+iab lokk       look
+iab lokking    looking
+iab mial       mail
+iab Mial       Mail
+iab miantainer maintainer
+iab amke       make
+iab mroe       more
+iab nwe        new
+iab recieve    receive
+iab recieved   received
+iab erturn     return
+iab retrun     return
+iab retunr     return
+iab seperate   separate
+iab shoudl     should
+iab soem       some
+iab taht       that
+iab thta       that
+iab teh        the
+iab tehy       they
+iab truely     truly
+iab waht       what
+iab wiht       with
+iab whic       which
+iab whihc      which
+iab yuo        you
+iab databse    database
+iab versnio    version
+iab obnsolete  obsolete
+iab flase      false
+iab recrusive  recursive
+iab Recrusive  Recursive
+
+" Days of week.
+iab monday     Monday
+iab tuesday    Tuesday
+iab wednesday  Wednesday
+iab thursday   Thursday
+iab friday     Friday
+iab saturday   Saturday
+iab sunday     Sunday
+
+" Enable this if you mistype :w as :W or :q as :Q.
+" nmap :W :w
+" nmap :Q :q
+" Enable this if you mistype :x as :X which can ruin your document...
+nmap :X :x
+
+
+"------------------------------------------------------------------------------
+" Abbreviations.
+"------------------------------------------------------------------------------
+
+" My name + email address.
+ab jrr Jeff Ramnani <jefframnani@yahoo.com>
+
+"------------------------------------------------------------------------------
+" HTML.
+"------------------------------------------------------------------------------
+
+" Print an empty <a> tag.
+map! ;h <a href=""></a><ESC>5hi
+
+" Wrap an <a> tag around the URL under the cursor.
+map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
+
+
+"------------------------------------------------------------------------------
+" Miscellaneous stuff.
+"------------------------------------------------------------------------------
+
+" Spellcheck.
+" map V :!ispell -x %<CR>:e!<CR><CR>
+
+
+"------------------------------------------------------------------------------
+" File-type specific settings.
+"------------------------------------------------------------------------------
+
+if has("autocmd")
+
+  " Enabled file type detection and file-type specific plugins.
+  " filetype plugin on indent
+  filetype plugin on
+
+  " Makefiles
+  augroup makefile
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
+  augroup END
+
+  " Python code.
+  augroup python
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python
+  augroup END
+
+  " Ruby code.
+  augroup ruby
+    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby
+  augroup END
+
+  " PHP code.
+  augroup php
+    autocmd BufRead,FileReadPre,BufNewFile      *.php set filetype=php
+  augroup END
+
+  " Java code.
+  augroup java
+    autocmd BufRead,FileReadPre,BufNewFile      *.java set filetype=java
+  augroup END
+
+  " Build files for Ant, NAnt, and MSBuild
+  augroup build 
+    autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=java
+    autocmd BufRead,FileReadPre,BufNewFile      *.build   set filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.nant    set filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.proj    set filetype=xml
+    "Add a space between comment characters to increase readability.
+    set commentstring=<!--\ %s\ -->
+  augroup END
+  " XML Files.
+  augroup xml
+    autocmd BufRead,FileReadPre,BufNewFile     *.xml   set filetype=xml
+    "Add a space between comment characters to increase readability.
+    autocmd BufRead,FileReadPre,BufNewFile     *.xml   set commentstring=<!--\ %s\ -->
+  augroup END
+endif
+
+"------------------------------------------------------------------------------
+" Debian specific options.
+"------------------------------------------------------------------------------
+
+" We know xterm-debian is a color terminal.
+if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-color" || &term =~ "xterm"
+  set t_Co=16
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
+endif
+" Fix for Solaris to give us color in their broken terminal.
+
+
+" Helpfile.
+" set helpfile=$VIMRUNTIME/doc/help.txt
+
+"------------------------------------------------------------------------------
+" Backup files
+"------------------------------------------------------------------------------
+
+if has("win32")
+    " Set the backup dir for Vim's backup files. 
+    set bdir=c:\\tmp\\vim,c:\\temp\\vim
+    " Set the swap dir where vim puts it's ~ files.
+    set dir=c:\\tmp\\vim,c:\\temp\\vim
+else
+    set bdir=$HOME/tmp/vim
+    set dir=$HOME/tmp/vim
+endif
+
+"------------------------------------------------------------------------------
+" Local settings.
+"------------------------------------------------------------------------------
+
+" Source a local configuration file if available.
+if $OS == "Windows_NT"
+    if filereadable(expand("$HOME/_vimrc.local"))
+      source $HOME\_vimrc.local
+    endif
+else
+    if filereadable(expand("$HOME/.vimrc.local"))
+      source $HOME/\.vimrc.local
+    endif
+endif
+
