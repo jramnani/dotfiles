@@ -4,3 +4,16 @@ username = jefframnani@yahoo.com
 [email]
 from = Jeff Ramnani <jefframnani@yahoo.com>
 
+[extensions]
+hgext.graphlog=
+hgext.fetch=
+shelve=
+record=
+
+[merge-tools]
+p4.priority = 100
+# change this to False if you don't trust hg's internal merge.
+p4.premerge = True 
+p4.executable = /Applications/p4merge.app/Contents/MacOS/p4merge
+p4.gui = True
+p4.args = $base $local $other $output
