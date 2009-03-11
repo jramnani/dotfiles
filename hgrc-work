@@ -1,8 +1,23 @@
 [ui]
-username=jramnani@nyse.com
+username=jramnani@drwholdings.com
+merge = winmerge
 
 [email]
-from = Jeff Ramnani <jramnani@nyse.com>
+from = Jeff Ramnani <jramnani@drwholdings.com>
+
+[extensions]
+hgext.graphlog=
+hgext.fetch=
+shelve=
+record=
 
 [smtp]
-host = arcamailrelay.tradearca.com
+host = smtp.drwholdings.com
+
+[merge-tools]
+winmergeu.executable=$HOME/bin/winmerge
+winmergeu.args=$other $local $output
+winmergeu.fixeol=True
+winmergeu.checkchanged=True
+winmergeu.gui=False
+

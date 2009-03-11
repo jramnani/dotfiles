@@ -1,0 +1,5 @@
+#!/bin/bash
+# Use this script as a merge tool on Cygwin.  Can be configured
+# for Mercurial, Git, etc...
+"/cygdrive/c/Program Files/WinMerge/WinMergeU.EXE" /e /ub /dl other /dr local `cygpath -aw $1` `cygpath -aw $2` `cygpath -aw $3`
+
