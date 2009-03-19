@@ -104,9 +104,21 @@ if [ $MYOS == "Solaris" ]; then
 fi
 # End Solaris quirks
 
+# OSX quirks
+if [ $MYOS == "OSX" ]; then
+    # If the MacPorts version of Vim is available, then use it.
+    if [[ -x /opt/local/bin/vim ]]; then
+        alias vi='/opt/local/bin/vim'
+        alias vim='/opt/local/bin/vim'
+        export EDITOR=vim
+        export VISUAL=vim
+    fi
+fi
+# End OSX quirks
+
 # Linux
 
-#Linux and OSX comes w/ vim installed by default, why not use it?
+#Linux comes w/ vim installed by default, why not use it?
 if [[ -x /usr/bin/vim ]]; then
     alias vi='/usr/bin/vim'
     export EDITOR=vim
