@@ -301,6 +301,17 @@ else
     set dir=$HOME/tmp/vim
 endif
 
+if has("gui_running")
+    " Set the color scheme.
+    colorscheme desert
+endif
+
+" Mac specific settings.
+if has("gui_macvim")
+    " Set the font. 'h' = height.
+    set guifont=Monaco:h14
+endif
+
 "------------------------------------------------------------------------------
 " Local settings.
 "------------------------------------------------------------------------------
