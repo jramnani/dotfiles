@@ -213,7 +213,7 @@ fi
 export PAGER
 #}}}
 
-#{{{ Java / Python / Perl
+#{{{ Java / Python / Perl / Ruby
 
 # Java section
 # Is Java installed?
@@ -246,14 +246,21 @@ if [[ -x `which python` ]]; then
     # Python prints version information from '-V' to STDERR.
     PYFULLVERSION=`python -V 2>&1 | awk '{print $2}'`
     echo -e "Python $PYFULLVERSION, \c"
-    PYSHORTVERSION=`echo $PYFULLVERSION | awk -F'.' '{ print $1"."$2 }'`
 fi
 # Is Python software installed in $HOME?
 if [[ -d $HOME/lib/python ]]; then
     export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 fi
 # End Python section
-#}}} End Java / Python / Perl
+
+# Ruby section
+if [[ -x `which ruby` ]]; then
+    # Print which Ruby is in my path.
+    RUBY_VERSION=`ruby --version 2>&1 | awk '{print $2}'`
+    echo -e "Ruby $RUBY_VERSION, \c"
+fi
+# End Ruby section.
+#}}} End Java / Python / Perl / Ruby
 
 #{{{ OS Specific 
 
