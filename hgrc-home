@@ -9,6 +9,8 @@ hgext.graphlog=
 hgext.fetch=
 shelve=
 record=
+churn=
+hgext.convert=
 
 [merge-tools]
 p4.priority = 100
