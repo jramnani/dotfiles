@@ -106,6 +106,8 @@ fi
 
 # OSX quirks
 if [ $MYOS == "OSX" ]; then
+    # OS X 'ldd' tool.
+    alias ldd='otool -L '
     # If the MacPorts version of Vim is available, then use it.
     if [[ -x /opt/local/bin/vim ]]; then
         alias vi='/opt/local/bin/vim'
