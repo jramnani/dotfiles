@@ -192,6 +192,7 @@ case ${MYOS} in
         if [[ -d /opt/local ]]; then
             echo -e "MacPorts, \c"
             pathmunge /opt/local/bin
+            pathmunge /opt/local/sbin
             manpathmunge /opt/local/share/man
         fi
         ;;
