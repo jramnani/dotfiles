@@ -115,6 +115,11 @@ if [ $MYOS == "OSX" ]; then
         export EDITOR=vim
         export VISUAL=vim
     fi
+    # Use MacPorts bash completion
+    if [ -f /opt/local/etc/bash_completion ]; then
+        . /opt/local/etc/bash_completion
+    fi
+
 fi
 # End OSX quirks
 
