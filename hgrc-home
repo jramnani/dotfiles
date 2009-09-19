@@ -5,6 +5,7 @@ username = jefframnani@yahoo.com
 from = Jeff Ramnani <jefframnani@yahoo.com>
 
 [extensions]
+hgext.bookmarks=
 hgext.graphlog=
 hgext.fetch=
 shelve=
