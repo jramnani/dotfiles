@@ -2,19 +2,6 @@
 username=jramnani@drwholdings.com
 merge = winmerge
 
-[email]
-from = Jeff Ramnani <jramnani@drwholdings.com>
-
-[extensions]
-hgext.bookmarks=
-hgext.graphlog=
-hgext.fetch=
-shelve=
-record=
-
-[smtp]
-host = smtp.drwholdings.com
-
 [merge-tools]
 winmergeu.executable=$HOME/bin/winmerge
 winmergeu.args=$other $local $output
