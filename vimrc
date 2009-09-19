@@ -31,6 +31,8 @@ set esckeys             " Cursor keys in insert mode.
 set magic               " Use 'magic' patterns (extended regular expressions).
 set tabstop=4           " Number of spaces <tab> counts for.
 set shiftwidth=4        " number of spaces the lines will be shifted with >> or << 
+set softtabstop=4       " makes VIM see multiple space characters as tabstops, 
+                        "  and so <BS> does the right thing
 set expandtab			" Use spaces instead of <tab> when using the <Tab> key.
 set smarttab            " Allows you to backspace through a unit of shiftwidth.
 set ttyscroll=0         " Turn off scrolling (this is faster).
@@ -38,7 +40,7 @@ set ttyfast             " We have a fast terminal connection.
 set hlsearch            " Highlight search matches.
 set foldmethod=marker   " Set markers for manual folding.  Hopefully this won't b0rk default filetype 
                         " folding behavior.
-" set encoding=utf-8      " Set default encoding to UTF-8.
+set encoding=utf-8      " Set default encoding to UTF-8.
 " set showbreak=+         " Show a '+' if a line is longer than the screen.
 " set laststatus=2        " When to show a statusline.
 " set autowrite           " Automatically save before :next, :make etc.
