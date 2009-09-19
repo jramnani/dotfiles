@@ -20,31 +20,20 @@ set showmode            " Show current mode.
 set ruler               " Show the line and column numbers of the cursor.
 set ignorecase          " Case insensitive matching.
 set incsearch           " Incremental search.
-" set noautoindent        " I indent my code myself.
-" set nocindent           " I indent my code myself.
 set scrolloff=5         " Keep a context when scrolling.
 set noerrorbells        " No beeps.
-" set nomodeline          " Disable modeline.
-set modeline            " Enable modeline.
-set esckeys             " Cursor keys in insert mode.
-" set gdefault            " Use 'g' flag by default with :s/foo/bar/.
-set magic               " Use 'magic' patterns (extended regular expressions).
 set tabstop=4           " Number of spaces <tab> counts for.
 set shiftwidth=4        " number of spaces the lines will be shifted with >> or << 
 set softtabstop=4       " makes VIM see multiple space characters as tabstops, 
                         "  and so <BS> does the right thing
-set expandtab			" Use spaces instead of <tab> when using the <Tab> key.
+set expandtab			      " Use spaces instead of <tab> when using the <Tab> key.
 set smarttab            " Allows you to backspace through a unit of shiftwidth.
 set ttyscroll=0         " Turn off scrolling (this is faster).
 set ttyfast             " We have a fast terminal connection.
 set hlsearch            " Highlight search matches.
-set foldmethod=marker   " Set markers for manual folding.  Hopefully this won't b0rk default filetype 
-                        " folding behavior.
+set foldmethod=marker   " Set markers for manual folding. Hopefully this won't 
+                        "  b0rk default filetype folding behavior.
 set encoding=utf-8      " Set default encoding to UTF-8.
-" set showbreak=+         " Show a '+' if a line is longer than the screen.
-" set laststatus=2        " When to show a statusline.
-" set autowrite           " Automatically save before :next, :make etc.
-
 set nostartofline       " Do not jump to first character with page commands,
                         " i.e., keep the cursor in the current column.
 set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
@@ -57,7 +46,7 @@ set backspace=indent,eol,start
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:>-,trail:·,eol:$
 
-" Path/file expansion in colon-mode.
+" Path/file expansion in command-mode.
 set wildmode=list:longest
 set wildchar=<TAB>
 
@@ -93,12 +82,6 @@ nnoremap <F2> :set list!<CR>
 
 " F3: Toggle expansion of tabs to spaces.
 nmap <F3> :set expandtab!<CR>
-
-" F4: Write a ChangeLog entry.
-map <F4> :r !date<CR>Jeff Ramnani <jefframnani@yahoo.com> <CR><CR> * |
-
-" F5: Insert current date.
-map <F5> :r !date<CR>
 
 " F6: Comment and Un-comment blocks of source code.
 map <silent> <F6> :call Comment()<CR>
@@ -212,10 +195,7 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 "------------------------------------------------------------------------------
 " Miscellaneous stuff.
 "------------------------------------------------------------------------------
-
-" Spellcheck.
-" map V :!ispell -x %<CR>:e!<CR><CR>
-
+" placeholder
 
 "------------------------------------------------------------------------------
 " File-type specific settings.
@@ -223,12 +203,16 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 
 if has("autocmd")
 
-  " Enabled file type detection and file-type specific plugins.
-  " filetype plugin on indent
-  filetype plugin on
+  " Enabled file type detection, file-type specific plugins, and indent
+  " plugins.
+  filetype plugin indent on
+  
+  " Calls to 'autocmd!' below are to clear any existing autocommands. 
+  " This prevents autocommands from being run twice.
 
   " Makefiles
   augroup makefile
+    autocmd!      
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
@@ -236,38 +220,34 @@ if has("autocmd")
 
   " Python code.
   augroup python
+    autocmd!
     autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python
   augroup END
 
   " Ruby code.
   augroup ruby
-    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby
+    autocmd!
     autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby
     autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby
   augroup END
 
-  " PHP code.
-  augroup php
-    autocmd BufRead,FileReadPre,BufNewFile      *.php set filetype=php
-  augroup END
-
-  " Java code.
-  augroup java
-    autocmd BufRead,FileReadPre,BufNewFile      *.java set filetype=java
-  augroup END
-
   " Build files for Ant, NAnt, and MSBuild
   augroup build 
+    autocmd!
+    " Ant
     autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=java
+    " NAnt
     autocmd BufRead,FileReadPre,BufNewFile      *.build   set filetype=xml
     autocmd BufRead,FileReadPre,BufNewFile      *.nant    set filetype=xml
+    " MSBuild / Visual Studio
     autocmd BufRead,FileReadPre,BufNewFile      *.proj    set filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.csproj    set filetype=xml
     "Add a space between comment characters to increase readability.
     set commentstring=<!--\ %s\ -->
   augroup END
   " XML Files.
   augroup xml
-    autocmd BufRead,FileReadPre,BufNewFile     *.xml   set filetype=xml
+    autocmd!
     "Add a space between comment characters to increase readability.
     autocmd BufRead,FileReadPre,BufNewFile     *.xml   set commentstring=<!--\ %s\ -->
   augroup END
@@ -283,11 +263,6 @@ if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-color"
   set t_Sf=[3%dm
   set t_Sb=[4%dm
 endif
-" Fix for Solaris to give us color in their broken terminal.
-
-
-" Helpfile.
-" set helpfile=$VIMRUNTIME/doc/help.txt
 
 "------------------------------------------------------------------------------
 " Backup files
@@ -303,12 +278,15 @@ else
     set dir=$HOME/tmp/vim
 endif
 
+"------------------------------------------------------------------------------
+" GUI Settings
+"------------------------------------------------------------------------------
 if has("gui_running")
     " Set the color scheme.
     colorscheme desert
 endif
 
-" Mac specific settings.
+" Mac specific GUI settings.
 if has("gui_macvim")
     " Set the font. 'h' = height.
     set guifont=Monaco:h14
