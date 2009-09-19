@@ -6,6 +6,7 @@ merge = winmerge
 from = Jeff Ramnani <jramnani@drwholdings.com>
 
 [extensions]
+hgext.bookmarks=
 hgext.graphlog=
 hgext.fetch=
 shelve=
