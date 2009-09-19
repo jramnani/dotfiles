@@ -35,7 +35,7 @@
 "And now, the syntax file:
 
 syntax clear
-so $VIM/syntax/Wikipedia.vim
+so $HOME/.vim/syntax/Wikipedia.vim
 
 "Mappings {{{1
 "
