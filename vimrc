@@ -227,8 +227,10 @@ if has("autocmd")
   " Ruby code.
   augroup ruby
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby
-    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby ts=2 sw=2
+    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby ts=2 sw=2 et
+    " Need to set expandtab b/c Rakefile matches rules for Makefiles, as well.
+    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby ts=2 sw=2 et
   augroup END
 
   " Build files for Ant, NAnt, and MSBuild
