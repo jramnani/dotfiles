@@ -3,17 +3,16 @@ require 'rake'
 require 'fileutils'
 FileUtils::Verbose
 
-desc "Test Task"
 task :default do
-	puts "Hello world"
+  # noop
 end
 
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile README LICENSE subversion-config].include? file
-    
+    next if %w[Rakefile rakefile README LICENSE examples windows].include? file
+
     if File.exist?(File.join(ENV['HOME'], ".#{file}"))
       if replace_all
         replace_file(file)
@@ -35,10 +34,6 @@ task :install do
       link_file(file)
     end
   end
-  # Now do special cases...
-  rm "#{ENV[HOME]}/subversion/config"
-  ln_s "subversion-config" "#{ENV[HOME]}/subversion/config"
-  
 end
 
 def replace_file(file)
