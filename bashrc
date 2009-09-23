@@ -106,8 +106,13 @@ fi
 
 # OSX quirks
 if [ $MYOS == "OSX" ]; then
-    # OS X 'ldd' tool.
+    # OS X 'ldd' equivalent.
     alias ldd='otool -L '
+    # These aliases allow for easy switching between jvm's.
+    alias java16='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home'
+    alias java15='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home'
+    alias java14='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.4/Home'
+
     # If the MacPorts version of Vim is available, then use it.
     if [[ -x /opt/local/bin/vim ]]; then
         alias vi='/opt/local/bin/vim'
@@ -124,12 +129,13 @@ fi
 # End OSX quirks
 
 # Linux
-
-#Linux comes w/ vim installed by default, why not use it?
-if [[ -x /usr/bin/vim ]]; then
-    alias vi='/usr/bin/vim'
-    export EDITOR=vim
-    export VISUAL=vim
+if [ $MYOS == "Linux" ]]; then 
+    # Linux comes w/ vim installed by default
+    if [[ -x /usr/bin/vim ]]; then
+        alias vi='/usr/bin/vim'
+        export EDITOR=vim
+        export VISUAL=vim
+    fi
 fi
 
 # Cygwin
@@ -166,7 +172,7 @@ esac
 #}}} End prompt section
 
 #{{{ Environment Specific
-
+    # placeholder
 #}}} End Environment specific
 
 # Allow for machine specific customizations to be quarantined to another file. I don't
