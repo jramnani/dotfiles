@@ -7,8 +7,22 @@ task :default do
   # noop
 end
 
+task :test do
+  bash_scripts = Dir["bash*"]
+  bash_scripts.each do |file| 
+    chmod 0700, file
+    puts "Running syntax check on '#{file}'"
+    %x[bash -c ./#{file}]
+    chmod 0644, file
+  end
+end
+
+
 desc "install the dot files into user's home directory"
 task :install do
+  # Create the directory where I place my Vim backup files.
+  mkdir_p File.join(ENV['HOME'], 'tmp', 'vim')
+
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile rakefile README LICENSE examples windows].include? file
