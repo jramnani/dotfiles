@@ -11,6 +11,7 @@
 
 set nocompatible        " Disable vi compatibility.
 set nobackup            " Do not keep a backup file.
+set number              " Show line numbers.
 set history=100         " Number of lines of command line history.
 set undolevels=200      " Number of undo levels.
 set textwidth=0         " Don't wrap words by default.
@@ -49,6 +50,10 @@ set listchars=tab:>-,trail:·,eol:$
 " Path/file expansion in command-mode.
 set wildmode=list:longest
 set wildchar=<TAB>
+
+" Enabled file type detection, file-type specific plugins, and indent
+" plugins.
+filetype plugin indent on
 
 " Enable syntax-highlighting.
 if has("syntax")
@@ -202,10 +207,6 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 "------------------------------------------------------------------------------
 
 if has("autocmd")
-
-  " Enabled file type detection, file-type specific plugins, and indent
-  " plugins.
-  filetype plugin indent on
   
   " Calls to 'autocmd!' below are to clear any existing autocommands. 
   " This prevents autocommands from being run twice.
