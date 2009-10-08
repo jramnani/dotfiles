@@ -129,7 +129,7 @@ fi
 # End OSX quirks
 
 # Linux
-if [ $MYOS == "Linux" ]]; then 
+if [ $MYOS == "Linux" ]; then 
     # Linux comes w/ vim installed by default
     if [[ -x /usr/bin/vim ]]; then
         alias vi='/usr/bin/vim'
