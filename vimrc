@@ -228,6 +228,7 @@ if has("autocmd")
   " Ruby code.
   augroup ruby
     autocmd!
+    " Ruby coders perfer 2 spaces for tabstops.
     autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby ts=2 sw=2
     autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby ts=2 sw=2 et
     " Need to set expandtab b/c Rakefile matches rules for Makefiles, as well.
@@ -254,7 +255,17 @@ if has("autocmd")
     "Add a space between comment characters to increase readability.
     autocmd BufRead,FileReadPre,BufNewFile     *.xml   set commentstring=<!--\ %s\ -->
   augroup END
+  augroup clojure 
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
+  augroup END
 endif
+
+" VimClojure settings
+let clj_highlight_builtins = 1
+let clj_highlight_contrib = 1
+let clj_paren_rainbow = 1
+
 
 "------------------------------------------------------------------------------
 " Debian specific options.
