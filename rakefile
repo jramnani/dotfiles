@@ -50,6 +50,20 @@ task :install do
   end
 end
 
+task :install_gems do
+  gems = ['fastri', 'capistrano', 'rake', 'wirble']
+  gems.each do |gem|
+    sh "gem install #{gem}"
+  end
+end
+
+task :install_eggs do
+  eggs = ['virtualenv', 'ipython', 'mercurial', 'yolk']
+  eggs.each do |egg|
+    sh "easy_install #{egg}"
+  end
+end
+
 def replace_file(file)
   system %Q{rm "$HOME/.#{file}"}
   link_file(file)
