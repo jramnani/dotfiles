@@ -10,6 +10,10 @@ function swap ()
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
+
+function ppath () {
+    echo $PATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
+}
             
 # }}}
 
