@@ -239,7 +239,7 @@ if has("autocmd")
   augroup build 
     autocmd!
     " Ant
-    autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=java
+    autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=ant
     " NAnt
     autocmd BufRead,FileReadPre,BufNewFile      *.build   set filetype=xml
     autocmd BufRead,FileReadPre,BufNewFile      *.nant    set filetype=xml
@@ -304,6 +304,7 @@ endif
 if has("gui_macvim")
     " Set the font. 'h' = height.
     set guifont=Monaco:h14
+    set guioptions=egmrt
 endif
 
 "------------------------------------------------------------------------------
