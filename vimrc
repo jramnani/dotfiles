@@ -39,6 +39,7 @@ set nostartofline       " Do not jump to first character with page commands,
                         " i.e., keep the cursor in the current column.
 set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
                         " 50 lines of registers.
+set splitright          " Vertical splits open new buffer on the right.
 
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
