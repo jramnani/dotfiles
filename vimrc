@@ -201,7 +201,34 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 "------------------------------------------------------------------------------
 " Miscellaneous stuff.
 "------------------------------------------------------------------------------
-" placeholder
+" FuzzyFinder mapping
+nmap <leader>f :FufFile<CR>
+
+" NERDTree Settings
+" Enable nice colors
+let NERDChristmasTree = 1
+ 
+" Make it easy to see where we are
+let NERDTreeHighlightCursorline = 1
+ 
+" Make bookmarks visible
+let NERDTreeShowBookmarks = 1
+ 
+" Show hidden files
+let NERDTreeShowHidden = 1
+"Don't hijack NETRW
+"let NERDTreeHijackNetrw = 0
+let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store']
+ 
+" Make \nt open NERDTree
+nmap <leader>nt :NERDTreeToggle<CR>
+
+" VimClojure settings
+let clj_highlight_builtins = 1
+let clj_highlight_contrib = 1
+let clj_paren_rainbow = 1
+
+
 
 "------------------------------------------------------------------------------
 " File-type specific settings.
@@ -261,11 +288,6 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
   augroup END
 endif
-
-" VimClojure settings
-let clj_highlight_builtins = 1
-let clj_highlight_contrib = 1
-let clj_paren_rainbow = 1
 
 
 "------------------------------------------------------------------------------
