@@ -218,7 +218,7 @@ let NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
 "Don't hijack NETRW
 "let NERDTreeHijackNetrw = 0
-let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store']
+let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo']
  
 " Make \nt open NERDTree
 nmap <leader>nt :NERDTreeToggle<CR>
