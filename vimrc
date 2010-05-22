@@ -41,6 +41,9 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
                         " 50 lines of registers.
 set splitright          " Vertical splits open new buffer on the right.
 
+" Set mapleader (a.k.a. <Leader>).  Default is "\". 
+let mapleader=","
+
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
@@ -202,6 +205,7 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 " Miscellaneous stuff.
 "------------------------------------------------------------------------------
 " FuzzyFinder mapping
+" Map ,f to file search.
 nmap <leader>f :FufFile<CR>
 
 " NERDTree Settings
@@ -220,8 +224,8 @@ let NERDTreeShowHidden = 1
 "let NERDTreeHijackNetrw = 0
 let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo']
  
-" Make \nt open NERDTree
-nmap <leader>nt :NERDTreeToggle<CR>
+" Make ,d open NERDTree
+nmap <leader>d :NERDTreeToggle<CR>
 
 " VimClojure settings
 let clj_highlight_builtins = 1
