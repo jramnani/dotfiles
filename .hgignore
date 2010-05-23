@@ -2,9 +2,9 @@ syntax: glob
 .DS_Store
 
 # Vim Command-t extension compilation artifacts.
-vim/ruby/command-t/Makefile
-vim/ruby/command-t/ext.bundle
-vim/ruby/command-t/ext.o
-vim/ruby/command-t/match.o
-vim/ruby/command-t/matcher.o
-vim/ruby/command-t/mkmf.log
+vim/bundle/command-t/ruby/command-t/Makefile
+vim/bundle/command-t/ruby/command-t/ext.bundle
+vim/bundle/command-t/ruby/command-t/ext.o
+vim/bundle/command-t/ruby/command-t/match.o
+vim/bundle/command-t/ruby/command-t/matcher.o
+vim/bundle/command-t/ruby/command-t/mkmf.log
