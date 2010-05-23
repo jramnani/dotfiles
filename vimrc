@@ -9,6 +9,13 @@
 " Standard stuff.
 "------------------------------------------------------------------------------
 
+" Needed on some linux distros.
+" see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
+filetype off 
+" Use Pathogen plugin to load all other plugins
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
 set nocompatible        " Disable vi compatibility.
 set nobackup            " Do not keep a backup file.
 set number              " Show line numbers.
@@ -27,7 +34,7 @@ set tabstop=4           " Number of spaces <tab> counts for.
 set shiftwidth=4        " number of spaces the lines will be shifted with >> or << 
 set softtabstop=4       " makes VIM see multiple space characters as tabstops, 
                         "  and so <BS> does the right thing
-set expandtab			      " Use spaces instead of <tab> when using the <Tab> key.
+set expandtab           " Use spaces instead of <tab> when using the <Tab> key.
 set smarttab            " Allows you to backspace through a unit of shiftwidth.
 set ttyscroll=0         " Turn off scrolling (this is faster).
 set ttyfast             " We have a fast terminal connection.
@@ -91,12 +98,6 @@ nnoremap <F2> :set list!<CR>
 
 " F3: Toggle expansion of tabs to spaces.
 nmap <F3> :set expandtab!<CR>
-
-" F6: Comment and Un-comment blocks of source code.
-map <silent> <F6> :call Comment()<CR>
-imap <silent <F6> <ESC><F6>i
-map <silent> <S-F6> :call UnComment()<CR>
-imap <silent> <S-F6> <ESC><S-F6>i
 
 "------------------------------------------------------------------------------
 " Correct typos.
@@ -202,7 +203,7 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 
 
 "------------------------------------------------------------------------------
-" Miscellaneous stuff.
+" Plugin configuration
 "------------------------------------------------------------------------------
 " FuzzyFinder mapping
 " Map ,f to file search.
@@ -278,15 +279,8 @@ if has("autocmd")
     " MSBuild / Visual Studio
     autocmd BufRead,FileReadPre,BufNewFile      *.proj    set filetype=xml
     autocmd BufRead,FileReadPre,BufNewFile      *.csproj    set filetype=xml
-    "Add a space between comment characters to increase readability.
-    set commentstring=<!--\ %s\ -->
   augroup END
   " XML Files.
-  augroup xml
-    autocmd!
-    "Add a space between comment characters to increase readability.
-    autocmd BufRead,FileReadPre,BufNewFile     *.xml   set commentstring=<!--\ %s\ -->
-  augroup END
   augroup clojure 
     autocmd!
     autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
