@@ -5,14 +5,15 @@ username = jefframnani@yahoo.com
 from = Jeff Ramnani <jefframnani@yahoo.com>
 
 [extensions]
-hgext.bookmarks=
-hgext.graphlog=
-hgext.fetch=
-hgext.rebase=
-shelve=
-record=
 churn=
+color=
+hgext.bookmarks=
 hgext.convert=
+hgext.fetch=
+hgext.graphlog=
+hgext.rebase=
+record=
+shelve=
 
 [merge-tools]
 p4.priority = 100
