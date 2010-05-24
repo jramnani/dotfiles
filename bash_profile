@@ -2,71 +2,14 @@
 # Setting terminal settings, environment variables, and path munging.
 # functions and aliases stored in .bashrc
 
-##{{{ FUNCTIONS
-# Make it easier to mess with $PATH (stolen from Red Hat /etc/profile)
-# Helps to keep duplicate pathnames from showing up in your path.
-pathmunge () {
-        if ! echo $PATH | egrep -s "(^|:)$1($|:)" > /dev/null ; then
-           if [ "$2" = "after" ] ; then
-              export PATH=$PATH:$1
-           else
-              export PATH=$1:$PATH
-           fi
-        fi
-}
-manpathmunge () {
-        if ! echo $MANPATH | egrep -s "(^|:)$1($|:)" > /dev/null ; then
-           if [ "$2" = "after" ] ; then
-              export MANPATH=$MANPATH:$1
-           else
-              export MANPATH=$1:$MANPATH
-           fi
-        fi
-}            
-# }}}
+source .bash/environment
+source .bash/functions
 
-#{{{ Colors
-
-WHITE="\[\033[1;37m\]"
-BRIGHTGREEN="\[\033[1;32m\]"
-GREEN="\[\033[0;32m\]"
-RED="\[\033[0;31m\]"
-BRIGHTRED="\[\033[1;31m\]"
-CYAN="\[\033[0;36m\]"
-GRAY="\[\033[0;37m\]"
-BLUE="\[\033[0;34m\]"
-NOCOLOR="\[\033[00m\]"
-
-#}}}
-
-#{{{ Environment
-
-# Detect: Operating system
-case `uname -s` in
-    "Linux")    MYOS="Linux";;
-    "SunOS")   MYOS="Solaris";;
-    "Darwin")   MYOS="OSX";;
-    "FreeBSD")  MYOS="FreeBSD";;
-    "CYGWIN_NT-5.1")    MYOS="Cygwin";;
-    *)  MYOS="Unknown";;
-esac
-
-# Detect: Shell
-MYSHELL=`basename $SHELL`
-
-# Detect: User
-if [ "$USER" == 'root' ]; then
-    USERCOLOR="${RED}"
-else
-    USERCOLOR="${GREEN}"
-fi
-
-#}}}
-
-#{{{ Shell specific stuff
+#{{{ Shell configuration
+EDITOR=vim
+VISUAL=vim
 stty istrip
 stty erase 
-set -o vi
 
 if [ $MYSHELL == "bash" ]; then 
     shopt -s checkwinsize
@@ -266,6 +209,11 @@ if [[ -x `which ruby` ]]; then
     RUBY_VERSION=`ruby --version 2>&1 | awk '{print $2}'`
     echo -e "Ruby $RUBY_VERSION, \c"
 fi
+
+# Are RubyGems installed in my $HOME dir?
+if [[ -d $HOME/.gem/ruby/1.8/bin ]]; then
+    pathmunge $HOME/.gem/ruby/1.8/bin
+fi
 # End Ruby section.
 #}}} End Java / Python / Perl / Ruby
 
@@ -306,6 +254,8 @@ fi
 #}}} end OS Specific
 
 #{{{ Environment Specific
+
+# Differences for Dev / Testing / Prod environments go here.
 
 #}}} End Environment specific
 

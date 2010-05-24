@@ -1,97 +1,38 @@
 # One profile to rule them all...and in the terminal bind them.
+# Functions and aliases get evaluated here.
 
-##{{{ FUNCTIONS
+source .bash/environment
+source .bash/functions
 
-# swap 2 filenames around
-function swap ()         
-{
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
-}
-
-function ppath () {
-    echo $PATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
-}
-            
-# }}}
-
-#{{{ Colors
-
-WHITE="\[\033[1;37m\]"
-BRIGHTGREEN="\[\033[1;32m\]"
-GREEN="\[\033[0;32m\]"
-RED="\[\033[0;31m\]"
-BRIGHTRED="\[\033[1;31m\]"
-CYAN="\[\033[0;36m\]"
-GRAY="\[\033[0;37m\]"
-BLUE="\[\033[0;34m\]"
-NOCOLOR="\[\033[00m\]"
-
-#}}}
-
-#{{{ Environment -- Copied from profile.
-
-# Detect: Operating system?
-case `uname -s` in
-    "Linux")    MYOS="Linux";;
-    "SunOS")   MYOS="Solaris";;
-    "Darwin")   MYOS="OSX";;
-    "FreeBSD")  MYOS="FreeBSD";;
-    "CYGWIN_NT-5.1")    MYOS="Cygwin";;
-    *)  MYOS="Unknown";;
-esac
-
-# Detect: Shell
-MYSHELL=`basename $SHELL`
-
-# Detect: User
-if [ "$USER" == 'root' ]; then
-    USERCOLOR="${RED}"
-else
-    USERCOLOR="${GREEN}"
-fi
-
-#}}}
+# Set command mode editing to Vim.
+set -o vi
 
 #{{{  Global aliases
 
-set -o vi
+alias c='clear'
+alias cp='cp -i'
 alias df='df -ah'
+alias g='egrep -i'
 alias h='fc -l'
 alias j=jobs
 alias m=$PAGER
-alias g='egrep -i'
-alias c='clear'
-# Why won't Solaris terminal just support colors natively... :(
-if [ "$MYOS" != "Solaris" ]; then
-    alias ll='ls -lhFaG'
-    alias lt='ls -lhFGtr'
-    alias l='ls -lhFG'
-else
-    alias ll='ls -lhFa'
-    alias lt='ls -lhFtr'
-    alias l='ls -lhF'
-fi
+alias mv='mv -i'
+alias l='ls -lhF'
+alias ll='ls -lhFa'
+alias lt='ls -lhFtr'
+alias rm='rm -i'
+
+#}}}
+
+#{{{ OpenPKG aliases
 # Is OpenPKG installed? If so, use those tools.
-[ -x "/usr/openpkg/bin/gls" ] && alias ls='gls --color=auto'
-[ -x "/usr/openpkg/bin/gid" ] && alias id='gid'
-[ -x "/usr/openpkg/bin/gdu" ] && alias du='gdu'
-if [ -x "/usr/openpkg/bin/grm" ]; then 
-    alias rm='grm -i'
-else
-    alias rm='rm -i'
-fi
-if [ -x "/usr/openpkg/bin/gcp" ]; then
-    alias cp='gcp -i'
-else
-    alias cp='cp -i'
-fi
-if [ -x "/usr/openpkg/bin/gmv" ];then
-    alias mv='gmv -i'
-else
-    alias mv='mv -i'
+if [[ -d /usr/openpkg/bin ]]; then
+    [ -x "/usr/openpkg/bin/gls" ] && alias ls='gls --color=auto'
+    [ -x "/usr/openpkg/bin/gid" ] && alias id='gid'
+    [ -x "/usr/openpkg/bin/gdu" ] && alias du='gdu'
+    [ -x "/usr/openpkg/bin/grm" ] && alias rm='grm -i'
+    [ -x "/usr/openpkg/bin/gcp" ] && alias cp='gcp -i'
+    [ -x "/usr/openpkg/bin/gmv" ] && alias mv='gmv -i'
 fi
 #}}}
 
@@ -100,6 +41,10 @@ fi
 # Solaris quirks
 if [ $MYOS == "Solaris" ]; then
     alias id='id -a'
+    # Why won't Solaris terminal just support colors natively... :(
+    alias l='ls -lhFG'
+    alias ll='ls -lhFaG'
+    alias lt='ls -lhFGtr'
     if [[ -x /usr/local/bin/vim ]]; then
         alias vi='/usr/local/bin/vim'
         export EDITOR=vim
@@ -128,7 +73,6 @@ if [ $MYOS == "OSX" ]; then
     if [ -f /opt/local/etc/bash_completion ]; then
         . /opt/local/etc/bash_completion
     fi
-
 fi
 # End OSX quirks
 
@@ -137,8 +81,6 @@ if [ $MYOS == "Linux" ]; then
     # Linux comes w/ vim installed by default
     if [[ -x /usr/bin/vim ]]; then
         alias vi='/usr/bin/vim'
-        export EDITOR=vim
-        export VISUAL=vim
     fi
 fi
 
@@ -154,12 +96,9 @@ fi
 
 #{{{ Prompt
 
-# Are we @ Arca?
-if [ "$ARCA_ENV" = "PROD" ]; then
-    PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
-else
-    PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
-fi
+# Default prompt.
+PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+
 # Are we root?
 if [ "$USER" = "root" ]; then
     PS1="${GREEN}\w${NOCOLOR}\n${RED}\u${NOCOLOR}@\h \$ "
@@ -173,14 +112,21 @@ case "$TERM" in
     "rxvt") PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"' ;;
 esac
 
+# Example of environment-specific prompt.
+#if [ "$ARCA_ENV" = "PROD" ]; then
+    #PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
+#else
+    #PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+#fi
+
 #}}} End prompt section
 
 #{{{ Environment Specific
     # placeholder
 #}}} End Environment specific
 
-# Allow for machine specific customizations to be quarantined to another file. I don't
-# want to do this all over again...
+# Allow for machine specific customizations to be quarantined to another file.
+# I don't want to do this all over again...
 if [[ -e .machinerc ]]; then
     . .machinerc
 fi
