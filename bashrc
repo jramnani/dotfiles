@@ -41,7 +41,7 @@ fi
 # Solaris quirks
 if [ $MYOS == "Solaris" ]; then
     alias id='id -a'
-    # Why won't Solaris terminal just support colors natively... :(
+    # Tell 'ls' to use color output. '-G'
     alias l='ls -lhFG'
     alias ll='ls -lhFaG'
     alias lt='ls -lhFGtr'
@@ -55,6 +55,10 @@ fi
 
 # OSX quirks
 if [ $MYOS == "OSX" ]; then
+    # Tell 'ls' to use color output. '-G'
+    alias l='ls -lhFG'
+    alias ll='ls -lhFGa'
+    alias lt='ls -lhFGtr'
     # OS X 'ldd' equivalent.
     alias ldd='otool -L '
     # These aliases allow for easy switching between jvm's.
