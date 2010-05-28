@@ -94,7 +94,7 @@ map <C-K> <C-W>k<C-W>_
 nmap <F1> :set hls!<CR>
 " Unmap  the shortcut for help. In fact, map it to Esc, so my typo changes from
 " a bug into a feature.
-map <F1> <Esc>
+" map <F1> <Esc>
 imap <F1> <Esc>
 
 
