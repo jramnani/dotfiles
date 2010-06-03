@@ -2,8 +2,8 @@
 # Setting terminal settings, environment variables, and path munging.
 # functions and aliases stored in .bashrc
 
-source .bash/environment
-source .bash/functions
+source $HOME/.bash/environment
+source $HOME/.bash/functions
 
 #{{{ Shell configuration
 EDITOR=vim
