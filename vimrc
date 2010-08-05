@@ -278,6 +278,15 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.less set filetype=css
   augroup END
 
+  " Git - Commit msgs use a yellow font which is unreadable on a light
+  " background.
+  " Short term hack until I fix my .gitconfig file.
+  " Readability hack provided by: http://shallowsky.com/blog/linux/editors/vim-light-colors.html
+  augroup git
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.git/* set t_Co=256
+  augroup END
+
   " Makefiles
   augroup makefile
     autocmd!      
