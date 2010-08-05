@@ -30,9 +30,9 @@ set ignorecase          " Case insensitive matching.
 set incsearch           " Incremental search.
 set scrolloff=5         " Keep a context when scrolling.
 set noerrorbells        " No beeps.
-set tabstop=4           " Number of spaces <tab> counts for.
-set shiftwidth=4        " number of spaces the lines will be shifted with >> or << 
-set softtabstop=4       " makes VIM see multiple space characters as tabstops, 
+set tabstop=2           " Number of spaces <tab> counts for.
+set shiftwidth=2        " number of spaces the lines will be shifted with >> or << 
+set softtabstop=2       " makes VIM see multiple space characters as tabstops, 
                         "  and so <BS> does the right thing
 set expandtab           " Use spaces instead of <tab> when using the <Tab> key.
 set smarttab            " Allows you to backspace through a unit of shiftwidth.
@@ -104,6 +104,11 @@ nnoremap <F2> :set list!<CR>
 
 " F3: Toggle expansion of tabs to spaces.
 nmap <F3> :set expandtab!<CR>
+
+" F4: Insert timestamp
+nnoremap <F4> "=strftime("%Y/%m/%d %H:%M")<CR>P
+inoremap <F4> <C-R>=strftime("%Y/%m/%d %H:%M")<CR>
+
 
 "------------------------------------------------------------------------------
 " Correct typos.
@@ -250,30 +255,6 @@ if has("autocmd")
   " Calls to 'autocmd!' below are to clear any existing autocommands. 
   " This prevents autocommands from being run twice.
 
-  " Makefiles
-  augroup makefile
-    autocmd!      
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
-  augroup END
-
-  " Python code.
-  augroup python
-    autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python
-  augroup END
-
-  " Ruby code.
-  augroup ruby
-    autocmd!
-    " Ruby coders perfer 2 spaces for tabstops.
-    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby ts=2 sw=2
-    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby ts=2 sw=2 et
-    " Need to set expandtab b/c Rakefile matches rules for Makefiles, as well.
-    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby ts=2 sw=2 et
-  augroup END
-
   " Build files for Ant, NAnt, and MSBuild
   augroup build 
     autocmd!
@@ -286,11 +267,42 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile      *.proj    set filetype=xml
     autocmd BufRead,FileReadPre,BufNewFile      *.csproj    set filetype=xml
   augroup END
-  " XML Files.
+
   augroup clojure 
     autocmd!
     autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
   augroup END
+
+  augroup css
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.less set filetype=css
+  augroup END
+
+  " Makefiles
+  augroup makefile
+    autocmd!      
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
+    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
+  augroup END
+
+  " Python code.
+  augroup python
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab
+  augroup END
+
+  " Ruby code.
+  augroup ruby
+    autocmd!
+    " Ruby coders perfer 2 spaces for tabstops.
+    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby ts=2 sw=2
+    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby ts=2 sw=2 et
+    " Need to set expandtab b/c Rakefile matches rules for Makefiles, as well.
+    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby ts=2 sw=2 et
+  augroup END
+
 endif
 
 
