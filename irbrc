@@ -8,6 +8,12 @@ begin
   # start wirble (with color)
   Wirble.init
   Wirble.colorize
+  colors = Wirble::Colorize.colors.merge({
+    :object_class => :purple,
+    :symbol => :purple,
+    :symbol_prefix => :purple
+  })
+  Wirble::Colorize.colors = colors
 rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
 end
