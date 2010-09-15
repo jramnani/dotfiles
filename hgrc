@@ -12,6 +12,7 @@ hgext.convert=
 hgext.fetch=
 hgext.graphlog=
 hgext.rebase=
+pager=
 record=
 shelve=
 
