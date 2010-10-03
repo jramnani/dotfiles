@@ -26,7 +26,8 @@ set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
 set ruler               " Show the line and column numbers of the cursor.
-set ignorecase          " Case insensitive matching.
+set smartcase           " ignore case if search pattern is all lowercase,
+                        " case-sensitive otherwise
 set incsearch           " Incremental search.
 set scrolloff=5         " Keep a context when scrolling.
 set noerrorbells        " No beeps.
@@ -46,6 +47,7 @@ set nostartofline       " Do not jump to first character with page commands,
                         " i.e., keep the cursor in the current column.
 set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
                         " 50 lines of registers.
+set splitbelow          " Horizonal splits open new buffer below.
 set splitright          " Vertical splits open new buffer on the right.
 
 " Set mapleader (a.k.a. <Leader>).  Default is "\". 
@@ -80,11 +82,17 @@ endif
 " Buffer behavior.
 "------------------------------------------------------------------------------
 
-" Move between buffers using <Ctrl+h> and <Ctrl+l>. Minimize the other buffers when switching betw them.
+" Move between buffers using <Ctrl+h> and <Ctrl+l>.
+" Minimize the other buffers when switching betw them.
 nmap <c-h> <c-w>h<c-w><bar>
 nmap <c-l> <c-w>l<c-w><bar>
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
+map <c-j> <c-w>j<c-w>_
+map <c-k> <c-w>k<c-w>_
+
+" When scrolling up and down with line wrapping enabled, scroll using
+" editor lines, instead of actual newlines. (more natural scrolling)
+nnoremap j gj
+nnoremap k gk
 
 "------------------------------------------------------------------------------
 " Function keys.
@@ -94,21 +102,17 @@ map <C-K> <C-W>k<C-W>_
 nmap <F1> :set hls!<CR>
 " Unmap  the shortcut for help. In fact, map it to Esc, so my typo changes from
 " a bug into a feature.
-" map <F1> <Esc>
 imap <F1> <Esc>
-
-
 
 " F2: Toggle list (display unprintable characters).
 nnoremap <F2> :set list!<CR>
 
-" F3: Toggle expansion of tabs to spaces.
-nmap <F3> :set expandtab!<CR>
+" F3: Toggle paste mode
+set pastetoggle=<F3>
 
 " F4: Insert timestamp
 nnoremap <F4> "=strftime("%Y/%m/%d %H:%M")<CR>P
 inoremap <F4> <C-R>=strftime("%Y/%m/%d %H:%M")<CR>
-
 
 "------------------------------------------------------------------------------
 " Correct typos.
@@ -191,7 +195,7 @@ iab sunday     Sunday
 " Enable this if you mistype :w as :W or :q as :Q.
 " nmap :W :w
 " nmap :Q :q
-" Enable this if you mistype :x as :X which can ruin your document...
+" Enable this if you mistype :x as :X.
 nmap :X :x
 
 
@@ -298,7 +302,6 @@ if has("autocmd")
   " Python code.
   augroup python
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python
     autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab
   augroup END
 
