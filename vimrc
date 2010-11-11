@@ -26,8 +26,9 @@ set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
 set ruler               " Show the line and column numbers of the cursor.
+set ignorecase          " Ignore case sensitivity in searches.
 set smartcase           " ignore case if search pattern is all lowercase,
-                        " case-sensitive otherwise
+                        " case-sensitive otherwise. Depends on ignorecase.
 set incsearch           " Incremental search.
 set scrolloff=5         " Keep a context when scrolling.
 set noerrorbells        " No beeps.
@@ -238,7 +239,9 @@ let NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
 "Don't hijack NETRW
 "let NERDTreeHijackNetrw = 0
-let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo']
+" Ignoring: dotfiles, vim backup files, OS X droppings, Python bytecode,
+" Go compiler output.
+let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo', '\.8', '\.6']
  
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
