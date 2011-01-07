@@ -241,7 +241,7 @@ let NERDTreeShowHidden = 1
 "let NERDTreeHijackNetrw = 0
 " Ignoring: dotfiles, vim backup files, OS X droppings, Python bytecode,
 " Go compiler output.
-let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo', '\.8', '\.6']
+let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo', '.Python', '\.8', '\.6']
  
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
