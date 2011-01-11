@@ -30,7 +30,8 @@ def install_profile
   # Create the directory where I place my Vim backup files.
   FileUtils.mkdir_p File.join(ENV['HOME'], 'tmp', 'vim')
   # Copy IPython configuration file.
-  FileUtils.cp(File.join("ipython", "ipy_user_conf.py", File.join(ENV["HOME"], ".ipython", "ipy_user_conf.py"))
+  FileUtils.mkdir_p(File.join(ENV["HOME"], ".ipython"))
+  FileUtils.cp(File.join("ipython", "ipy_user_conf.py"), File.join(ENV["HOME"], ".ipython", "ipy_user_conf.py"))
 
   replace_all = false
 
