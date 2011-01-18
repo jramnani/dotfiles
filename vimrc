@@ -309,6 +309,12 @@ if has("autocmd")
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
   augroup END
 
+  " Mako templates
+  augroup mako
+    autocmd!
+    autocmd BufRead,BufReadPre,BufNewFile          *.mako set filetype=mako
+  augroup END
+
   " Python code.
   augroup python
     autocmd!
