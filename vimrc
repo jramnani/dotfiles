@@ -285,6 +285,13 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.less set filetype=css
   augroup END
 
+  " Go code
+  " Go coders prefer tabs to spaces.
+  augroup golang
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.go set filetype=go noexpandtab smartindent
+  augroup END
+
   " Git - Commit msgs use a yellow font which is unreadable on a light
   " background.
   " Short term hack until I fix my .gitconfig file.
@@ -300,6 +307,12 @@ if has("autocmd")
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
+  augroup END
+
+  " Mako templates
+  augroup mako
+    autocmd!
+    autocmd BufRead,BufReadPre,BufNewFile          *.mako set filetype=mako
   augroup END
 
   " Python code.
