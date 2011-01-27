@@ -196,6 +196,8 @@ if [[ -x `which python` ]]; then
     # Python prints version information from '-V' to STDERR.
     PYFULLVERSION=`python -V 2>&1 | awk '{print $2}'`
     echo -e "Python $PYFULLVERSION, \c"
+    # Always use 'Distribute' for virtualenvs.
+    export VIRTUALENV_USE_DISTRIBUTE=1
 fi
 # Is Python software installed in $HOME?
 if [[ -d $HOME/lib/python ]]; then
