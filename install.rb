@@ -25,13 +25,15 @@ require 'getoptlong'
 require 'rdoc/usage'
 
 NOT_PROFILE_FILES = %w[eggs_to_install examples gems_to_install install.rb 
-                       LICENSE Rakefile rakefile README windows ipython]
+                       LICENSE Rakefile rakefile README windows ipython ipythonrc]
 def install_profile
   # Create the directory where I place my Vim backup files.
   FileUtils.mkdir_p File.join(ENV['HOME'], 'tmp', 'vim')
   # Copy IPython configuration file.
   FileUtils.mkdir_p(File.join(ENV["HOME"], ".ipython"))
-  FileUtils.cp(File.join("ipython", "ipy_user_conf.py"), File.join(ENV["HOME"], ".ipython", "ipy_user_conf.py"))
+  target = "#{File.join(FileUtils.pwd, "ipython", "ipy_user_conf.py")}"
+  link = "#{File.join(ENV['HOME'], '.ipython', 'ipy_user_conf.py')}"
+  FileUtils.ln_s(target, link, :force => true)
 
   replace_all = false
 

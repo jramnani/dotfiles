@@ -96,7 +96,8 @@ def main():
     # "Display all N possibilities? (y or n)" on tab completion,
     # as well as the paging through "more". Uncomment the following
     # lines to disable that behaviour
-    #import readline
+    import readline
+    readline.parse_and_bind('tab: complete')
     #readline.parse_and_bind('set completion-query-items 1000')
     #readline.parse_and_bind('set page-completions no')
     
