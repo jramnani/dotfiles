@@ -13,6 +13,13 @@ stty erase 
 
 if [ $MYSHELL == "bash" ]; then 
     shopt -s checkwinsize
+
+    # Fix typos in 'cd'
+    shopt -s cdspell
+
+    # Make bash tab completion ignore certain files (like .svn directories)
+    export FIGNORE=.svn:.pyc:.pyo:~
+    shopt -u force_fignore
 fi
 #}}} End Shell section
 
