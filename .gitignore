@@ -11,3 +11,5 @@ vim/bundle/command-t/ruby/command-t/matcher.o
 vim/bundle/command-t/ruby/command-t/mkmf.log
 # Vim-Rails plugin file.  Shouldn't have checked this in.
 vim/bundle/vim-rails/.gitignore
+# Python
+*.pyc
