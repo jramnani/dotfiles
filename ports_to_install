@@ -9,4 +9,5 @@ ruby
 rb-rubygems
 subversion +bash_completion
 tree
+wget
 vim +python26

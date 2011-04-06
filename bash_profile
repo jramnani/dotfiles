@@ -13,6 +13,13 @@ stty erase 
 
 if [ $MYSHELL == "bash" ]; then 
     shopt -s checkwinsize
+
+    # Fix typos in 'cd'
+    shopt -s cdspell
+
+    # Make bash tab completion ignore certain files (like .svn directories)
+    export FIGNORE=.svn:.pyc:.pyo:~
+    shopt -u force_fignore
 fi
 #}}} End Shell section
 
@@ -198,6 +205,8 @@ if [[ -x `which python` ]]; then
     echo -e "Python $PYFULLVERSION, \c"
     # Always use 'Distribute' for virtualenvs.
     export VIRTUALENV_USE_DISTRIBUTE=1
+    # Use my python startup file.
+    export PYTHONSTARTUP=$HOME/.pythonrc
 fi
 # Is Python software installed in $HOME?
 if [[ -d $HOME/lib/python ]]; then
