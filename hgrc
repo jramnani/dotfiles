@@ -1,5 +1,6 @@
 [ui]
 username = jefframnani@yahoo.com
+ignore = ~/.hgignore
 
 [email]
 from = Jeff Ramnani <jefframnani@yahoo.com>
