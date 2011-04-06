@@ -1,9 +1,12 @@
 # Activate tab completion in the regular Python interactive
 # interpreter.
+
+from __future__ import print_function
+
 try:
     import rlcompleter
     import readline
     readline.parse_and_bind('tab: complete')
 except ImportError:
-    print "Tab completion isn't available."
+    print("*** Tab completion isn't available ***")
 
