@@ -1,8 +1,8 @@
 # One profile to rule them all...and in the terminal bind them.
 # Functions and aliases get evaluated here.
 
-source .bash/environment
-source .bash/functions
+source $HOME/.bash/environment
+source $HOME/.bash/functions
 
 # Set command mode editing to Vim.
 set -o vi
@@ -101,7 +101,7 @@ fi
 #{{{ Prompt
 
 # Default prompt.
-PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@\h \$ "
 
 # Are we root?
 if [ "$USER" = "root" ]; then
