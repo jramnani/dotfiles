@@ -3,6 +3,8 @@ ctags
 git-core +bash_completion +doc +gitweb +python26 +svn
 p5-app-ack
 python26
+python27
+python32
 py26-distribute
 py26-pip
 ruby
@@ -10,4 +12,4 @@ rb-rubygems
 subversion +bash_completion
 tree
 wget
-vim +python26
+vim
