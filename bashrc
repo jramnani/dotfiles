@@ -117,11 +117,11 @@ case "$TERM" in
 esac
 
 # Example of environment-specific prompt.
-#if [ "$ARCA_ENV" = "PROD" ]; then
-    #PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
-#else
-    #PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
-#fi
+if [ "$DRW_ENV" = "PROD" ]; then
+    PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
+else
+    PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+fi
 
 #}}} End prompt section
 
