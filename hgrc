@@ -15,7 +15,6 @@ hgext.graphlog=
 hgext.rebase=
 pager=
 record=
-shelve=~/.hgext/hgshelve.py
 
 [merge-tools]
 p4.priority = 100
