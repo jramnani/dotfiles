@@ -34,6 +34,10 @@ function ppath () {
     echo $PATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
 }
 
+function mpath () {
+    echo $MANPATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
+}
+
 # Bundler and Rails3
 # From: http://twistedmind.com/bundle-exec-bash-shortcut
 bundle_commands=( spec rspec cucumber cap watchr rails rackup )
