@@ -1,0 +1,21 @@
+[color]
+  ui = true
+
+[alias]
+  ci = 'commit'
+  co = 'checkout'
+  br = 'branch'
+  up = 'checkout'
+  st = 'status'
+  # Incoming changes
+  in = log origin/master ^master
+  # outgoing changes
+  out = log master ^origin/master
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+  w = whatchanged
+[core]
+  autocrlf = input
+[github]
+  user = jramnani
