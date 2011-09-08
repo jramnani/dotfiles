@@ -34,7 +34,7 @@ case "${HOSTNAME:2:1}" in
     export DRW_ENV=DEV
     ;;
   g)
-    export DRW_ENV=GRID
+    export DRW_ENV=PROD
     ;;
   p)
     export DRW_ENV=PROD

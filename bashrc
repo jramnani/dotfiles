@@ -118,9 +118,8 @@ esac
 
 # Example of environment-specific prompt.
 if [ "$DRW_ENV" = "PROD" ]; then
-    PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
-else
-    PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+    #PS1="${GREEN}\w${NOCOLOR}\n\u@${RED}\h${NOCOLOR} \$ "
+    PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@${RED}\h${NOCOLOR} \$ "
 fi
 
 #}}} End prompt section
