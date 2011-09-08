@@ -68,7 +68,8 @@ def main():
     
     # Try one of these color settings if you can't read the text easily
     # autoexec is a list of IPython commands to execute on startup
-    o.autoexec.append('%colors LightBG')
+    o.autoexec.append('%colors Linux')
+    #o.autoexec.append('%colors LightBG')
     #o.autoexec.append('%colors NoColor')
     #o.autoexec.append('%colors Linux')
     
