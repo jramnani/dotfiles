@@ -25,7 +25,8 @@ require 'getoptlong'
 require 'rdoc/usage'
 
 NOT_PROFILE_FILES = %w[eggs_to_install examples gems_to_install install.rb 
-                       LICENSE Rakefile rakefile README windows ipython ipythonrc]
+                       LICENSE ports_to_install Rakefile rakefile README
+                       windows ipython ipythonrc]
 def install_profile
   # Create the directory where I place my Vim backup files.
   FileUtils.mkdir_p File.join(ENV['HOME'], 'tmp', 'vim')
