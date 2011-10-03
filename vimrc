@@ -364,7 +364,8 @@ endif
 "------------------------------------------------------------------------------
 if has("gui_running")
     " Set the color scheme.
-    colorscheme desert
+    set background=dark
+    colorscheme solarized
 endif
 
 " Mac specific GUI settings.
