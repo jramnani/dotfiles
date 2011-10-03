@@ -1,6 +1,6 @@
 # MacPorts ports to be installed
 ctags
-git-core +bash_completion +doc +gitweb +python26 +svn
+git-core +bash_completion +doc +gitweb +python27 +svn
 p5-app-ack
 python26
 python27
