@@ -301,6 +301,14 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.git/* set t_Co=256
   augroup END
 
+  " Jinja templates
+  augroup jinja
+    autocmd!
+    autocmd BufRead,BufReadPre,BufNewFile          *.j2 set filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.jinja set filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.jinja2 set filetype=htmljinja
+  augroup END
+
   " Makefiles
   augroup makefile
     autocmd!      
