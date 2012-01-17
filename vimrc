@@ -150,6 +150,7 @@ iab ahve       have
 iab homepgae   homepage
 iab hte        the
 iab inot       into
+iab lenght     length
 iab logifle    logfile
 iab lokk       look
 iab lokking    looking
