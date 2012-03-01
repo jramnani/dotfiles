@@ -115,6 +115,9 @@ set pastetoggle=<F3>
 nnoremap <F4> "=strftime("%Y/%m/%d %H:%M")<CR>P
 inoremap <F4> <C-R>=strftime("%Y/%m/%d %H:%M")<CR>
 
+" F5: Reload vimrc
+nnoremap <F5> :source $MYVIMRC<CR>
+
 "------------------------------------------------------------------------------
 " Correct typos.
 "------------------------------------------------------------------------------
