@@ -6,8 +6,8 @@ source $HOME/.bash/environment
 source $HOME/.bash/functions
 
 #{{{ Shell configuration
-EDITOR=vim
-VISUAL=vim
+export EDITOR=vim
+export VISUAL=vim
 stty istrip
 stty erase 
 
