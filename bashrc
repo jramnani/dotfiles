@@ -101,7 +101,11 @@ fi
 #{{{ Prompt
 
 # Default prompt.
-PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@\h \$ "
+if __git_ps1 2>&1 > /dev/null; then
+    PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@\h \$ "
+else
+    PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
+fi
 
 # Are we root?
 if [ "$USER" = "root" ]; then
@@ -109,7 +113,7 @@ if [ "$USER" = "root" ]; then
 fi
 
 # Set xterm titlebar for the terminals that I use.
-# Both Mac temrminals Terminal.app, and iTerm use 'xterm-color'.
+# Mac temrminals Terminal.app and iTerm use 'xterm-color'.
 case "$TERM" in
     "xterm") PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"' ;;
     "xterm-color") PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/~}\007"' ;;
@@ -130,6 +134,6 @@ fi
 
 # Allow for machine specific customizations to be quarantined to another file.
 # I don't want to do this all over again...
-if [[ -e .machinerc ]]; then
+if [[ -r .machinerc ]]; then
     . .machinerc
 fi
