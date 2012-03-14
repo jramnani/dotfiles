@@ -13,6 +13,7 @@ hgext.convert=
 hgext.fetch=
 hgext.graphlog=
 hgext.rebase=
+mq=
 pager=
 record=
 
