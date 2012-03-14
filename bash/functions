@@ -31,7 +31,7 @@ function swap ()
 
 # Pretty prints your PATH. One entry per line.
 function ppath () {
-    echo $PATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
+    echo $PATH | tr ':' '\n'
 }
 
 function mpath () {
