@@ -102,6 +102,7 @@ def main():
     #readline.parse_and_bind('set completion-query-items 1000')
     #readline.parse_and_bind('set page-completions no')
     c.InteractiveShellApp.ignore_old_config=True
+    execf('~/.ipython/virtualenv.py')
     
     
     
