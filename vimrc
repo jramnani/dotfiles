@@ -327,6 +327,12 @@ if has("autocmd")
     autocmd BufRead,BufReadPre,BufNewFile          *.mako set filetype=mako
   augroup END
 
+  " Jinja2 templates
+  augroup jinja
+    autocmd!
+    autocmd BufRead,BufReadPre,BufNewFile          *.j2 set filetype=htmljinja
+  augroup END
+
   " Python code.
   augroup python
     autocmd!
