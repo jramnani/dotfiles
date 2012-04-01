@@ -6,8 +6,8 @@ source $HOME/.bash/environment
 source $HOME/.bash/functions
 
 #{{{ Shell configuration
-EDITOR=vim
-VISUAL=vim
+export EDITOR=vim
+export VISUAL=vim
 stty istrip
 stty erase 
 
@@ -27,15 +27,6 @@ fi
 
 # time to munge the path... why can't we all just get along?
 # agnostic
-if [[ -d ~jramnani/bin ]]; then
-    pathmunge ~jramnani/bin
-fi
-if [[ -d /usr/local/sbin ]]; then
-    pathmunge /usr/local/sbin after
-fi
-if [[ -d /usr/local/bin ]]; then
-    pathmunge /usr/local/bin after
-fi
 if [[ -d /sbin ]]; then
     pathmunge /sbin
 fi
@@ -49,8 +40,17 @@ fi
 if [[ -d /usr/share/man ]]; then
     manpathmunge /usr/share/man
 fi
+if [[ -d /usr/local/sbin ]]; then
+    pathmunge /usr/local/sbin
+fi
+if [[ -d /usr/local/bin ]]; then
+    pathmunge /usr/local/bin
+fi
 if [[ -d /usr/local/man ]]; then 
     manpathmunge /usr/local/man
+fi
+if [[ -d ~jramnani/bin ]]; then
+    pathmunge ~jramnani/bin
 fi
 
 # Use OpenPKG command that will populate PATH and MANPATH correctly to find OpenPKG tools.
@@ -87,12 +87,6 @@ case ${MYOS} in
             pathmunge /opt/VRTS/bin after
             manpathmunge /opt/VRTS/man after
         fi
-        # Use perl 5.6 until we test 5.8 everywhere
-        if [[ -d /usr/perl5/5.6.1/bin ]]; then
-            echo -e "perl5.6.1, \c"
-            pathmunge /usr/perl5/5.6.1/bin after
-            manpathmunge /usr/perl5/5.6.1/man after
-        fi               
         # sun C compiler
         if [[ -d /opt/SUNWspro/bin ]]; then
                 echo -e "forte, \c"
@@ -158,12 +152,8 @@ esac
 #}}} End path munging section  
 
 # PAGER {{{
-if [ -x "/usr/openpkg/bin/less" ]; then
-    PAGER="/usr/openpkg/bin/less -isR"
-elif [ -x "/usr/bin/less" ]; then
-    PAGER="/usr/bin/less -isR"
-elif [ -x "/usr/local/bin/less" ]; then
-    PAGER="/usr/local/bin/less -isR"
+if [ -x $(which less) ]; then
+    PAGER="$(which less) -isR"
 else
     PAGER="more"
 fi
@@ -271,7 +261,7 @@ fi
 #}}} End Environment specific
 
 # Get our functions and aliases.
-if [ -e .bashrc ]; then
+if [ -r .bashrc ]; then
     . .bashrc
 fi
 # Add a new line after we've printed all the stuff about our environment.
