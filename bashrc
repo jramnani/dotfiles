@@ -100,8 +100,12 @@ fi
 
 #{{{ Prompt
 
+if [[ -f /etc/bash_completion ]]; then
+  source /etc/bash_completion
+fi
+
 # Default prompt.
-if __git_ps1 2>&1 > /dev/null; then
+if type -t __git_ps1 2>&1 > /dev/null; then
     PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@\h \$ "
 else
     PS1="${GREEN}\w${NOCOLOR}\n\u@\h \$ "
