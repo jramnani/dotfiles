@@ -8,6 +8,7 @@ source $HOME/.bash/functions
 #{{{ Shell configuration
 export EDITOR=vim
 export VISUAL=vim
+export LANG=en_US.UTF-8
 stty istrip
 stty erase 
 
