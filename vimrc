@@ -245,7 +245,7 @@ let NERDTreeShowHidden = 1
 "let NERDTreeHijackNetrw = 0
 " Ignoring: dotfiles, vim backup files, OS X droppings, Python bytecode,
 " Go compiler output.
-let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.pyc', '\.pyo', '.Python', '\.8', '\.6']
+let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.o', '\.pyc', '\.pyo', '.Python', '\.8', '\.6']
  
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
@@ -336,7 +336,7 @@ if has("autocmd")
   " Python code.
   augroup python
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab foldmethod=indent foldnestmax=2
   augroup END
 
   " Ruby code.
