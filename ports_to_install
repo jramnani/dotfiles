@@ -5,8 +5,8 @@ p5-app-ack
 python26
 python27
 python32
-py26-distribute
-py26-pip
+py27-distribute
+py27-pip
 ruby
 rb-rubygems
 subversion +bash_completion
