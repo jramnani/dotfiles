@@ -289,6 +289,11 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.less set filetype=css
   augroup END
 
+  augroup fish
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.fish set filetype=fish
+  augroup END
+
   " Go code
   " Go coders prefer tabs to spaces.
   augroup golang
