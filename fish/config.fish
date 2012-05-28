@@ -1,39 +1,30 @@
-set fish_git_dirty_color red
-function parse_git_dirty 
-         git diff --quiet HEAD ^&-
-         if test $status = 1
-            echo (set_color $fish_git_dirty_color)"Δ"(set_color normal)
-         end
-end
-function parse_git_branch
-         # git branch outputs lines, the current branch is prefixed with a *
-         set -l branch (git branch --color ^&- | awk '/*/ {print $2}') 
-         echo $branch (parse_git_dirty)     
-end
-
-function fish_prompt
-         if test -z (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')
-            printf '%s@%s %s%s%s (%s) $ ' (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)            
-         else
-            printf '%s@%s %s%s%s $ '  (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
-         end 
-end
-
+# On what OS are we running?
 switch (uname -s)
   case "Linux"
-    set -g MYOS "Linux"
+    set -gx MYOS "Linux"
   case "SunOS"
-    set -g MYOS "Solaris"
+    set -gx MYOS "Solaris"
   case "Darwin"
-    set -g MYOS "OSX"
+    set -gx MYOS "OSX"
   case "FreeBSD"
-    set -g MYOS "FreeBSD"
+    set -gx MYOS "FreeBSD"
   case "CYGWIN_NT-5.1"
-    set -g MYOS "Cygwin"
+    set -gx MYOS "Cygwin"
   case '*'
-    set -g MYOS "Unkown"
+    set -gx MYOS "Unkown"
 end
-  
+
+
+# Set BROWSER for the 'help' command.
+if not set -q BROWSER
+    switch $MYOS
+        case "OSX"
+            set -U BROWSER 'open'
+        case "Linux"
+            set -U BROWSER 'google-chrome'
+    end
+end
+
 # My preferred locale
 set -g LC_ALL 'en_US.utf8'
 
