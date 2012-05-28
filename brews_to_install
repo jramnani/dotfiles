@@ -1,9 +1,11 @@
 ack
+bash-completion
 ctags
 fish
 git
 mercurial
 mobile-shell
+pstree
 tmux
 tree
 vim
