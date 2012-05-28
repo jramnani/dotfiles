@@ -25,8 +25,15 @@ if not set -q BROWSER
     end
 end
 
+# Shell configuration
+set -gx FIGNORE .svn .git .hg .pyc .pyo .o
+
 # My preferred locale
-set -g LC_ALL 'en_US.utf8'
+set -gx LC_ALL 'en_US.utf8'
+
+# Editing and viewing files
+set -gx PAGER less
+set -gx EDITOR vim
 
 # Aliases
 alias c 'clear'
@@ -41,9 +48,28 @@ alias l 'ls -lhF'
 alias ll 'ls -alhF'
 alias lt 'ls -lhFtr'
 alias rm 'rm -i'
- 
+
 
 # Path
-# Assuming OSX for now.
-set -g BASE_PATH /usr/local/bin /usr/bin /usr/sbin /bin /sbin
+# Assuming OSX for now. MacPorts, Fink, or Homebrew.
+for p in ~/bin /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
+    if test -d $p
+        set -x PATH $p $PATH
+    end
+end
 
+for p in /opt/local/share/man /sw/share/man /usr/local/share/man
+    if test -d $p
+        set -x MANPATH $p $MANPATH
+    end
+end
+
+# Prompt
+# Fish is very conservative when setting the prompt. Run the command explicitly here.
+switch $MYOS
+    case "OSX"
+        printf "%s" (fish_title)
+end
+
+# Source local machine-specific file.
+. $HOME/.machinerc.fish
