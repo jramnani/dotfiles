@@ -21,7 +21,7 @@ function link_file() {
   fi
 
   if [[ ! -L $HOME/.${FILE} ]]; then
-    ln -s $FILE $HOME/.${FILE}
+    ln -s $PWD/$FILE $HOME/.${FILE}
   else
     echo "Link already exists for '$FILE'. Nothing to do."
   fi
