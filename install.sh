@@ -45,7 +45,9 @@ function install_profile() {
 
   # Git
   # Copy the file, instead of linking, since I use different emails at home and at work.
-  cp gitconfig $HOME/.gitconfig || echo "Skipped gitconfig"
+  if [[ gitconfig -nt $HOME/.gitconfig ]]; then
+    cp gitconfig $HOME/.gitconfig || echo "Skipped gitconfig"
+  fi
 
   # Mercurial
   for FILE in hgext hgrc; do
