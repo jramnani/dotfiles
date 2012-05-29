@@ -21,6 +21,7 @@ function link_file() {
   fi
 
   if [[ ! -L $HOME/.${FILE} ]]; then
+    echo "Linking: $HOME/.${FILE} -> $PWD/$FILE"
     ln -s $PWD/$FILE $HOME/.${FILE}
   else
     echo "Link already exists for '$FILE'. Nothing to do."
