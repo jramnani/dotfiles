@@ -77,6 +77,10 @@ if [ $MYOS == "OSX" ]; then
     if [ -f /opt/local/etc/bash_completion ]; then
         . /opt/local/etc/bash_completion
     fi
+    # Use Homebrew bash completion
+    if [[ -f /usr/local/etc/bash_completion ]]; then
+        . /usr/local/etc/bash_completion
+    fi
 fi
 # End OSX quirks
 
