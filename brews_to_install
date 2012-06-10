@@ -5,6 +5,7 @@ fish
 git
 mercurial
 mobile-shell
+mtr --no-gtk
 pstree
 tmux
 tree
