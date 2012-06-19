@@ -1,6 +1,9 @@
 ctags
+curl
 exuberant-ctags
 git
+krb5-user
+ldap-utils
 mosh
 mtr-tiny
 python-pip
