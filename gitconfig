@@ -19,3 +19,5 @@
   autocrlf = input
 [github]
   user = jramnani
+[credential]
+	helper = cache --timeout=3600
