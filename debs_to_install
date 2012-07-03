@@ -4,6 +4,7 @@ exuberant-ctags
 git
 krb5-user
 ldap-utils
+mercurial
 mosh
 mtr-tiny
 python-all-dev
