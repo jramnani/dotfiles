@@ -42,7 +42,10 @@ function install_profile() {
     ln -s $SCRIPT_PATH/fish/config.fish $HOME/.config/fish/config.fish
   fi
   if [[ ! -L $HOME/.config/fish/functions ]]; then
-    ln -s $SCRIPT_PATH fish/functions $HOME/.config/fish/functions
+    ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/functions
+  fi
+  if [[ ! -L $HOME/.config/fish/completions ]]; then
+    ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/completions
   fi
 
   # Git
