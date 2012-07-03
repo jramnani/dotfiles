@@ -7,6 +7,9 @@ mercurial
 mobile-shell
 mtr --no-gtk
 pstree
+rbenv
+rbenv-gemset
+ruby-build
 tmux
 tree
 wget

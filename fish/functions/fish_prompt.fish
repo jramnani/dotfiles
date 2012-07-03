@@ -1,23 +1,27 @@
-function fish_prompt --description 'Write out the prompt'
+# My prompt should look as follows:
+#   (virtualenv) pwd (git branch)
+#   username@host $
+function fish_prompt -d "Write out the prompt"
+  # Python Virtualenv
+  if set -q VIRTUAL_ENV
+    printf '%s(%s)%s ' (set_color blue) (basename $VIRTUAL_ENV)
+  end
 
-# Just calculate these once, to save a few cycles when displaying the prompt
-    if not set -q __fish_prompt_hostname
-        set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
-    end
+  # Color writeable dirs green, read-only dirs red
+  if test -w "."
+    printf '%s%s' (set_color green) (prompt_pwd)
+  else
+    printf '%s%s' (set_color red) (prompt_pwd)
+  end
 
-    if not set -q __fish_prompt_normal
-        set -g __fish_prompt_normal (set_color normal)
-    end
+  # Print git branch
+  if test -d ".git"
+    printf ' %s(%s)%s\n' (set_color blue) (parse_git_branch) (set_color normal)
+  else
+    printf '\n'
+  end
 
-    if not set -q __fish_prompt_cwd
-        set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-    end
-
-    if test -z (git branch --quiet 2>| awk '/fatal:/ {print "no git"}')
-       printf '%s%s%s (%s)\n%s@%s $ ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" (parse_git_branch) (whoami) $__fish_prompt_hostname
-    else
-       printf '%s%s%s\n%s@%s $ ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (whoami) (hostname|cut -d . -f 1)
-    end
+  printf '%s%s@%s%s $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal) 
 
 end
 

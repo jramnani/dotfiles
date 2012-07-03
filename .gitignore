@@ -1,3 +1,5 @@
+# OS X cruft
+.DS_Store
 # Python
 *.pyc
 # Subversion generated files.

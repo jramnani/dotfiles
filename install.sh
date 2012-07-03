@@ -2,6 +2,8 @@
 
 set -e
 
+SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 function install_eggs() {
   cat eggs_to_install | xargs pip install
 }
@@ -22,7 +24,7 @@ function link_file() {
 
   if [[ ! -L $HOME/.${FILE} ]]; then
     echo "Linking: $HOME/.${FILE} -> $PWD/$FILE"
-    ln -s $PWD/$FILE $HOME/.${FILE}
+    ln -s $SCRIPT_PATH/$FILE $HOME/.${FILE}
   else
     echo "Link already exists for '$FILE'. Nothing to do."
   fi
@@ -37,16 +39,18 @@ function install_profile() {
   # Fish profile
   mkdir -p $HOME/.config/fish
   if [[ ! -L $HOME/.config/fish/config.fish ]]; then
-    ln -s fish/config.fish $HOME/.config/fish/config.fish
+    ln -s $SCRIPT_PATH/fish/config.fish $HOME/.config/fish/config.fish
   fi
   if [[ ! -L $HOME/.config/fish/functions ]]; then
-    ln -s fish/functions $HOME/.config/fish/functions
+    ln -s $SCRIPT_PATH fish/functions $HOME/.config/fish/functions
   fi
 
   # Git
   # Copy the file, instead of linking, since I use different emails at home and at work.
   if [[ gitconfig -nt $HOME/.gitconfig ]]; then
-    cp gitconfig $HOME/.gitconfig || echo "Skipped gitconfig"
+    echo "Updating gitconfig ..."
+    cp $HOME/.gitconfig $HOME/.gitconfig.bak
+    cp gitconfig $HOME/.gitconfig
   fi
 
   # Mercurial
@@ -57,8 +61,8 @@ function install_profile() {
   # Python
   # Copy IPython configuration file.
   mkdir -p $HOME/.ipython
-  if [[ ! -L $HOME/.ipython/ipy_user_conf.py ]]; then
-    ln -s $PWD/ipython/ipy_user_conf.py $HOME/.ipython/ipy_user_conf.py
+  if [[ ! -f $HOME/.ipython/ipy_user_conf.py && ! -L $HOME/.ipython/ipy_user_conf.py ]]; then
+    ln -s $SCRIPT_PATH/ipython/ipy_user_conf.py $HOME/.ipython/ipy_user_conf.py
   fi
   link_file pythonrc
 
@@ -78,7 +82,8 @@ function install_profile() {
   # Create the directory where I place my Vim backup files
   mkdir -p $HOME/tmp/vim
   if [[ ! -L $HOME/.vim ]]; then
-    ln -s vim $HOME/.vim
+    echo "Linking Vim config dir: $HOME/.vim -> $SCRIPT_PATH/vim"
+    ln -s $SCRIPT_PATH/vim $HOME/.vim
   fi
   link_file vimrc
 }
