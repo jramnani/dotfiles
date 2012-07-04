@@ -9,14 +9,14 @@ function fish_prompt -d "Write out the prompt"
 
   # Color writeable dirs green, read-only dirs red
   if test -w "."
-    printf '%s%s' (set_color green) (prompt_pwd)
+    printf '%s%s%s' (set_color green) (prompt_pwd) (set_color normal)
   else
-    printf '%s%s' (set_color red) (prompt_pwd)
+    printf '%s%s%s' (set_color red) (prompt_pwd) (set_color normal)
   end
 
   # Print git branch
   if test -d ".git"
-    printf ' %s(%s)%s\n' (set_color blue) (parse_git_branch) (set_color normal)
+    printf ' (%s)\n' (parse_git_branch)
   else
     printf '\n'
   end
