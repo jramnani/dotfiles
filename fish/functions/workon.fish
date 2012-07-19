@@ -1,6 +1,6 @@
 function workon -d "Activate virtual environment in $WORKON_HOME"
   if test -z $argv[1]
-    find $WORKON_HOME -maxdepth 1 -type d -print | xargs basename | grep -v (basename $WORKON_HOME)
+    find $WORKON_HOME -maxdepth 1 -type d -print | xargs basename 
   else
     set tgt {$WORKON_HOME}/$argv[1]
     if [ -d $tgt ]
