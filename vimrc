@@ -341,7 +341,7 @@ if has("autocmd")
   " Python code.
   augroup python
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab foldmethod=indent foldnestmax=2
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab
   augroup END
 
   " Ruby code.
