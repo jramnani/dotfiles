@@ -2,6 +2,8 @@
 .DS_Store
 # Python
 *.pyc
+# Compiled shared libs
+*.so
 # Subversion generated files.
 subversion/README.txt
 subversion/auth/
