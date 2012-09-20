@@ -29,7 +29,7 @@ end
 set -gx FIGNORE .svn .git .hg .pyc .pyo .o
 
 # My preferred locale
-set -gx LC_ALL 'en_US.utf8'
+set -gx LC_ALL 'en_US.UTF-8'
 
 # Editing and viewing files
 set -gx PAGER less
