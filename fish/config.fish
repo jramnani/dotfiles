@@ -37,17 +37,14 @@ set -gx EDITOR vim
 
 # Aliases
 alias c 'clear'
-alias cp 'cp -i'
 alias df 'df -ah'
 alias g 'egrep -i'
 alias h 'fc -l'
 alias j 'jobs'
 alias m $PAGER
-alias mv 'mv -i'
 alias l 'ls -lhF'
 alias ll 'ls -alhF'
 alias lt 'ls -lhFtr'
-alias rm 'rm -i'
 
 
 # Path
