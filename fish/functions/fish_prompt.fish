@@ -21,7 +21,7 @@ function fish_prompt -d "Write out the prompt"
     printf '\n'
   end
 
-  printf '%s%s@%s%s $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal) 
+  printf '%s%s@%s%s [%s] $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal) $vi_mode
 
 end
 

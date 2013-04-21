@@ -68,5 +68,9 @@ switch $MYOS
         printf "%s" (fish_title)
 end
 
+# Enable vi-mode. Yay!
+# From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
+. $HOME/.config/fish/vi-mode.fish
+
 # Source local machine-specific file.
 . $HOME/.machinerc.fish
