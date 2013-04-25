@@ -62,6 +62,7 @@ if [ $MYOS == "OSX" ]; then
     # OS X 'ldd' equivalent.
     alias ldd='otool -L '
     # These aliases allow for easy switching between jvm's.
+    alias java17='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_13.jdk/Contents/Home'
     alias java16='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home'
     alias java15='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home'
     alias java14='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.4/Home'
