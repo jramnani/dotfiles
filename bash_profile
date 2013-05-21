@@ -246,6 +246,14 @@ if [ $MYOS == "Solaris" ]; then
 fi
 # End Solaris quirks
 
+# OS X
+if [ $MYOS == "OSX" ]; then
+  # Use a Solarized color pallete for LSCOLORS.
+  # Found at: https://github.com/seebi/dircolors-solarized/issues/10
+  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+fi
+# End OS X
+
 # Linux -- placeholder
 
 # Cygwin
