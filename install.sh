@@ -53,6 +53,9 @@ function install_profile() {
 
   # Git
   # Copy the file, instead of linking, since I use different emails at home and at work.
+  if [[ ! -f $HOME/.gitconfig ]]; then
+    cp gitconfig $HOME/.gitconfig
+  fi
   if [[ gitconfig -nt $HOME/.gitconfig ]]; then
     echo "Updating gitconfig ..."
     cp $HOME/.gitconfig $HOME/.gitconfig.bak
