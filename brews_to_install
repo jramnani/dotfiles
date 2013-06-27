@@ -13,3 +13,4 @@ ruby-build
 tmux
 tree
 wget
+reattach-to-user-namespace --wrap-launchctl --wrap-pbcopy-and-pbpaste
