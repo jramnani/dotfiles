@@ -13,7 +13,7 @@
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 filetype off 
 " Use Pathogen plugin to load all other plugins
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 call pathogen#helptags()
 
 set nocompatible        " Disable vi compatibility.
