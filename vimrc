@@ -11,7 +11,7 @@
 
 " Needed on some linux distros.
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-filetype off 
+filetype off
 " Use Pathogen plugin to load all other plugins
 call pathogen#incubate()
 call pathogen#helptags()
@@ -33,15 +33,15 @@ set incsearch           " Incremental search.
 set scrolloff=5         " Keep a context when scrolling.
 set noerrorbells        " No beeps.
 set tabstop=2           " Number of spaces <tab> counts for.
-set shiftwidth=2        " number of spaces the lines will be shifted with >> or << 
-set softtabstop=2       " makes VIM see multiple space characters as tabstops, 
+set shiftwidth=2        " number of spaces the lines will be shifted with >> or <<
+set softtabstop=2       " makes VIM see multiple space characters as tabstops,
                         "  and so <BS> does the right thing
 set expandtab           " Use spaces instead of <tab> when using the <Tab> key.
 set smarttab            " Allows you to backspace through a unit of shiftwidth.
 set ttyscroll=0         " Turn off scrolling (this is faster).
 set ttyfast             " We have a fast terminal connection.
 set hlsearch            " Highlight search matches.
-set foldmethod=marker   " Set markers for manual folding. Hopefully this won't 
+set foldmethod=marker   " Set markers for manual folding. Hopefully this won't
                         "  b0rk default filetype folding behavior.
 set encoding=utf-8      " Set default encoding to UTF-8.
 set nostartofline       " Do not jump to first character with page commands,
@@ -51,7 +51,7 @@ set viminfo='20,\"50    " Read/write a .viminfo file, don't store more than
 set splitbelow          " Horizonal splits open new buffer below.
 set splitright          " Vertical splits open new buffer on the right.
 
-" Set mapleader (a.k.a. <Leader>).  Default is "\". 
+" Set mapleader (a.k.a. <Leader>).  Default is "\".
 let mapleader=","
 
 " Allow backspacing over everything in insert mode.
@@ -239,13 +239,13 @@ nmap <leader>f :FufFile<CR>
 " NERDTree Settings
 " Enable nice colors
 let NERDChristmasTree = 1
- 
+
 " Make it easy to see where we are
 let NERDTreeHighlightCursorline = 1
- 
+
 " Make bookmarks visible
 let NERDTreeShowBookmarks = 1
- 
+
 " Show hidden files
 let NERDTreeShowHidden = 1
 "Don't hijack NETRW
@@ -253,7 +253,7 @@ let NERDTreeShowHidden = 1
 " Ignoring: dotfiles, vim backup files, OS X droppings, Python bytecode,
 " Go compiler output.
 let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.o', '\.pyc', '\.pyo', '.Python', '\.8', '\.6']
- 
+
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
 
@@ -269,12 +269,12 @@ let clj_paren_rainbow = 1
 "------------------------------------------------------------------------------
 
 if has("autocmd")
-  
-  " Calls to 'autocmd!' below are to clear any existing autocommands. 
+
+  " Calls to 'autocmd!' below are to clear any existing autocommands.
   " This prevents autocommands from being run twice.
 
   " Build files for Ant, NAnt, and MSBuild
-  augroup build 
+  augroup build
     autocmd!
     " Ant
     autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=ant
@@ -286,7 +286,7 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile      *.csproj    set filetype=xml
   augroup END
 
-  augroup clojure 
+  augroup clojure
     autocmd!
     autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
   augroup END
@@ -327,7 +327,7 @@ if has("autocmd")
 
   " Makefiles
   augroup makefile
-    autocmd!      
+    autocmd!
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
     autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
@@ -380,7 +380,7 @@ endif
 "------------------------------------------------------------------------------
 
 if has("win32")
-    " Set the backup dir for Vim's backup files. 
+    " Set the backup dir for Vim's backup files.
     set bdir=c:\\tmp\\vim,c:\\temp\\vim
     " Set the swap dir where vim puts it's ~ files.
     set dir=c:\\tmp\\vim,c:\\temp\\vim
@@ -419,4 +419,3 @@ else
       source $HOME/\.vimrc.local
     endif
 endif
-
