@@ -379,19 +379,34 @@ if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-color"
   set t_Sb=[4%dm
 endif
 
+
 "------------------------------------------------------------------------------
 " Backup files
 "------------------------------------------------------------------------------
 
 if has("win32")
-    " Set the backup dir for Vim's backup files.
-    set bdir=c:\\tmp\\vim,c:\\temp\\vim
-    " Set the swap dir where vim puts it's ~ files.
-    set dir=c:\\tmp\\vim,c:\\temp\\vim
+    set backupdir=$HOME\\tmp\\vim\\backups\\   " backups
+    set directory=$HOME\\tmp\\vim\\swap\\      " swap files
+    set undodir=$HOME\\tmp\\vim\\undo\\        " undo files
 else
-    set bdir=$HOME/tmp/vim
-    set dir=$HOME/tmp/vim
+    set backupdir=$HOME/tmp/vim/backup//
+    set directory=$HOME/tmp/vim/swap//
+    set undodir=$HOME/tmp/vim/undo//
 endif
+
+" Create backup folders if they don't exist.
+if !isdirectory(expand(&backupdir))
+  call mkdir(expand(&backupdir), "p")
+endif
+
+if !isdirectory(expand(&directory))
+  call mkdir(expand(&directory), "p")
+endif
+
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), "p")
+endif
+
 
 "------------------------------------------------------------------------------
 " GUI Settings
