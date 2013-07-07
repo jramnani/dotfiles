@@ -284,35 +284,35 @@ if has("autocmd")
   augroup build
     autocmd!
     " Ant
-    autocmd BufRead,FileReadPre,BufNewFile      build.xml set filetype=ant
+    autocmd BufRead,FileReadPre,BufNewFile      build.xml setlocal filetype=ant
     " NAnt
-    autocmd BufRead,FileReadPre,BufNewFile      *.build   set filetype=xml
-    autocmd BufRead,FileReadPre,BufNewFile      *.nant    set filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.build   setlocal filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.nant    setlocal filetype=xml
     " MSBuild / Visual Studio
-    autocmd BufRead,FileReadPre,BufNewFile      *.proj    set filetype=xml
-    autocmd BufRead,FileReadPre,BufNewFile      *.csproj    set filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.proj    setlocal filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.csproj    setlocal filetype=xml
   augroup END
 
   augroup clojure
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   set filetype=clojure
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   setlocal filetype=clojure
   augroup END
 
   augroup css
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.less set filetype=css
+    autocmd BufRead,FileReadPre,BufNewFile     *.less setlocal filetype=css
   augroup END
 
   augroup fish
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.fish set filetype=fish
+    autocmd BufRead,FileReadPre,BufNewFile     *.fish setlocal filetype=fish
   augroup END
 
   " Go code
   " Go coders prefer tabs to spaces.
   augroup golang
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.go set filetype=go noexpandtab smartindent
+    autocmd BufRead,FileReadPre,BufNewFile     *.go setlocal filetype=go noexpandtab smartindent
   augroup END
 
   " Git - Commit msgs use a yellow font which is unreadable on a light
@@ -321,51 +321,48 @@ if has("autocmd")
   " Readability hack provided by: http://shallowsky.com/blog/linux/editors/vim-light-colors.html
   augroup git
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.git/* set t_Co=256
+    autocmd BufRead,FileReadPre,BufNewFile     *.git/* setlocal t_Co=256
   augroup END
 
   " Jinja templates
   augroup jinja
     autocmd!
-    autocmd BufRead,BufReadPre,BufNewFile          *.j2 set filetype=htmljinja
-    autocmd BufRead,BufReadPre,BufNewFile          *.jinja set filetype=htmljinja
-    autocmd BufRead,BufReadPre,BufNewFile          *.jinja2 set filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.j2 setlocal filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.jinja setlocal filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.jinja2 setlocal filetype=htmljinja
   augroup END
 
   " Makefiles
   augroup makefile
     autocmd!
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set filetype=make
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set tabstop=4
-    autocmd BufRead,BufReadPre,BufNewFile          ?akefile* set noexpandtab
+    autocmd BufRead,BufReadPre,BufNewFile          Makefile* setlocal filetype=make
+    autocmd FileType make setlocal tabstop=4
+    autocmd FileType make setlocal noexpandtab
   augroup END
 
   " Mako templates
   augroup mako
     autocmd!
-    autocmd BufRead,BufReadPre,BufNewFile          *.mako set filetype=mako
-  augroup END
-
-  " Jinja2 templates
-  augroup jinja
-    autocmd!
-    autocmd BufRead,BufReadPre,BufNewFile          *.j2 set filetype=htmljinja
+    autocmd BufRead,BufReadPre,BufNewFile          *.mako setlocal filetype=mako
   augroup END
 
   " Python code.
   augroup python
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw set filetype=python ts=4 sw=4 softtabstop=4 expandtab
+    autocmd BufRead,FileReadPre,BufNewFile      *.py,*.pyw setlocal filetype=python
+    autocmd BufRead,FileReadPre,BufNewFile      pythonrc setlocal filetype=python
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   augroup END
 
   " Ruby code.
   augroup ruby
     autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile      *.rb setlocal filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile setlocal filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile setlocal filetype=ruby
+    autocmd BufRead,FileReadPre,BufNewFile      [Vv]agrantfile setlocal filetype=ruby
     " Ruby coders perfer 2 spaces for tabstops.
-    autocmd BufRead,FileReadPre,BufNewFile      *.rb set filetype=ruby ts=2 sw=2
-    autocmd BufRead,FileReadPre,BufNewFile      [Cc]apfile set filetype=ruby ts=2 sw=2 et
-    " Need to set expandtab b/c Rakefile matches rules for Makefiles, as well.
-    autocmd BufRead,FileReadPre,BufNewFile      [Rr]akefile set filetype=ruby ts=2 sw=2 et
+    autocmd FileType ruby  setlocal tabstop=2 shiftwidth=2 expandtab
   augroup END
 
 endif
