@@ -12,6 +12,13 @@
 " Needed on some linux distros.
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 filetype off
+
+" Pathogen expects a Bourne compatible shell.
+if $SHELL =~ "fish"
+  echomsg "Detected SHELL =~ fish. Manually setting it to bash."
+  set shell=/usr/bin/env\ bash
+endif
+
 " Use Pathogen plugin to load all other plugins
 call pathogen#incubate()
 call pathogen#helptags()
