@@ -57,12 +57,6 @@ for p in /opt/local/share/man /sw/share/man /usr/local/share/man
   manpathmunge p
 end
 
-# Fish is very conservative when setting the X window title. Run the command explicitly here.
-switch $MYOS
-    case "OSX"
-        printf "%s" (fish_title)
-end
-
 # Enable vi-mode. Yay!
 # From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
 . $HOME/.config/fish/vi-mode.fish
