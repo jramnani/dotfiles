@@ -50,19 +50,14 @@ alias lt 'ls -lhFtr'
 # Path
 # Assuming OSX for now. MacPorts, Fink, or Homebrew.
 for p in ~/bin /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
-    if test -d $p
-        set -x PATH $p $PATH
-    end
+  pathmunge p
 end
 
 for p in /opt/local/share/man /sw/share/man /usr/local/share/man
-    if test -d $p
-        set -x MANPATH $p $MANPATH
-    end
+  manpathmunge p
 end
 
-# Prompt
-# Fish is very conservative when setting the prompt. Run the command explicitly here.
+# Fish is very conservative when setting the X window title. Run the command explicitly here.
 switch $MYOS
     case "OSX"
         printf "%s" (fish_title)
