@@ -67,5 +67,13 @@ end
 # From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
 . $HOME/.config/fish/vi-mode.fish
 
+# Trying a Virtualenvwrappper clone for Fish.
+# Must be done after path munging.
+# https://github.com/adambrenecki/virtualfish
+## Use compat aliases to help my muscle memory for now.
+set -gx VIRTUALFISH_COMPAT_ALIASES 1
+set -gx VIRTUALFISH_HOME $HOME/.venv
+. $HOME/.config/fish/virtual.fish
+
 # Source local machine-specific file.
 . $HOME/.machinerc.fish

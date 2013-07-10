@@ -44,6 +44,9 @@ function install_profile() {
   if [[ ! -L $HOME/.config/fish/vi-mode.fish ]]; then
     ln -s $SCRIPT_PATH/fish/vi-mode.fish $HOME/.config/fish/vi-mode.fish
   fi
+  if [[ ! -L $HOME/.config/fish/virtual.fish ]]; then
+    ln -s $SCRIPT_PATH/fish/virtual.fish $HOME/.config/fish/virtual.fish
+  fi
   if [[ ! -L $HOME/.config/fish/functions ]]; then
     ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/functions
   fi
