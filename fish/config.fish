@@ -57,6 +57,9 @@ for p in /opt/local/share/man /sw/share/man /usr/local/share/man
   manpathmunge p
 end
 
+# Set the shell's greeting.
+set fish_greeting (fish_greeting)
+
 # Enable vi-mode. Yay!
 # From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
 . $HOME/.config/fish/vi-mode.fish
