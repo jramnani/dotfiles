@@ -86,17 +86,6 @@ if &term =~ "xterm"
   set background=light
 endif
 
-"------------------------------------------------------------------------------
-" Buffer behavior.
-"------------------------------------------------------------------------------
-
-" Move between buffers using <Ctrl+h> and <Ctrl+l>.
-" Minimize the other buffers when switching betw them.
-nmap <c-h> <c-w>h<c-w><bar>
-nmap <c-l> <c-w>l<c-w><bar>
-map <c-j> <c-w>j<c-w>_
-map <c-k> <c-w>k<c-w>_
-
 " When scrolling up and down with line wrapping enabled, scroll using
 " editor lines, instead of actual newlines. (more natural scrolling)
 nnoremap j gj
