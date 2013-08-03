@@ -18,7 +18,12 @@ function fish_greeting -d "Set the value of fish_greeting"
 
   if test -x (which ruby)
     set RUBY_VERSION (ruby --version | awk '{print $2}')
-    set GREETING $GREETING "Ruby $RUBY_VERSION"
+    set GREETING $GREETING "Ruby $RUBY_VERSION, "
+  end
+
+  if test -x (which node)
+    set NODE_VERSION (node --version)
+    set GREETING $GREETING "Node.js $NODE_VERSION"
   end
 
   # Set a global variable as a signal, so we don't run these commands again
