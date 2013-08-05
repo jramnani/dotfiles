@@ -11,6 +11,7 @@
   in = log origin/master ^master
   # outgoing changes
   out = log master ^origin/master
+  undo = reset --soft HEAD^
   unstage = reset HEAD --
   last = log -1 HEAD
   hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
