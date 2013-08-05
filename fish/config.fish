@@ -47,7 +47,12 @@ alias ll 'ls -alhF'
 alias lt 'ls -lhFtr'
 
 
-# Path
+## Path
+# Set the PATH on OS X using /etc/paths like /usr/libexec/path_helper would.
+if test -r /etc/paths
+  load_path_helper_paths
+end
+
 # Assuming OSX for now. MacPorts, Fink, or Homebrew.
 for p in ~/bin /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
   pathmunge p
