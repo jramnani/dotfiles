@@ -6,7 +6,7 @@
   co = 'checkout'
   br = 'branch'
   up = 'checkout'
-  st = 'status'
+  st = 'status -sb'
   # Incoming changes
   in = log origin/master ^master
   # outgoing changes
