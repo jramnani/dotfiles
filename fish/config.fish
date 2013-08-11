@@ -62,6 +62,9 @@ for p in /opt/local/share/man /sw/share/man /usr/local/share/man
   manpathmunge p
 end
 
+# My bin dir
+pathmunge $HOME/bin
+
 # Set the shell's greeting.
 set fish_greeting (fish_greeting)
 
