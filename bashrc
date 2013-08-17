@@ -24,18 +24,6 @@ alias rm='rm -i'
 
 #}}}
 
-#{{{ OpenPKG aliases
-# Is OpenPKG installed? If so, use those tools.
-if [[ -d /usr/openpkg/bin ]]; then
-    [ -x "/usr/openpkg/bin/gls" ] && alias ls='gls --color=auto'
-    [ -x "/usr/openpkg/bin/gid" ] && alias id='gid'
-    [ -x "/usr/openpkg/bin/gdu" ] && alias du='gdu'
-    [ -x "/usr/openpkg/bin/grm" ] && alias rm='grm -i'
-    [ -x "/usr/openpkg/bin/gcp" ] && alias cp='gcp -i'
-    [ -x "/usr/openpkg/bin/gmv" ] && alias mv='gmv -i'
-fi
-#}}}
-
 #{{{ OS Specific 
 
 # Solaris quirks
@@ -87,7 +75,7 @@ fi
 
 # Linux
 if [ $MYOS == "Linux" ]; then 
-    # Linux comes w/ vim installed by default
+    # Most distros comes w/ vim installed by default
     if [[ -x /usr/bin/vim ]]; then
         alias vi='/usr/bin/vim'
     fi

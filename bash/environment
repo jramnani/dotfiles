@@ -28,22 +28,3 @@ if [ "$USER" == 'root' ]; then
 else
     USERCOLOR="${GREEN}"
 fi
-
-case "${HOSTNAME:2:1}" in
-  d)
-    export DRW_ENV=DEV
-    ;;
-  g)
-    export DRW_ENV=PROD
-    ;;
-  p)
-    export DRW_ENV=PROD
-    # Don't set an environment if I'm on a workstation or laptop.
-    if echo $HOSTNAME | egrep -q '^w|l' ; then
-      unset DRW_ENV
-    fi
-    ;;
-  t)
-    export DRW_ENV=TEST
-    ;;
-esac
