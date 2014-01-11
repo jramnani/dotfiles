@@ -170,7 +170,7 @@ if [[ -x /usr/bin/java ]]; then
     echo -e "Java ${JAVA_VERSION}, \c"
     # OSX keeps it's own set of symlinks that point to the current Java version.
     if [ $MYOS == "OSX" ]; then
-        export JAVA_HOME=/Library/Java/Home
+        export JAVA_HOME=`/usr/libexec/java_home`
         export CLASSPATH=$JAVA_HOME/lib
     # Solaris packages will install into /usr/java ...
     elif [ $MYOS == "Solaris" ]; then
