@@ -28,3 +28,6 @@ p4.args = $base $local $other $output
 [color]
 qseries.guarded = red bold
 qseries.unapplied = yellow bold
+
+[pager]
+pager = LESS='FRX' less
