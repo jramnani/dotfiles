@@ -15,7 +15,7 @@ filetype off
 
 " Pathogen expects a Bourne compatible shell.
 if $SHELL =~ "fish"
-  echomsg "Detected SHELL =~ fish. Manually setting it to bash."
+  "echomsg "Detected SHELL =~ fish. Manually setting it to bash."
   set shell=/usr/bin/env\ bash
 endif
 

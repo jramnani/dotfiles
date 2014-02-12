@@ -2,6 +2,8 @@
 
 # Install my profile on a remote server.  Assuming I have access to Github.
 
+set -e
+
 REMOTE_SERVER=$1
 
 if [[ -z $REMOTE_SERVER ]]; then
@@ -13,7 +15,7 @@ echo "Making code directory"
 ssh $REMOTE_SERVER "mkdir -p code"
 
 echo "Cloning profile repository"
-ssh $REMOTE_SERVER "cd code; git clone https://github.com/jramnani/dotfiles.git profile"
+ssh $REMOTE_SERVER "cd code && git clone https://github.com/jramnani/dotfiles.git profile"
 
 echo "Installing profile"
-ssh $REMOTE_SERVER "cd code/profile; ./install.sh -p"
+ssh $REMOTE_SERVER "cd code/profile && ./install.sh -p"
