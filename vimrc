@@ -376,11 +376,15 @@ endif
 if has("win32")
     set backupdir=$HOME\\tmp\\vim\\backups\\   " backups
     set directory=$HOME\\tmp\\vim\\swap\\      " swap files
-    set undodir=$HOME\\tmp\\vim\\undo\\        " undo files
+    if has("undodir")
+      set undodir=$HOME\\tmp\\vim\\undo\\        " undo files
+    endif
 else
     set backupdir=$HOME/tmp/vim/backup//
     set directory=$HOME/tmp/vim/swap//
-    set undodir=$HOME/tmp/vim/undo//
+    if has("undodir")
+      set undodir=$HOME/tmp/vim/undo//
+    endif
 endif
 
 " Create backup folders if they don't exist.
