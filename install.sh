@@ -54,6 +54,13 @@ function install_profile() {
     ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/completions
   fi
 
+  # Fonts
+  # Configure Font hinting for KDE.
+  OS=$(uname -s)
+  if [[ $OS = "Linux" ]]; then
+    link_file fonts.conf
+  fi
+
   # Git
   # Copy the file, instead of linking, since I use different emails at home and at work.
   if [[ ! -f $HOME/.gitconfig ]]; then
