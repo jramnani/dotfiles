@@ -107,9 +107,8 @@ nnoremap <F2> :set list!<CR>
 " F3: Toggle paste mode
 set pastetoggle=<F3>
 
-" F4: Insert timestamp
-nnoremap <F4> "=strftime("%Y/%m/%d %H:%M")<CR>P
-inoremap <F4> <C-R>=strftime("%Y/%m/%d %H:%M")<CR>
+" F4: Toggle line numbers
+nnoremap <F4> :set number!<CR>
 
 " F5: Reload vimrc
 nnoremap <F5> :source $MYVIMRC<CR>
