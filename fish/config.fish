@@ -46,6 +46,11 @@ alias l 'ls -lhF'
 alias ll 'ls -alhF'
 alias lt 'ls -lhFtr'
 
+# OS specific aliases
+if [ $MYOS = "OSX" ]
+  alias vmstat 'vm_stat'
+end
+
 
 ## Path
 # Set the PATH on OS X using /etc/paths like /usr/libexec/path_helper would.

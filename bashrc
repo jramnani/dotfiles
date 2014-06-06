@@ -49,6 +49,8 @@ if [ $MYOS == "OSX" ]; then
     alias lt='ls -lhFGtr'
     # OS X 'ldd' equivalent.
     alias ldd='otool -L '
+    # OS X virtual memory stats
+    alias vmstat='vm_stat'
     # These aliases allow for easy switching between jvm's.
     alias java17="export JAVA_HOME=$(ls -ldtr /Library/Java/JavaVirtualMachines/jdk1.7* | tail -1 | awk '{ print $9 }')/Contents/Home"
     alias java16='export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home'
