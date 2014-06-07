@@ -4,7 +4,7 @@
 source $HOME/.bash/environment
 source $HOME/.bash/functions
 
-# Set command mode editing to Vim.
+# Set command mode editing to Vi.
 set -o vi
 
 #{{{  Global aliases
@@ -35,8 +35,6 @@ if [ $MYOS == "Solaris" ]; then
     alias lt='ls -lhFGtr'
     if [[ -x /usr/local/bin/vim ]]; then
         alias vi='/usr/local/bin/vim'
-        export EDITOR=vim
-        export VISUAL=vim
     fi
 fi
 # End Solaris quirks
@@ -61,8 +59,6 @@ if [ $MYOS == "OSX" ]; then
     if [[ -x /opt/local/bin/vim ]]; then
         alias vi='/opt/local/bin/vim'
         alias vim='/opt/local/bin/vim'
-        export EDITOR=vim
-        export VISUAL=vim
     fi
     # Use MacPorts bash completion
     if [ -f /opt/local/etc/bash_completion ]; then
