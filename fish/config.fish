@@ -77,6 +77,11 @@ set fish_greeting (fish_greeting)
 # From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
 . $HOME/.config/fish/vi-mode.fish
 
+
+## Python
+# Use my Python startup file.
+set -x PYTHONSTARTUP ~/.pythonrc
+
 # Trying a Virtualenvwrappper clone for Fish.
 # Must be done after path munging.
 # https://github.com/adambrenecki/virtualfish
