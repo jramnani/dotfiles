@@ -357,14 +357,21 @@ endif
 
 
 "------------------------------------------------------------------------------
-" Debian specific options.
+" Terminal options.
 "------------------------------------------------------------------------------
 
 " We know xterm-debian is a color terminal.
-if &term =~ "xterm-debian" || &term =~ "xterm-xfree86" || &term =~ "xterm-color" || &term =~ "xterm"
+if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
   set t_Co=16
   set t_Sf=[3%dm
   set t_Sb=[4%dm
+endif
+
+" Use 256 colors if our terminal supports them.
+if &term =~ "xterm-256color"
+  set t_Co=256
+  set t_AB=[48;5;%dm
+  set t_AF=[38;5;%dm
 endif
 
 
