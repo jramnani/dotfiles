@@ -81,11 +81,6 @@ if has("syntax")
   syntax on
 endif
 
-" Set color scheme based on the background of your terminal.
-if &term =~ "xterm"
-  set background=light
-endif
-
 " When scrolling up and down with line wrapping enabled, scroll using
 " editor lines, instead of actual newlines. (more natural scrolling)
 nnoremap j gj
@@ -372,6 +367,12 @@ if &term =~ "xterm-256color"
   set t_Co=256
   set t_AB=[48;5;%dm
   set t_AF=[38;5;%dm
+endif
+
+" Set color scheme based on the background of your terminal.
+if &term =~ "xterm"
+  set background=dark
+  colorscheme solarized
 endif
 
 
