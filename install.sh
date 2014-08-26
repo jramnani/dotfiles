@@ -77,14 +77,6 @@ function install_profile() {
     link_file $FILE
   done
 
-  # Python
-  # Copy IPython configuration file.
-  mkdir -p $HOME/.ipython
-  if [[ ! -f $HOME/.ipython/ipy_user_conf.py && ! -L $HOME/.ipython/ipy_user_conf.py ]]; then
-    ln -s $SCRIPT_PATH/ipython/ipy_user_conf.py $HOME/.ipython/ipy_user_conf.py
-  fi
-  link_file pythonrc
-
   # Ruby
   link_file irbrc
 
