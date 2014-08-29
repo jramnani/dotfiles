@@ -8,7 +8,7 @@ function fish_greeting -d "Set the value of fish_greeting"
 
   set -l JAVA (which java)
   if test -x "$JAVA"
-    set JAVA_VERSION (java -version 2>| awk '/java version/ { print $3 }')
+    set JAVA_VERSION (java -version 2>| awk '/ version / { print $3 }')
     set GREETING $GREETING "Java $JAVA_VERSION, "
   end
 
