@@ -59,7 +59,7 @@ if test -r /etc/paths
 end
 
 # Assuming OSX for now. MacPorts, Fink, or Homebrew.
-for p in ~/bin /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
+for p in /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
   pathmunge p
 end
 
