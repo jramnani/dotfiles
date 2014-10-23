@@ -5,7 +5,7 @@
 (require 'package)
 (package-initialize)
 
-; Manage backup files
+;; Manage backup files
 (setq
  ; don't clobber symlinks
  backup-by-copying t
@@ -18,7 +18,14 @@
  version-control t
  )
 
+;; Set color scheme
+(load-theme 'solarized-dark t)
 
-; Evil mode must be enabled after all other initialization is complete.
+;; Show line numbers
+(linum-mode t)
+;; Give line numbers some breathing room
+(setq linum-format "%4d ")
+
+;; Evil mode must be enabled after all other initialization is complete.
 ;(require 'evil)
 ;(evil-mode 1)
