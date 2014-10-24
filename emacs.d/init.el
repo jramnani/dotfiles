@@ -23,6 +23,8 @@
 ;; Give line numbers some breathing room
 (setq linum-format "%4d ")
 
+;; Show matching parens
+(show-paren-mode 1)
 
 ;;;;;;;;;;;;;;;
 ;;
@@ -58,7 +60,7 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key "\C-x\C-k" 'kill-region)
 
-;; iTerm key bindings for org-mode
+;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERMINAL_PROGRAM"))
   (define-key input-decode-map "\e[1;9A" [M-up])
   (define-key input-decode-map "\e[1;9B" [M-down])
