@@ -43,6 +43,35 @@
  )
 
 
+;;;;;;;;;;;;;;;;;
+;;
+;; Keybord remaps
+;;
+;;;;;;;;;;;;;;;;;
+
+;; Remap M-x to something more comfortable
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+
+;; Remap C-w to work like the shell
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key "\C-x\C-k" 'kill-region)
+
+;; iTerm key bindings for org-mode
+(when (string= "iTerm.app" (getenv "TERMINAL_PROGRAM"))
+  (define-key input-decode-map "\e[1;9A" [M-up])
+  (define-key input-decode-map "\e[1;9B" [M-down])
+  (define-key input-decode-map "\e[1;9C" [M-right])
+  (define-key input-decode-map "\e[1;9D" [M-left])
+
+  (define-key input-decode-map "\e[1;10A" [M-S-up])
+  (define-key input-decode-map "\e[1;10B" [M-S-down])
+  (define-key input-decode-map "\e[1;10C" [M-S-right])
+  (define-key input-decode-map "\e[1;10D" [M-S-left])
+)
+
+
 ;;;;;;;;;;;;;
 ;;
 ;; WHITESPACE
