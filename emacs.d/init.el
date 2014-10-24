@@ -5,7 +5,31 @@
 (require 'package)
 (package-initialize)
 
-;; Manage backup files
+;;;;;;;;;;;;;
+;;
+;; APPEARANCE
+;;
+;;;;;;;;;;;;;
+
+;; Hide the menu bar when running in a terminal
+(when (not (display-graphic-p))
+  (menu-bar-mode -1))
+
+;; Set color scheme
+(load-theme 'solarized-dark t)
+
+;; Show line numbers
+(linum-mode t)
+;; Give line numbers some breathing room
+(setq linum-format "%4d ")
+
+
+;;;;;;;;;;;;;;;
+;;
+;; BACKUP FILES
+;;
+;;;;;;;;;;;;;;;
+
 (setq
  ; don't clobber symlinks
  backup-by-copying t
@@ -18,13 +42,22 @@
  version-control t
  )
 
-;; Set color scheme
-(load-theme 'solarized-dark t)
 
-;; Show line numbers
-(linum-mode t)
-;; Give line numbers some breathing room
-(setq linum-format "%4d ")
+;;;;;;;;;;;;;
+;;
+;; WHITESPACE
+;;
+;;;;;;;;;;;;;
+
+;; I prefer spaces to tabs
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
+;;;;;;;
+;;
+;; Evil
+;;
+;;;;;;;
 
 ;; Evil mode must be enabled after all other initialization is complete.
 ;(require 'evil)
