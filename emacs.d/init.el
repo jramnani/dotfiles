@@ -48,7 +48,7 @@
 
 ;;;;;;;;;;;;;;;;;
 ;;
-;; Keybord remaps
+;; Keybord mappings
 ;;
 ;;;;;;;;;;;;;;;;;
 
@@ -60,6 +60,9 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key "\C-x\C-k" 'kill-region)
+
+;; F3 starts recording a macro, F4 stops recording, now F5 will replay the macro
+(global-set-key [f5] 'call-last-kbd-macro)
 
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERMINAL_PROGRAM"))
