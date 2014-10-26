@@ -7,6 +7,8 @@ mercurial
 mobile-shell
 mtr --no-gtk
 pstree
+python
+python3
 rbenv
 rbenv-gemset
 ruby-build
