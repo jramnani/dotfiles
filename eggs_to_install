@@ -1,5 +1,6 @@
 ipython
+pdfminer
 pip
+PyYAML
 virtualenv
 virtualenvwrapper
-yolk
