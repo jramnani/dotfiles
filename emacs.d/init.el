@@ -1,9 +1,32 @@
+;;;;;;;;;;;;;
+;;
+;; PACKAGING
+;;
+;;;;;;;;;;;;;
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
+
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
+
+(require 'use-package)
+
+(use-package color-theme
+  :init
+  (color-theme-initialize)
+  :ensure t)
+
+(use-package color-theme-solarized
+  :init
+  (load-theme 'solarized-dark t)
+  :ensure t)
 
 
 ;;;;;;;;;;;;;
@@ -16,11 +39,8 @@
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
 
-;; Set color scheme
-(load-theme 'solarized-dark t)
-
 ;; Show line numbers
-(linum-mode t)
+(linum-mode)
 ;; Give line numbers some breathing room
 (setq linum-format "%4d ")
 
