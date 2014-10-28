@@ -28,6 +28,10 @@
   (load-theme 'solarized-dark t)
   :ensure t)
 
+(use-package magit
+  :bind (("C-x C-g" . magit-status)
+         ("C-c C-g" . magit-status))
+  :ensure t)
 
 ;;;;;;;;;;;;;
 ;;
