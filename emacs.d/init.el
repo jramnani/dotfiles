@@ -48,8 +48,12 @@
 ;; Give line numbers some breathing room
 (setq linum-format "%4d ")
 
+;; Show column numbers in the mode line
+(column-number-mode)
+
 ;; Show matching parens
 (show-paren-mode 1)
+
 
 ;;;;;;;;;;;;;;;
 ;;
@@ -96,7 +100,6 @@
 
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
-  (message "Configuring org-mode key bindings for M-arrow keys")
   (define-key input-decode-map "\e[1;9A" [M-up])
   (define-key input-decode-map "\e[1;9B" [M-down])
   (define-key input-decode-map "\e[1;9C" [M-right])
