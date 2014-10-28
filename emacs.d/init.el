@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;
+;;;;;;;;;;;;
 ;;
 ;; PACKAGING
 ;;
@@ -83,6 +83,12 @@
 
 ;; F3 starts recording a macro, F4 stops recording, now F5 will replay the macro
 (global-set-key [f5] 'call-last-kbd-macro)
+
+;; Toggle showing whitespace
+(global-set-key "\C-x\C-w" 'whitespace-mode)
+(global-set-key "\C-c\C-w" 'whitespace-mode)
+;; Same, but carry over from my Vim days.
+(global-set-key [f2] 'whitespace-mode)
 
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
