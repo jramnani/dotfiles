@@ -85,7 +85,8 @@
 (global-set-key [f5] 'call-last-kbd-macro)
 
 ;; org-mode key bindings need to be specified when using iTerm2
-(when (string= "iTerm.app" (getenv "TERMINAL_PROGRAM"))
+(when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
+  (message "Configuring org-mode key bindings for M-arrow keys")
   (define-key input-decode-map "\e[1;9A" [M-up])
   (define-key input-decode-map "\e[1;9B" [M-down])
   (define-key input-decode-map "\e[1;9C" [M-right])
