@@ -1,4 +1,4 @@
-;;;;;;;;;;;;
+;;;;;;;;;;;;;
 ;;
 ;; PACKAGING
 ;;
@@ -32,6 +32,10 @@
   :bind (("C-x C-g" . magit-status)
          ("C-c C-g" . magit-status))
   :ensure t)
+
+(use-package magit-filenotify
+  :ensure t)
+
 
 ;;;;;;;;;;;;;
 ;;
