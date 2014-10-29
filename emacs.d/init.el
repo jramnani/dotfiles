@@ -36,14 +36,18 @@
 (use-package magit-filenotify
   :ensure t)
 
-(use-package "abbreviations"
-  :load-path "lisp"
-  :config
-  (progn
-    ;; stop asking whether to save newly added abbrev when quitting emacs
-    (setq save-abbrevs nil)
-    ;; Turn on abbrev mode globally
-    (setq default-abbrev-mode t)))
+
+;;;;;;;;;;;;;;;;
+;;
+;; Abbreviations
+;;
+;;;;;;;;;;;;;;;;
+
+;; Use Emacs default facilities. Don't get fancy until I have to.
+(if (file-exists-p abbrev-file-name)
+    (progn
+      (quietly-read-abbrev-file)
+      (setq default-abbrev-mode t)))
 
 
 ;;;;;;;;;;;;;
