@@ -36,6 +36,15 @@
 (use-package magit-filenotify
   :ensure t)
 
+(use-package "abbreviations"
+  :load-path "lisp"
+  :config
+  (progn
+    ;; stop asking whether to save newly added abbrev when quitting emacs
+    (setq save-abbrevs nil)
+    ;; Turn on abbrev mode globally
+    (setq default-abbrev-mode t)))
+
 
 ;;;;;;;;;;;;;
 ;;
