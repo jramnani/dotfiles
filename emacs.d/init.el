@@ -98,11 +98,11 @@
  )
 
 
-;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Keybord mappings
 ;;
-;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Remap M-x to something more comfortable
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -115,6 +115,9 @@
 
 ;; F3 starts recording a macro, F4 stops recording, now F5 will replay the macro
 (global-set-key [f5] 'call-last-kbd-macro)
+
+;; Toggle showing line numbers
+(global-set-key (kbd "C-c l") 'linum-mode)
 
 ;; Toggle showing whitespace
 (global-set-key "\C-x\C-w" 'whitespace-mode)
