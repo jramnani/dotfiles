@@ -36,6 +36,9 @@
 (use-package magit-filenotify
   :ensure t)
 
+(use-package yasnippet
+  :ensure t)
+
 
 ;;;;;;;;;;;;;;;;
 ;;
