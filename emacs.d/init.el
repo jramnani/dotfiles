@@ -146,6 +146,10 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
+;; Clean up trailing whitespace on file save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
 ;;;;;;;
 ;;
 ;; Evil
