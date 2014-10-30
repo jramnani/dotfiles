@@ -40,6 +40,11 @@
 (use-package magit-filenotify
   :ensure t)
 
+(use-package markdown-mode
+  :mode (("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :ensure t)
+
 (use-package yasnippet
   :ensure t)
 
