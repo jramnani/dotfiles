@@ -120,8 +120,7 @@
 (global-set-key (kbd "C-c l") 'linum-mode)
 
 ;; Toggle showing whitespace
-(global-set-key (kbd "C-x C-w") 'whitespace-mode)
-(global-set-key (kbd "C-c C-w") 'whitespace-mode)
+(global-set-key (kbd "C-c w") 'whitespace-mode)
 ;; Same, but carry over from my Vim days.
 (global-set-key (kbd "<f2>") 'whitespace-mode)
 
