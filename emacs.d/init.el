@@ -46,6 +46,8 @@
   :ensure t)
 
 (use-package yasnippet
+  :config
+  (yas-global-mode 1)
   :ensure t)
 
 
