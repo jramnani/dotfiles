@@ -105,25 +105,25 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Remap M-x to something more comfortable
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key (kbd "C-c C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; Remap C-w to work like the shell
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-c\C-k" 'kill-region)
-(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-c C-k") 'kill-region)
+(global-set-key (kbd "C-x C-k") 'kill-region)
 
 ;; F3 starts recording a macro, F4 stops recording, now F5 will replay the macro
-(global-set-key [f5] 'call-last-kbd-macro)
+(global-set-key (kbd "<f5>") 'call-last-kbd-macro)
 
 ;; Toggle showing line numbers
 (global-set-key (kbd "C-c l") 'linum-mode)
 
 ;; Toggle showing whitespace
-(global-set-key "\C-x\C-w" 'whitespace-mode)
-(global-set-key "\C-c\C-w" 'whitespace-mode)
+(global-set-key (kbd "C-x C-w") 'whitespace-mode)
+(global-set-key (kbd "C-c C-w") 'whitespace-mode)
 ;; Same, but carry over from my Vim days.
-(global-set-key [f2] 'whitespace-mode)
+(global-set-key (kbd "<f2>") 'whitespace-mode)
 
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
