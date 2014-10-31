@@ -116,6 +116,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+;; Buffers
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; ibuffer lets you operate on buffers in the same manner as dired, and color codes
+;; different file types.
+(defalias 'list-buffers 'ibuffer)
+
+;; ido swaps out switch-to-buffer with a nicer autocomplete system
+(ido-mode 1)
+;; Enable flex matching, which I hope works like fuzzy matching
+(setq ido-enable-flex-matching t)
+;; Case insensitive searching for ido
+(setq ido-case-fold t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Keybord mappings
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -140,7 +158,7 @@
 ;; Same, but carry over from my Vim days.
 (global-set-key (kbd "<f2>") 'whitespace-mode)
 
-;; When I split a window, set the focus to be the new window
+;; When I split a window, move the focus to the new window
 (global-set-key (kbd "C-x 2") (lambda ()
                                 (interactive)
                                 (split-window-vertically)
