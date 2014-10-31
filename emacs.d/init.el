@@ -85,6 +85,15 @@
 ;; Show matching parens
 (show-paren-mode 1)
 
+;; Show trailing whitespace
+(setq show-trailing-whitespace t)
+
+;; When am I not on an 80 column terminal?
+(setq fill-column 80)
+
+;; Don't need the startup message any more
+(setq inhibit-startup-message t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
