@@ -18,6 +18,13 @@
 
 (require 'use-package)
 
+(use-package browse-kill-ring
+  :init
+  (progn
+    (browse-kill-ring-default-keybindings))
+  :bind ("C-c y" . browse-kill-ring)
+  :ensure t)
+
 (use-package color-theme
   :init
   (color-theme-initialize)
