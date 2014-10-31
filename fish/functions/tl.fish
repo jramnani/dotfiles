@@ -1,3 +1,3 @@
 function tl -d "tree less - tree piped to less"
-        tree $argv | less
+        command tree $argv | less
 end
