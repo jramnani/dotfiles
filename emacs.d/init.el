@@ -112,12 +112,13 @@
  ; don't clobber symlinks
  backup-by-copying t
  ; don't litter the fs with backup files
- backup-directory-alist '(("." . "~/tmp/emacs"))
+ backup-directory-alist '(("." . "~/.emacs.d/backups"))
  delete-old-versions t
  kept-new-versions 6
  kept-new-versions 2
  ; use versioned backups
  version-control t
+ auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t))
  )
 
 
