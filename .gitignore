@@ -1,7 +1,7 @@
 ## Emacs
 *~
-*#
-.#*
+\#*#
+emacs.d/autosave
 emacs.d/auto-save-list
 emacs.d/backups
 emacs.d/elpa
