@@ -108,18 +108,17 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq
- ; don't clobber symlinks
- backup-by-copying t
- ; don't litter the fs with backup files
- backup-directory-alist '(("." . "~/.emacs.d/backups"))
- delete-old-versions t
- kept-new-versions 6
- kept-new-versions 2
- ; use versioned backups
- version-control t
- auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t))
- )
+;; don't litter the fs with backup and autosave files
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+;; Use versioned backups
+(setq version-control t)
+;; keep this many recent backup versions of a file
+(setq kept-new-versions 6)
+;; Don't clobber symlinks
+(setq backup-by-copying t)
+;; Delete excess backup files silently (don't ask me)
+(setq delete-old-versions t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
