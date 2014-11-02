@@ -8,9 +8,9 @@
   up = 'checkout'
   st = status -sb
   # Incoming changes
-  in = log origin/master ^master
+  in = incoming
   # outgoing changes
-  out = log master ^origin/master
+  out = outgoing
   undo = reset --soft HEAD^
   unstage = reset HEAD --
   last = log -1 HEAD
