@@ -55,8 +55,8 @@ function install_profile() {
   fi
 
   # Emacs
-  link_file emacs.d/init.el
-  
+  link_file emacs.d
+
   # Fonts
   # Configure Font hinting for KDE.
   OS=$(uname -s)
