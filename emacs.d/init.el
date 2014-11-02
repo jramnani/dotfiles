@@ -110,7 +110,7 @@
 
 ;; don't litter the fs with backup and autosave files
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save/" t)))
 ;; Use versioned backups
 (setq version-control t)
 ;; keep this many recent backup versions of a file
