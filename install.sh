@@ -30,11 +30,42 @@ function link_file() {
   fi
 }
 
+function link_script() {
+  local FILE="$1"
+  local DESTINATION_DIR="$HOME/bin"
+  local DESTINATION_FILE="$DESTINATION_DIR/$FILE"
+
+  if [[ ! -d "$DESTINATION_DIR" ]]; then
+      mkdir -p "$DESTINATION_DIR"
+  fi
+
+  if [[ -f "$DESTINATION_FILE" && ! -L "$DESTINATION_FILE" ]]; then
+      echo "Script already exists for '$FILE'. Leaving it alone."
+      return
+  fi
+
+  if [[ ! -L "$DESTINATION_FILE" ]]; then
+    echo "Linking: $DESTINATION_FILE -> $PWD/bin/$FILE"
+    ln -s "$SCRIPT_PATH/bin/$FILE" "$DESTINATION_FILE"
+  else
+    echo "Link already exists for '$FILE'. Nothing to do."
+  fi
+}
+
+
 function install_profile() {
   # Bash profile
   for FILE in bash bash_profile bashrc; do
     link_file $FILE
   done
+  unset FILE
+
+  # My scripts
+  mkdir -p $HOME/bin
+  for FILE in $(ls $SCRIPT_PATH/bin/); do
+      link_script $FILE
+  done
+  unset FILE
 
   # Fish profile
   mkdir -p $HOME/.config/fish
