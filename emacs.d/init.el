@@ -182,6 +182,13 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+;; Dismiss the buffer that has the current focus
+(global-set-key (kbd "C-c d") (lambda ()
+                                "Dismiss buffer"
+                                (interactive)
+                                (other-window 1)
+                                (delete-other-windows)))
+
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
   (define-key input-decode-map "\e[1;9A" [M-up])
