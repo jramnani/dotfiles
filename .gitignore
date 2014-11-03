@@ -1,3 +1,16 @@
+## Emacs
+*~
+\#*#
+emacs.d/auto-save
+emacs.d/auto-save-list
+emacs.d/backups
+emacs.d/elpa
+emacs.d/gnu
+emacs.d/marmalade
+emacs.d/melpa
+emacs.d/SessionDesktop.el
+
+
 # OS X cruft
 .DS_Store
 # Python

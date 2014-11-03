@@ -85,6 +85,9 @@ function install_profile() {
     ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/completions
   fi
 
+  # Emacs
+  link_file emacs.d
+
   # Fonts
   # Configure Font hinting for KDE.
   OS=$(uname -s)
