@@ -53,7 +53,7 @@
   :ensure t)
 
 (use-package yasnippet
-  :config
+  :idle
   (yas-global-mode 1)
   :ensure t)
 
