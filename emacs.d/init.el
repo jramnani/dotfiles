@@ -9,54 +9,53 @@
   (package-initialize)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
-(if (not (package-installed-p 'use-package))
+  (if (not (package-installed-p 'use-package))
+      (progn
+        (package-refresh-contents)
+        (package-install 'use-package)))
+
+  (require 'use-package)
+
+  (use-package browse-kill-ring
+    :init
     (progn
-      (package-refresh-contents)
-      (package-install 'use-package)))
+      (browse-kill-ring-default-keybindings))
+    :bind ("C-c y" . browse-kill-ring)
+    :ensure t)
 
-(require 'use-package)
+  (use-package color-theme
+    :init
+    (color-theme-initialize)
+    :ensure t)
 
-(use-package browse-kill-ring
-  :init
-  (progn
-    (browse-kill-ring-default-keybindings))
-  :bind ("C-c y" . browse-kill-ring)
-  :ensure t)
+  (use-package color-theme-solarized
+    :init
+    (load-theme 'solarized-dark t)
+    :ensure t)
 
-(use-package color-theme
-  :init
-  (color-theme-initialize)
-  :ensure t)
+  (use-package fish-mode
+    :mode "\\.fish\\'"
+    :ensure t)
 
-(use-package color-theme-solarized
-  :init
-  (load-theme 'solarized-dark t)
-  :ensure t)
+  (use-package magit
+    :bind (("C-x C-g" . magit-status)
+           ("C-c C-g" . magit-status))
+    :ensure t)
 
-(use-package fish-mode
-  :mode "\\.fish\\'"
-  :ensure t)
+  (use-package magit-filenotify
+    :ensure t)
 
-(use-package magit
-  :bind (("C-x C-g" . magit-status)
-         ("C-c C-g" . magit-status))
-  :ensure t)
+  (use-package markdown-mode
+    :mode (("\\.md\\'" . markdown-mode)
+           ("\\.markdown\\'" . markdown-mode))
+    :ensure t)
 
-(use-package magit-filenotify
-  :ensure t)
-
-(use-package markdown-mode
-  :mode (("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :ensure t)
-
-(use-package yasnippet
-  :idle
-  (yas-global-mode 1)
-  :ensure t)
-
+  (use-package yasnippet
+    :idle
+    (yas-global-mode 1)
+    :ensure t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -82,7 +81,7 @@
   (menu-bar-mode -1))
 
 ;; Show line numbers
-(linum-mode)
+(linum-mode 1)
 ;; Give line numbers some breathing room
 (setq linum-format "%4d ")
 
