@@ -35,6 +35,9 @@
     (load-theme 'solarized-dark t)
     :ensure t)
 
+  (use-package dokuwiki-mode
+    :ensure t)
+
   (use-package fish-mode
     :mode "\\.fish\\'"
     :ensure t)
