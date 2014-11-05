@@ -39,7 +39,6 @@
     :ensure t)
 
   (use-package fish-mode
-    :mode "\\.fish\\'"
     :ensure t)
 
   (use-package magit
