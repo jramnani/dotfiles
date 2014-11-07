@@ -1,6 +1,7 @@
 ## Emacs
 *~
 \#*#
+\#.*#
 emacs.d/auto-save
 emacs.d/auto-save-list
 emacs.d/backups
