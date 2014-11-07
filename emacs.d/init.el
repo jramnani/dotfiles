@@ -52,6 +52,11 @@
   (use-package markdown-mode
     :ensure t)
 
+  (use-package undo-tree
+    :config
+    (global-undo-tree-mode)
+    :ensure t)
+
   (use-package yasnippet
     :idle
     (yas-global-mode 1)
