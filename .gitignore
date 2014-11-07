@@ -14,17 +14,22 @@ emacs.d/SessionDesktop.el
 
 # OS X cruft
 .DS_Store
+
 # Python
 *.pyc
+
 # Compiled shared libs
 *.so
+
 # Subversion generated files.
 subversion/README.txt
 subversion/auth/
 subversion/servers
+
 # Vim
 vim/.netrwhist
 vim/.VimballRecord
+
 # Vim Command-T plugin files.  Build artifacts.
 vim/bundle/command-t/ruby/command-t/Makefile
 vim/bundle/command-t/ruby/command-t/ext.bundle
@@ -32,5 +37,6 @@ vim/bundle/command-t/ruby/command-t/ext.o
 vim/bundle/command-t/ruby/command-t/match.o
 vim/bundle/command-t/ruby/command-t/matcher.o
 vim/bundle/command-t/ruby/command-t/mkmf.log
+
 # Vim-Rails plugin file.  Shouldn't have checked this in.
 vim/bundle/vim-rails/.gitignore
