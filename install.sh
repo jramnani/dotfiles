@@ -62,28 +62,22 @@ function install_profile() {
 
   # My scripts
   mkdir -p $HOME/bin
-  for FILE in $(ls $SCRIPT_PATH/bin/); do
+  for FILE in $(ls bin/); do
       link_script $FILE
   done
   unset FILE
 
   # Fish profile
   mkdir -p $HOME/.config/fish
-  if [[ ! -L $HOME/.config/fish/config.fish ]]; then
-    ln -s $SCRIPT_PATH/fish/config.fish $HOME/.config/fish/config.fish
-  fi
-  if [[ ! -L $HOME/.config/fish/vi-mode.fish ]]; then
-    ln -s $SCRIPT_PATH/fish/vi-mode.fish $HOME/.config/fish/vi-mode.fish
-  fi
-  if [[ ! -L $HOME/.config/fish/virtual.fish ]]; then
-    ln -s $SCRIPT_PATH/fish/virtual.fish $HOME/.config/fish/virtual.fish
-  fi
-  if [[ ! -L $HOME/.config/fish/functions ]]; then
-    ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/functions
-  fi
-  if [[ ! -L $HOME/.config/fish/completions ]]; then
-    ln -s $SCRIPT_PATH/fish/functions $HOME/.config/fish/completions
-  fi
+  for FISH_FILE in $(ls fish/); do
+      if [[ ! -L $HOME/.config/fish/$FISH_FILE ]]; then
+          echo "Linking  $HOME/.config/fish/$FISH_FILE -> $SCRIPT_PATH/fish/$FISH_FILE"
+          ln -s $SCRIPT_PATH/fish/$FISH_FILE $HOME/.config/fish/$FISH_FILE
+      else
+          echo "Link already exists for 'fish/$FISH_FILE'. Nothing to do."
+      fi
+  done
+  unset FISH_FILE
 
   # Emacs
   link_file emacs.d
