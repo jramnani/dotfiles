@@ -17,7 +17,7 @@ function install_brews() {
 }
 
 function link_file() {
-  FILE=$1
+  local FILE=$1
   if [[ -f $HOME/.${FILE} && ! -L $HOME/.${FILE} ]]; then
     mv $HOME/.${FILE} $HOME/.${FILE}.bak
   fi
