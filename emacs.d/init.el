@@ -46,8 +46,10 @@
            ("C-c C-g" . magit-status))
     :ensure t)
 
-  (use-package magit-filenotify
-    :ensure t)
+  ;; magit-filenotify requires 'filenotify which appears in Emacs 24.4
+  (when (version<= "24.4" emacs-version)
+    (use-package magit-filenotify
+      :ensure t))
 
   (use-package markdown-mode
     :ensure t)
