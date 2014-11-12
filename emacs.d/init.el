@@ -86,7 +86,7 @@
   (menu-bar-mode -1))
 
 ;; Show line numbers
-(linum-mode 1)
+(global-linum-mode t)
 ;; Give line numbers some breathing room
 (setq linum-format "%4d ")
 
