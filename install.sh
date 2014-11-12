@@ -48,7 +48,7 @@ function link_script() {
     echo "Linking: $DESTINATION_FILE -> $PWD/bin/$FILE"
     ln -s "$SCRIPT_PATH/bin/$FILE" "$DESTINATION_FILE"
   else
-    echo "Link already exists for '$FILE'. Nothing to do."
+    echo "Link already exists for 'bin/$FILE'. Nothing to do."
   fi
 }
 
