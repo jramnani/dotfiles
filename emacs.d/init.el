@@ -11,6 +11,12 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
+  ;; Lisp code I find on the Internets that may not be packaged
+  (add-to-list 'load-path "~/.emacs.d/vendor/")
+
+  ;; My personal lisp programs
+  (add-to-list 'load-path "~/.emacs.d/lisp/")
+
   (if (not (package-installed-p 'use-package))
       (progn
         (package-refresh-contents)
@@ -53,6 +59,9 @@
 
   (use-package markdown-mode
     :ensure t)
+
+  (use-package prelude-swap-windows
+    :bind ("C-c s" . prelude-swap-windows))
 
   (use-package undo-tree
     :config
