@@ -195,6 +195,11 @@
                                 (other-window 1)
                                 (delete-other-windows)))
 
+;; Join line (mapped to act like vim's "J" which is more intuitive to me)
+(global-set-key (kbd "C-c j") (lambda ()
+                                (interactive)
+                                (join-line 1)))
+
 ;; org-mode key bindings need to be specified when using iTerm2
 (when (string= "iTerm.app" (getenv "TERM_PROGRAM"))
   (define-key input-decode-map "\e[1;9A" [M-up])
