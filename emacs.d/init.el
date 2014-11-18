@@ -68,6 +68,9 @@
     (global-undo-tree-mode)
     :ensure t)
 
+  (use-package yaml-mode
+    :ensure t)
+
   (use-package yasnippet
     :idle
     (yas-global-mode 1)
