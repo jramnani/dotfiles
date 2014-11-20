@@ -24,6 +24,16 @@
 
   (require 'use-package)
 
+  (use-package ansible
+    :init
+    (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+    :ensure t)
+
+  (use-package ansible-doc
+    :init
+    (add-hook 'yaml-mode-hook #'ansible-doc-mode)
+    :ensure t)
+
   (use-package browse-kill-ring
     :init
     (progn
