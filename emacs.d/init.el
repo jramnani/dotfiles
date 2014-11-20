@@ -57,6 +57,11 @@
   (use-package fish-mode
     :ensure t)
 
+  (use-package jinja2-mode
+    :init
+    (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
+    :ensure t)
+
   (use-package magit
     :bind (("C-x C-g" . magit-status)
            ("C-c C-g" . magit-status))
