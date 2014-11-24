@@ -153,6 +153,7 @@ iab miantainer maintainer
 iab amke       make
 iab mroe       more
 iab nwe        new
+iab pyton      python
 iab recieve    receive
 iab recieved   received
 iab erturn     return
