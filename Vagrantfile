@@ -24,17 +24,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "freebsd" do |bsd|
     bsd.vm.box = "chef/freebsd-10.0"
-    config.vm.network "private_network", type: "dhcp"
-    config.vm.synced_folder ".", "/vagrant", type: "nfs"
+    bsd.vm.network "private_network", type: "dhcp"
+    bsd.vm.synced_folder ".", "/vagrant", type: "nfs"
   end
 
-  # Virtualbox (4.3.18) is not reporting the guest IP address for OpenBSD
-  # VBoxManage list runningvms
-  # VBoxManage guestproperty enumerate VM_ID
-  # config.vm.define "openbsd" do |bsd|
-  #   bsd.vm.box = "tmatilai/openbsd-5.5"
-  #   config.vm.network "private_network", type: "dhcp"
-  #   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # end
+  # Virtualbox not reporting guest IP on private network when using DHCP.
+  config.vm.define "openbsd" do |bsd|
+    bsd.vm.box = "tmatilai/openbsd-5.5"
+    bsd.vm.network "private_network", ip: "192.168.33.10"
+    bsd.vm.synced_folder ".", "/vagrant", type: "nfs"
+  end
 
 end
