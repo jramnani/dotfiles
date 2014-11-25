@@ -62,14 +62,14 @@ function install_profile() {
 
   # My scripts
   mkdir -p $HOME/bin
-  for FILE in $(ls bin/); do
+  for FILE in $(ls $SCRIPT_PATH/bin/); do
       link_script $FILE
   done
   unset FILE
 
   # Fish profile
   mkdir -p $HOME/.config/fish
-  for FISH_FILE in $(ls fish/); do
+  for FISH_FILE in $(ls $SCRIPT_PATH/fish/); do
       if [[ ! -L $HOME/.config/fish/$FISH_FILE ]]; then
           echo "Linking  $HOME/.config/fish/$FISH_FILE -> $SCRIPT_PATH/fish/$FISH_FILE"
           ln -s $SCRIPT_PATH/fish/$FISH_FILE $HOME/.config/fish/$FISH_FILE
