@@ -25,6 +25,7 @@
   (require 'use-package)
 
   (use-package ansible
+    :defines ac-dictionary-files
     :init
     (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
     :ensure t)
