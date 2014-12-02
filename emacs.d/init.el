@@ -64,8 +64,7 @@
     :ensure t)
 
   (use-package magit
-    :bind (("C-x C-g" . magit-status)
-           ("C-c C-g" . magit-status))
+    :bind ("C-c g" . magit-status)
     :ensure t)
 
   ;; magit-filenotify requires 'filenotify which appears in Emacs 24.4
