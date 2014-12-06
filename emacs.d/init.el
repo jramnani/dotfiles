@@ -17,6 +17,10 @@
   ;; My personal lisp programs
   (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+  ;; Keep customizations in a separate file
+  (setq custom-file "~/.emacs.d/customizations.el")
+  (load custom-file)
+
   (if (not (package-installed-p 'use-package))
       (progn
         (package-refresh-contents)
