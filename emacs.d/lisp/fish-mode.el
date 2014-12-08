@@ -23,8 +23,10 @@
 
 (defvar fish-font-lock-keywords-1
   (list
-;;   '(,(fish-builtin-commands-re) . font-lock-builtin-face)
-   '("\\$\\([[:alpha:]_][[:alnum:]_]*\\)" . font-lock-variable-name-face)))
+   '("\\$\\([[:alpha:]_][[:alnum:]_]*\\)" . font-lock-variable-name-face)
+   '("function \\(\\sw+\\)" . (1 font-lock-function-name-face))
+   ;;   '(,fish-builtin-commands-re . font-lock-builtin-face)
+   ))
 
 (defvar fish-mode-syntax-table
   (let ((tab (make-syntax-table text-mode-syntax-table)))
