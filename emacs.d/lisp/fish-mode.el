@@ -46,11 +46,11 @@
   "Syntax table used in Fish-mode buffers.")
 
 
-;;; fish-mode.el ends here
 ;;;###autoload
 (define-derived-mode fish-mode prog-mode "Fish"
   "Major mode for editing fish shell files."
-  (setq-local font-lock-defaults '((fish-font-lock-keywords-1)))
+  :syntax-table fish-mode-syntax-table
+  (setq-local font-lock-defaults '(fish-font-lock-keywords-1))
   (setq-local comment-start "# ")
   (setq-local comment-start-skip "#+[\t ]*"))
 
