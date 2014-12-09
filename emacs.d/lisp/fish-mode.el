@@ -23,10 +23,9 @@
 
 (defvar fish-font-lock-keywords-1
   (list
-   '("\\$\\([[:alpha:]_][[:alnum:]_]*\\)" . font-lock-variable-name-face)
-   '("function \\(\\sw+\\)" . (1 font-lock-function-name-face))
-   ;; Use backquote to evaluate variable within the list.
-   `(,fish-builtin-commands-re . font-lock-builtin-face)
+   (cons "\\$\\([[:alpha:]_][[:alnum:]_]*\\)" 'font-lock-variable-name-face)
+   (cons "function \\(\\sw+\\)" '(1 font-lock-function-name-face))
+   (cons fish-builtin-commands-re 'font-lock-builtin-face)
    ))
 
 (defvar fish-mode-syntax-table
