@@ -25,7 +25,8 @@
   (list
    '("\\$\\([[:alpha:]_][[:alnum:]_]*\\)" . font-lock-variable-name-face)
    '("function \\(\\sw+\\)" . (1 font-lock-function-name-face))
-   ;;   '(,fish-builtin-commands-re . font-lock-builtin-face)
+   ;; Use backquote to evaluate variable within the list.
+   `(,fish-builtin-commands-re . font-lock-builtin-face)
    ))
 
 (defvar fish-mode-syntax-table
