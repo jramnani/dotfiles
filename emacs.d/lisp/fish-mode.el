@@ -23,7 +23,12 @@
 
 (defvar fish-font-lock-keywords-1
   (list
+   ;; $VARIABLE
    (cons "\\$\\([[:alpha:]_][[:alnum:]_]*\\)" 'font-lock-variable-name-face)
+   ;; set VARIABLE
+   (cons "set \\([[:alpha:]_][[:alnum:]_]*\\)" '(1 font-lock-variable-name-face))
+   ;; set -lx VARIABLE
+   (cons "set \\(-[[:word:]]*\\)* \\([[:alpha:]_][[:alnum:]_]*\\)" '(2 font-lock-variable-name-face))
    (cons "function \\(\\sw+\\)" '(1 font-lock-function-name-face))
    (cons fish-builtin-commands-re 'font-lock-builtin-face)
    ))
@@ -34,7 +39,9 @@
     (modify-syntax-entry ?\n ">" tab)
     (modify-syntax-entry ?\" "\"\"" tab)
     (modify-syntax-entry ?\' "\"'" tab)
-    (modify-syntax-entry ?_ "_" tab)
+    (modify-syntax-entry ?_ "w" tab)
+    (modify-syntax-entry ?. "w" tab)
+    (modify-syntax-entry ?/ "w" tab)
     (modify-syntax-entry ?$ "_" tab)
     (modify-syntax-entry ?= "." tab)
     (modify-syntax-entry ?& "." tab)
