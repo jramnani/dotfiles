@@ -66,6 +66,7 @@
 
   (use-package magit
     :bind ("C-c g" . magit-status)
+    :diminish magit-auto-revert-mode ;; (MRev)
     :ensure t)
 
   ;; magit-filenotify requires 'filenotify which appears in Emacs 24.4
@@ -82,6 +83,7 @@
   (use-package undo-tree
     :config
     (global-undo-tree-mode)
+    :diminish undo-tree-mode
     :ensure t)
 
   (use-package yaml-mode
@@ -90,6 +92,7 @@
   (use-package yasnippet
     :idle
     (yas-global-mode 1)
+    :diminish yas-minor-mode
     :ensure t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
