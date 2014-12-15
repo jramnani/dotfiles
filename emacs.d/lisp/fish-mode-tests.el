@@ -1,6 +1,10 @@
 (require 'ert)
 (require 'fish-mode)
 
+;; For testing indentation
+(use-package cursor-test
+  :ensure t)
+
 ;; Borrowed from Emacs' internal tests for python-mode
 (defmacro fish-tests-with-temp-buffer (contents &rest body)
   "Create a `fish-mode' enabled temp buffer with CONTENTS.
@@ -33,3 +37,24 @@ always located at the beginning of buffer."
     ;; The command "echo" is a Fish builtin function
     (should (equal (get-text-property (point) 'face)
                    'font-lock-builtin-face))))
+
+
+(ert-deftest fish-tests-should-indent-function-body ()
+  "First use of cursor-test to test indentation and cursor position"
+  (cursor-test/equal
+   :description "test 1"
+   :expect (cursor-test/setup
+            :init "
+function foo
+    |
+end
+")
+   :actual (cursor-test/setup
+            :init "
+function foo|
+end
+"
+            :exercise (lambda ()
+                        (fish-mode)
+                        (newline-and-indent))))
+  )

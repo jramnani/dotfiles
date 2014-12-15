@@ -53,13 +53,30 @@
   "Syntax table used in Fish-mode buffers.")
 
 
+;; Indentation
+
+(defcustom fish-indent-offset 4
+  "Default indentation offset for Fish."
+  :group 'fish
+  :type 'integer
+  :safe 'integerp)
+
+
+(defun fish-indent-line ()
+  (indent-to fish-indent-offset)
+  )
+
+
+;; Autoloads
+
 ;;;###autoload
 (define-derived-mode fish-mode prog-mode "Fish"
   "Major mode for editing fish shell files."
   :syntax-table fish-mode-syntax-table
   (setq-local font-lock-defaults '(fish-font-lock-keywords-1))
   (setq-local comment-start "# ")
-  (setq-local comment-start-skip "#+[\t ]*"))
+  (setq-local comment-start-skip "#+[\t ]*")
+  (setq-local indent-line-function 'fish-indent-line))
 
 ;;;###autoload (add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode))
 ;;;###autoload (add-to-list 'interpreter-mode-alist '("fish" . fish-mode))
