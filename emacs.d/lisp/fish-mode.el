@@ -148,10 +148,10 @@
 
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.fish\\'" . 'fish-mode))
+(add-to-list 'auto-mode-alist (cons (purecopy "\\.fish\\'")  'fish-mode))
 
 ;;;###autoload
-(add-to-list 'interpreter-mode-alist '("fish" . 'fish-mode))
+(add-to-list 'interpreter-mode-alist (cons (purecopy "fish")  'fish-mode))
 
 (provide 'fish-mode)
 
