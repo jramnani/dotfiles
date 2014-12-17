@@ -62,9 +62,74 @@
   :safe 'integerp)
 
 
-(defun fish-indent-line ()
-  (indent-to fish-indent-offset)
-  )
+(defconst fish-indent-begin-keywords
+  '("function")
+  "Keywords that begin an indentation block scope.")
+
+(defconst fish-indent-begin-re
+  (regexp-opt fish-indent-begin-keywords 'symbols)
+  "Regexp that matches beginning of indentation blocks")
+
+(defconst fish-indent-end-re
+  "\\_<end\\_>"
+  "Regexp that matches the end of indentation block")
+
+(require 'smie)
+
+;; Grammar
+(defvar fish-smie-grammar
+  (smie-prec2->grammar
+   (smie-bnf->prec2
+    '((id)
+      (inst ("begin" insts "end")
+            ("function" insts "end")
+            ("if" exp inst "else" inst)
+            (id "=" exp)
+            (exp))
+      (insts (insts ";" insts) (inst))
+      (exp (exp "+" exp)
+           (exp "*" exp)
+           ("(" exps ")"))
+      (exps (exps "," exps) (exp)))
+    '((assoc ";"))
+    '((assoc ","))
+    '((assoc "+") (assoc "*")))))
+
+;; Tokenizers
+(defun fish-smie-forward-token ()
+  (forward-comment (point-max))
+  (cond
+   ((looking-at fish-builtin-commands-re)
+    (goto-char (match-end 0))
+    (match-string-no-properties 0))
+   (t (buffer-substring-no-properties
+       (point)
+       (progn
+         (skip-syntax-forward "w_")
+         (point))))))
+
+(defun fish-smie-backward-token ()
+  (forward-comment (- (point)))
+  (cond
+   ((looking-back fish-builtin-commands-re (- (point) 2) t)
+    (goto-char (match-beginning 0))
+    (match-string-no-properties 0))
+   (t (buffer-substring-no-properties
+        (point)
+        (progn
+          (skip-syntax-backward "w_")
+          (point))))))
+
+;; Indentation rules
+(defun fish-smie-rules (kind token)
+  (pcase (cons kind token)
+    (`(:elem . basic) smie-indent-basic)
+    (`(:before . ,(or `"function" `"begin" `"(" `"{"))
+     (if (smie-rule-hanging-p) (smie-rule-parent)))
+    (`(:before . "if")
+     (and (not (smie-rule-bolp))
+          (smie-rule-prev-p "else")
+          (smie-rule-parent)))))
 
 
 ;; Autoloads
@@ -76,10 +141,17 @@
   (setq-local font-lock-defaults '(fish-font-lock-keywords-1))
   (setq-local comment-start "# ")
   (setq-local comment-start-skip "#+[\t ]*")
-  (setq-local indent-line-function 'fish-indent-line))
+  ;; Wire up SMIE for indentation
+  (smie-setup fish-smie-grammar #'fish-smie-rules
+              :forward-token #'fish-smie-forward-token
+              :backward-token #'fish-smie-backward-token))
 
-;;;###autoload (add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode))
-;;;###autoload (add-to-list 'interpreter-mode-alist '("fish" . fish-mode))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist (cons (purecopy "\\.fish\\'")  'fish-mode))
+
+;;;###autoload
+(add-to-list 'interpreter-mode-alist (cons (purecopy "fish")  'fish-mode))
 
 (provide 'fish-mode)
 

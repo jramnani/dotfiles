@@ -82,17 +82,18 @@ function foo
 end
 "))
 
-(ert-deftest fish-tests-should-unindent-after-function-body ()
+(ert-deftest fish-tests-should-unindent-after-end-keyword ()
   ""
   (cursor-test/equal*
-   :description "Should unindent by fish-indent-offset after seeing an 'end' keyword"
+   :description "Should unindent a line containing the 'end' keyword"
    :init "
 function foo
-    echo hello world
-end|
+    echo hello world|
 "
    :exercise (lambda ()
                (fish-mode)
+               (newline-and-indent)
+               (insert "end")
                (newline-and-indent))
    :expect "
 function foo
