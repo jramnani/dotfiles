@@ -62,8 +62,53 @@
   :safe 'integerp)
 
 
+(defconst fish-indent-begin-keywords
+  '("function")
+  "Keywords that begin an indentation block scope.")
+
+(defconst fish-indent-begin-re
+  (regexp-opt fish-indent-begin-keywords 'symbols)
+  "Regexp that matches beginning of indentation blocks")
+
+(defconst fish-indent-end-re
+  "\\_<end\\_>"
+  "Regexp that matches the end of indentation block")
+
+(defvar fish-indent-level 0
+  "Buffer local state holding the current indentation level")
+(make-variable-buffer-local 'fish-indent-level)
+
+
+(defun fish-calculate-indent ()
+  (message "Calculating indent. Line: %s, Point %s, Line: %s" (line-number-at-pos (point)) (point) (thing-at-point 'line))
+  (message "Thing at point is: %s" (thing-at-point 'word))
+  (message "Parse syntax at point is: %s": (syntax-ppss))
+  (save-excursion
+    (forward-line 0)
+    (cond
+     ;; Are we at the beginning of the buffer?  If so, don't indent.
+     ((eq (point) (point-min))
+      (message "Beginning of buffer. fish-indent-level = 0")
+      (setq-local fish-indent-level 0))
+     ;; Do we see a block beginning keyword on a previous line?
+     ;; If so, increase the indent level.
+     ((looking-at fish-indent-begin-re)
+      (setq-local fish-indent-level (+ fish-indent-level fish-indent-offset))
+      (message "Found fish-indent-begin keyword. fish-indent-level = %s" fish-indent-level))
+     ;; Do we see a block ending keyword?  If so, decrease the indent level.
+     ((looking-at fish-indent-end-re)
+      (setq-local fish-indent-level (if (> fish-indent-level 0)
+                                        (- fish-indent-level fish-indent-offset)))
+      (message "Found fish-indent-end keyword. fish-indent-level = %s" fish-indent-level))
+
+     (t
+      ;; Default condition is to return the current indent level.
+      (message "Default condition. fish-indent-level = %s" fish-indent-level)
+      fish-indent-level)))
+  )
+
 (defun fish-indent-line ()
-  (indent-to fish-indent-offset)
+  (indent-line-to (fish-indent-level))
   )
 
 

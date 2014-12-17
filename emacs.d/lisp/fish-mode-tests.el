@@ -57,4 +57,64 @@ end
             :exercise (lambda ()
                         (fish-mode)
                         (newline-and-indent))))
-  )
+)
+
+(ert-deftest fish-tests-indent-multiline-function-body ()
+  ""
+  (cursor-test/equal*
+   :description "Test indentation of multi-line function body"
+   :init "
+function foo|
+end
+"
+   :exercise (lambda ()
+                (fish-mode)
+                (newline-and-indent)
+                (insert "echo hello world")
+                (newline-and-indent)
+                (insert "echo bar baz")
+                (newline-and-indent))
+   :expect "
+function foo
+    echo hello world
+    echo bar baz
+    |
+end
+"))
+
+(ert-deftest fish-tests-should-unindent-after-end-keyword ()
+  ""
+  (cursor-test/equal*
+   :description "Should unindent a line containing the 'end' keyword"
+   :init "
+function foo
+    echo hello world|
+"
+   :exercise (lambda ()
+               (fish-mode)
+               (newline-and-indent)
+               (insert "end")
+               (newline-and-indent))
+   :expect "
+function foo
+    echo hello world
+end
+|"))
+
+(ert-deftest fish-tests-should-unindent-after-function-body ()
+  ""
+  (cursor-test/equal*
+   :description "Should unindent by fish-indent-offset after seeing an 'end' keyword"
+   :init "
+function foo
+    echo hello world
+end|
+"
+   :exercise (lambda ()
+               (fish-mode)
+               (newline-and-indent))
+   :expect "
+function foo
+    echo hello world
+end
+|"))
