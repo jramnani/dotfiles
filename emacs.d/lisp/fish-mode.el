@@ -61,6 +61,13 @@
   :type 'integer
   :safe 'integerp)
 
+(defcustom fish-indent-debug nil
+  "Setting to true value will cause the indentation enging to print
+debug messages to the *Messages* buffer."
+  :group 'fish
+  :type 'boolean
+  :safe 'booleanp)
+
 
 (defconst fish-indent-begin-keywords
   '("function")
@@ -77,20 +84,25 @@
 (require 'smie)
 
 ;; Grammar
-(defvar fish-smie-grammar
+(defconst fish-smie-grammar
   (smie-prec2->grammar
    (smie-bnf->prec2
     '((id)
       (inst ("begin" insts "end")
             ("function" insts "end")
             ("if" exp inst "else" inst)
+            ("if" exp inst "end")
             (id "=" exp)
             (exp))
       (insts (insts ";" insts) (inst))
-      (exp (exp "+" exp)
-           (exp "*" exp)
-           ("(" exps ")"))
-      (exps (exps "," exps) (exp)))
+      (exp ("function" insts "end")
+           ("begin" insts "end")
+           ("for" for-body "end")
+           ("(" insts ")")
+           ("if" if-body "end"))
+      (for-body (id "in" exp))
+      (if-body (insts)))
+    '((nonassoc "in"))
     '((assoc ";"))
     '((assoc ","))
     '((assoc "+") (assoc "*")))))
@@ -122,6 +134,8 @@
 
 ;; Indentation rules
 (defun fish-smie-rules (kind token)
+  (if fish-indent-debug
+      (message "fish-smie-rules -> Kind: '%s', Token: '%s'" kind token))
   (pcase (cons kind token)
     (`(:elem . basic) smie-indent-basic)
     (`(:before . ,(or `"function" `"begin" `"(" `"{"))
