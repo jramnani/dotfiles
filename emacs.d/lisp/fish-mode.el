@@ -87,25 +87,19 @@ debug messages to the *Messages* buffer."
 (defconst fish-smie-grammar
   (smie-prec2->grammar
    (smie-bnf->prec2
-    '((id)
-      (inst ("begin" insts "end")
-            ("function" insts "end")
-            ("if" exp inst "else" inst)
-            ("if" exp inst "end")
-            (id "=" exp)
-            (exp))
-      (insts (insts ";" insts) (inst))
-      (exp ("function" insts "end")
-           ("begin" insts "end")
-           ("for" for-body "end")
-           ("(" insts ")")
-           ("if" if-body "end"))
-      (for-body (id "in" exp))
-      (if-body (insts)))
-    '((nonassoc "in"))
-    '((assoc ";"))
-    '((assoc ","))
-    '((assoc "+") (assoc "*")))))
+    '((exp)  ; A constant, or a $var, or a sequence of them
+      (cmd ("if" cmd "end")
+           ("if" cmd "else" cmd "end")
+           ("if" cmd "else if" cmd "else" cmd "end")
+           ("for" exp "in" cmd "end")
+           ("function" cmd "end")
+           (cmd "|" cmd)
+           (cmd "&&" cmd)
+           (cmd "||" cmd)
+           (cmd ";" cmd)
+           (cmd "&" cmd)))
+    '((assoc "case") (assoc ";" "&") (assoc "&&" "||") (assoc "|")))))
+
 
 ;; Tokenizers
 (defun fish-smie-forward-token ()
@@ -129,17 +123,27 @@ debug messages to the *Messages* buffer."
    (t (buffer-substring-no-properties
         (point)
         (progn
-          (skip-syntax-backward "w_")
+          (skip-syntax-backward "w_.")
           (point))))))
 
 ;; Indentation rules
+(defcustom fish-smie-indent-basic 4
+   "Indentation level for Fish shell's SMIE configuration"
+   :group 'fish
+   :type 'integer
+   :safe 'integerp)
+
 (defun fish-smie-rules (kind token)
   (if fish-indent-debug
       (message "fish-smie-rules -> Kind: '%s', Token: '%s'" kind token))
   (pcase (cons kind token)
-    (`(:elem . basic) smie-indent-basic)
-    (`(:before . ,(or `"function" `"begin" `"(" `"{"))
-     (if (smie-rule-hanging-p) (smie-rule-parent)))
+    (`(:elem . basic)
+     (if (smie-rule-hanging-p)
+         0
+       fish-smie-indent-basic))
+    (`(,_ . ,(or ",")) (smie-rule-separator kind))
+    (`(:after . "end") 0)
+    (`(:list-intro . ,(or `"function")) nil)
     (`(:before . "if")
      (and (not (smie-rule-bolp))
           (smie-rule-prev-p "else")
