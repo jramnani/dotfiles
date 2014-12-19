@@ -134,8 +134,6 @@ debug messages to the *Messages* buffer."
    :safe 'integerp)
 
 (defun fish-smie-rules (kind token)
-  (if fish-indent-debug
-      (message "fish-smie-rules -> Kind: '%s', Token: '%s'" kind token))
   (pcase (cons kind token)
     (`(:elem . basic)
      (if (smie-rule-hanging-p)
@@ -149,6 +147,19 @@ debug messages to the *Messages* buffer."
           (smie-rule-prev-p "else")
           (smie-rule-parent)))))
 
+(defun fish-smie-rules-verbose (kind token)
+  (let ((value (fish-smie-rules kind token)))
+    (if fish-indent-debug
+        (message "fish-smie-rules -> %s '%s'; bolp:%s sibling-p:%s parent:%s hanging:%s == %s"
+                 kind
+                 token
+                 (ignore-errors (smie-rule-bolp))
+                 (ignore-errors (smie-rule-sibling-p))
+                 (ignore-errors smie--parent)
+                 (ignore-errors (smie-rule-hanging-p))
+                 value))
+    value))
+
 
 ;; Autoloads
 
@@ -160,7 +171,7 @@ debug messages to the *Messages* buffer."
   (setq-local comment-start "# ")
   (setq-local comment-start-skip "#+[\t ]*")
   ;; Wire up SMIE for indentation
-  (smie-setup fish-smie-grammar #'fish-smie-rules
+  (smie-setup fish-smie-grammar #'fish-smie-rules-verbose
               :forward-token #'fish-smie-forward-token
               :backward-token #'fish-smie-backward-token))
 
