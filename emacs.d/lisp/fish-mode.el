@@ -111,7 +111,7 @@ debug messages to the *Messages* buffer."
    (t (buffer-substring-no-properties
        (point)
        (progn
-         (skip-syntax-forward "w_")
+         (skip-syntax-forward "w_.")
          (point))))))
 
 (defun fish-smie-backward-token ()
