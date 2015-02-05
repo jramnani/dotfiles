@@ -80,6 +80,19 @@
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows))
 
+  ;; Smex provides history and searching on top of M-x.
+  (use-package smex
+    :bind (("M-x" . smex)
+           ("M-X" . smex-major-mode-commands)
+           ("C-x m" . smex)
+           ("C-c m" . smex))
+    :init
+    (progn
+      (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
+    :config
+    (smex-initialize)
+    :ensure t)
+
   (use-package text-mode
     :commands text-mode
     :init
