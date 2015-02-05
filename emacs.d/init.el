@@ -97,6 +97,13 @@
     :diminish undo-tree-mode
     :ensure t)
 
+  ;; writegood-mode can improve my writing style for prose.
+  (use-package writegood-mode
+    :init
+    (progn
+      (add-hook 'text-mode-hook 'writegood-mode))
+    :ensure t)
+
   (use-package yaml-mode
     :ensure t)
 
