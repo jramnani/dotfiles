@@ -81,6 +81,7 @@
     :bind ("C-c s" . prelude-swap-windows))
 
   (use-package undo-tree
+    :bind ("C-c u" . undo-tree-visualize)
     :config
     (global-undo-tree-mode)
     :diminish undo-tree-mode
