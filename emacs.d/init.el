@@ -319,6 +319,9 @@
 (when (eq system-type 'darwin)
   (setq locate-command "/usr/bin/mdfind"))
 
+;; Stop typing full "yes or no" answers to Emacs.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
