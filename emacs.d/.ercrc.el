@@ -23,3 +23,34 @@
         (erc-message "PRIVMSG" (concat "NickServ identify " (nth 1 (credentials)))))))
 
 (add-hook 'erc-after-connect 'register-nickname-after-connect)
+
+
+;; Notify me when my nick is mentioned.
+
+;; Don't notify me about these types of messages.
+(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                "324" "329" "332" "333" "353" "477"))
+
+;; Thanks, https://github.com/danielsz/.emacs.d/blob/master/org-init.org#erc
+(defvar notify-command (executable-find "terminal-notifier") "The path to terminal-notifier")
+
+(defun jramnani-notify (title message)
+  "Shows a message through the Notification center system using
+ `notify-command` as the program."
+  (cl-flet ((encfn (s) (encode-coding-string s (keyboard-coding-system))) )
+    (let* ((process (start-process "notify" nil
+                                   notify-command
+                                   "-title" (encfn title)
+                                   "-message" (encfn message))))))
+  t)
+
+(defun jramnani-erc-hook (match-type nick message)
+  "Shows a notification, when user's nick was mentioned. If the buffer is currently not visible, makes it sticky."
+  (unless (posix-string-match "^\\** *Users on #" message)
+    (jramnani-notify
+     (concat "ERC: name mentioned on: " (buffer-name (current-buffer)))
+     message
+     )))
+
+(when (bound-and-true-p notify-command)
+  (add-hook 'erc-text-matched-hook 'jramnani-erc-hook))
