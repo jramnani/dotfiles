@@ -17,3 +17,7 @@ Return nil if the entry is not found."
                     (funcall secret)
                   secret)))
       nil)))
+
+(provide 'jramnani-auth)
+
+;;; jramnani-auth.el ends here
