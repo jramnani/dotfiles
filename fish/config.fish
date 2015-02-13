@@ -54,7 +54,7 @@ end
 
 ## Path
 # Set the PATH on OS X using /etc/paths like /usr/libexec/path_helper would.
-if test -r /etc/paths
+if [ $MYOS = "OSX" ]
   load_path_helper_paths
 end
 
@@ -85,9 +85,9 @@ set -x PYTHONSTARTUP ~/.pythonrc
 # Trying a Virtualenvwrappper clone for Fish.
 # Must be done after path munging.
 # https://github.com/adambrenecki/virtualfish
-## Use compat aliases to help my muscle memory for now.
-set -gx VIRTUALFISH_COMPAT_ALIASES 1
 set -gx VIRTUALFISH_HOME $HOME/.venv
+# Use compat aliases to help my muscle memory for now.
+set -gx VIRTUALFISH_COMPAT_ALIASES 1
 . $HOME/.config/fish/virtual.fish
 
 # Source local machine-specific file.
