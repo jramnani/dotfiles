@@ -11,7 +11,7 @@
 function emacsclient -d "Tell the Emacs server to visit the specified files."
     if test $MYOS = "OSX"
        osascript -e 'tell application "Emacs" to activate'
-       command emacsclient -c $argv
+       command emacsclient $argv
     else
         command emacsclient $argv
     end
