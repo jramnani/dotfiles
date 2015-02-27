@@ -2,6 +2,7 @@
 *~
 \#*#
 .#*
+emacs.d/ac-*
 emacs.d/auto-save
 emacs.d/auto-save-list
 emacs.d/backups
@@ -9,6 +10,7 @@ emacs.d/elpa
 emacs.d/gnu
 emacs.d/marmalade
 emacs.d/melpa
+emacs.d/projectile*
 emacs.d/.smex-items
 emacs.d/SessionDesktop.el
 emacs.d/url/
