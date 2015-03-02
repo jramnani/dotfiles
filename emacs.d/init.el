@@ -80,6 +80,11 @@
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows))
 
+  ;; Auto-save and backup files are saved as plain text.  Disable them
+  ;; for encrypted file types.
+  (use-package sensitive-mode
+    :mode ("\\.gpg\\'" . sensitive-mode))
+
   ;; Smex provides history and searching on top of M-x.
   (use-package smex
     :bind (("M-x" . smex)
