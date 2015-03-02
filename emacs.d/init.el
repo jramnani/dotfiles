@@ -207,6 +207,8 @@
 (setq ido-enable-flex-matching t)
 ;; Case insensitive searching for ido
 (setq ido-case-fold t)
+;; Don't ask me to confirm when creating new buffers
+(setq ido-create-new-buffer 'always)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
