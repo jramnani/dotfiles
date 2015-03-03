@@ -281,13 +281,6 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-;; Dismiss the buffer that has the current focus
-(global-set-key (kbd "C-c d") (lambda ()
-                                "Dismiss buffer"
-                                (interactive)
-                                (other-window 1)
-                                (delete-other-windows)))
-
 ;; Join line (mapped to act like vim's "J" which is more intuitive to me)
 (global-set-key (kbd "C-c j") (lambda ()
                                 (interactive)
