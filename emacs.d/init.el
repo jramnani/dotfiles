@@ -364,7 +364,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load "~/.emacs.local" 'noerror 'nomessage)
+(load "~/.emacs.local.el" 'noerror 'nomessage)
 
 (provide 'init)
 ;;; init.el ends here
