@@ -1,3 +1,11 @@
+;;; init.el --- Initialization file for Emacs.
+;;;
+;;; Commentary:
+;;;
+;;; Author: Jeff Ramnani
+;;;
+;;; Code:
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Packaging
@@ -357,3 +365,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (load "~/.emacs.local" 'noerror 'nomessage)
+
+(provide 'init)
+;;; init.el ends here
