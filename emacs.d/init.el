@@ -55,13 +55,18 @@
     :ensure t)
 
   (use-package color-theme
-    :init
-    (color-theme-initialize)
     :ensure t)
 
   (use-package color-theme-solarized
     :init
-    (load-theme 'solarized-dark t)
+    (progn
+      (load-theme 'solarized t)
+      ;; This theme uses the frame-parameter 'background-mode' to
+      ;; determine whether to use the light or dark version of the
+      ;; theme.
+      (set-frame-parameter nil 'background-mode 'dark)
+      ;; Call enable-theme to pick up the change to 'background-mode.
+      (enable-theme 'solarized))
     :ensure t)
 
   (use-package dokuwiki-mode
