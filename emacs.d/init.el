@@ -165,6 +165,11 @@
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
 
+;; auto-fill-mode automatically wraps text. It uses the variable
+;; "fill-column" to determine when to wrap.
+(setq-default fill-column 80)
+(add-hook 'text-mode 'turn-on-auto-fill)
+
 ;; Show line numbers
 (global-linum-mode t)
 ;; Give line numbers some breathing room
@@ -266,6 +271,9 @@
 
 ;; F3 starts recording a macro, F4 stops recording, now F5 will replay the macro
 (global-set-key (kbd "<f5>") 'call-last-kbd-macro)
+
+;; Toggle line wrapping.
+(global-set-key (kbd "C-c q") 'auto-fill-mode)
 
 ;; Toggle showing line numbers
 (global-set-key (kbd "C-c l") 'linum-mode)
