@@ -119,16 +119,6 @@
     (smex-initialize)
     :ensure t)
 
-  (use-package text-mode
-    :commands text-mode
-    :init
-    (progn
-      ;; auto-fill-mode automatically breaks up lines when they get too long.
-      ;; It uses the variable, 'fill-column', to figure out if a line is too
-      ;; long.
-      (setq fill-column 80)
-      (add-hook 'text-mode-hook 'auto-fill-mode)))
-
   (use-package undo-tree
     :bind ("C-c u" . undo-tree-visualize)
     :config
