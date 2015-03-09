@@ -1,6 +1,10 @@
-;;; sensitive-mode.el ---
-
+;;; sensitive-mode --- Summary
+;;
+;;; Commentary:
 ;; See: http://anirudhsasikumar.net/blog/2005.01.21.html
+;;
+;;; Code:
+
 
 (define-minor-mode sensitive-mode
   "Disables backup creation and auto saving.
@@ -30,6 +34,6 @@ Null prefix argument turns off the mode."
     (if auto-save-default
 	(auto-save-mode 1))))
 
-(provide 'sensitive-mode)
 
-;;; sensitive-mode.el ends here
+(provide 'sensitive-mode)
+;;; sensitive.el ends here

@@ -1,4 +1,12 @@
+;;; jramnani-auth -- Summary
+;;
+;;; Commentary:
+;; Helper functions for accessing info about authentication.
 ;; https://www.gnu.org/software/emacs/manual/html_node/auth/Help-for-developers.html#Help-for-developers
+;;
+;;
+;;; Code:
+
 
 (defun jramnani-find-password (HOST PORT USERNAME)
   "Find a password in Emacs auth-source.
