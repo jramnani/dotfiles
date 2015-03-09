@@ -74,6 +74,12 @@
   (use-package dokuwiki-mode
     :ensure t)
 
+  ;; Flycheck checks your program source code on the fly as you edit.
+  (use-package flycheck
+  :init
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  :ensure t)
+
   (use-package jinja2-mode
     :init
     (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
