@@ -119,6 +119,10 @@
     (smex-initialize)
     :ensure t)
 
+  ;; Rename buffers and files together.
+  (use-package steve-yegge-buffer-utils
+    :load-path "vendor/")
+
   (use-package undo-tree
     :bind ("C-c u" . undo-tree-visualize)
     :config
