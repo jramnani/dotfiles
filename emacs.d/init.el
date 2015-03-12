@@ -105,7 +105,8 @@
     :ensure t)
 
   (use-package prelude-swap-windows
-    :bind ("C-c s" . prelude-swap-windows))
+    :bind ("C-c s" . prelude-swap-windows)
+    :load-path "vendor/")
 
   ;; Auto-save and backup files are saved as plain text.  Disable them
   ;; for encrypted file types.
