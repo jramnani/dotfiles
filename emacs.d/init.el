@@ -98,6 +98,12 @@
   (use-package markdown-mode
     :ensure t)
 
+  ;; Outline magic adds some extensions to Emacs vanilla outline-mode.
+  ;; It adds visibility cycling and adds structural editing.
+  ;; dokuwiki-mode supports outline-magic and makes it nicer to use.
+  (use-package outline-magic
+    :ensure t)
+
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows))
 
@@ -145,6 +151,7 @@
     (yas-global-mode 1)
     :diminish yas-minor-mode
     :ensure t))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
