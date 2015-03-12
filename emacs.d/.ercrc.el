@@ -12,9 +12,10 @@
 ;; Hide messages that break up conversations.
 (setq erc-hide-list '("JOIN" "NICK" "PART" "QUIT"))
 
-;; Identify my nickname with the IRC server
-(require 'jramnani-auth (concat (file-name-as-directory user-emacs-directory) "lisp/jramnani-auth.el"))
+(use-package jramnani-auth
+  :load-path "lisp/")
 
+;; Identify my nickname with the IRC server.
 (defun register-nickname-after-connect (SERVER NICK)
   (let ((credentials (jramnani-find-password SERVER
                                              (erc-compute-port)
