@@ -177,6 +177,14 @@
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
 
+;; Choose a font. In order of preference.
+(when (display-graphic-p)
+  (cond
+   ((find-font (font-spec :name "Inconsolata"))
+    (set-frame-font "Inconsolata-16"))
+   ((find-font (font-spec :name "Monaco"))
+    (set-frame-font "Monaco-14"))))
+
 ;; auto-fill-mode automatically wraps text. It uses the variable
 ;; "fill-column" to determine when to wrap.
 (setq-default fill-column 80)
