@@ -150,7 +150,7 @@
     :ensure t)
 
   (use-package yasnippet
-    :idle
+    :init
     (yas-global-mode 1)
     :diminish yas-minor-mode
     :ensure t))
