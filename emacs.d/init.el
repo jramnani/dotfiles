@@ -34,7 +34,12 @@
         (package-refresh-contents)
         (package-install 'use-package)))
 
-  (require 'use-package)
+  ;; Load use-package and its dependencies.
+  (eval-when-compile
+    (require 'use-package))
+  (require 'diminish)
+  (require 'bind-key)
+
 
   (use-package ansible
     :defines ac-dictionary-files
