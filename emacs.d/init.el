@@ -52,6 +52,10 @@
     (add-hook 'yaml-mode-hook #'ansible-doc-mode)
     :ensure t)
 
+  ;; Apache web sever config files
+  (use-package apache-mode
+    :ensure t)
+
   (use-package browse-kill-ring
     :init
     (progn
