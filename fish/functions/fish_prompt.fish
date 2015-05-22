@@ -14,14 +14,13 @@ function fish_prompt -d "Write out the prompt"
     printf '%s%s%s' (set_color red) (prompt_pwd) (set_color normal)
   end
 
-  # Print git branch
-  if test -d ".git"
-    printf ' (%s)\n' (parse_git_branch)
-  else
-    printf '\n'
+  # Git branch and status
+  if git rev-parse --git-dir > /dev/null 2>&1
+     printf ' (%s)' (parse_git_branch)
   end
+
+  printf '\n'
 
   printf '%s%s@%s%s [%s] $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal) $vi_mode
 
 end
-
