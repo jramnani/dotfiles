@@ -102,8 +102,11 @@
     :ensure t)
 
   ;; magit-filenotify requires 'filenotify which appears in Emacs 24.4
-  (when (version<= "24.4" emacs-version)
+  (when (and (version<= "24.4" emacs-version)
+             (eq system-type 'linux))
     (use-package magit-filenotify
+      :init
+      (add-hook 'magit-status-mode-hook 'magit-filenotify-mode)
       :ensure t))
 
   (use-package markdown-mode
