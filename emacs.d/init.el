@@ -312,6 +312,29 @@
     :diminish undo-tree-mode
     :ensure t)
 
+  ;; Web mode - Emacs standard HTML mode doesn't understand templates, or CSS, or JS.
+  (use-package web-mode
+    :mode (;; Use web-mode for plain HTML
+           "\\.html?\\'"
+           ;; PHP
+           "\\.phtml\\'"
+           ;; Microsoft ASP and Java JSP templates
+           "\\.[agj]sp\\'"
+           "\\.as[cp]x\\'"
+           ;; Ruby templates
+           "\\.erb\\'"
+           ;; Mustache templates
+           "\\.mustache\\'"
+           ;; Django templates
+           "\\.djhtml\\'"
+           ;; Jinja templates
+           "\\.j2\\'"
+           "\\.jinja2\\'")
+    :init
+    ;; fci-mode causes weird issues with web-mode. e.g. indentation.
+    (add-hook 'web-mode-hook 'turn-off-fci-mode)
+    :ensure t)
+
   ;; writegood-mode can improve my writing style for prose.
   (use-package writegood-mode
     :init
