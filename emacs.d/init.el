@@ -112,6 +112,13 @@
   (use-package dokuwiki-mode
     :ensure t)
 
+  ;; eldoc provides help on elisp function arguments in the minibuffer.
+  (use-package eldoc
+    :init
+    (progn
+      (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+      (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)))
+
   ;; Flycheck checks your program source code on the fly as you edit.
   (use-package flycheck
   :init
