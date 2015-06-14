@@ -125,6 +125,10 @@
   (add-hook 'after-init-hook #'global-flycheck-mode)
   :ensure t)
 
+  ;; Golang
+  (use-package go-mode
+    :ensure t)
+
   (use-package jinja2-mode
     :init
     (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
