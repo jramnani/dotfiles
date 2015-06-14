@@ -183,6 +183,12 @@
     :bind ("C-c s" . prelude-swap-windows)
     :load-path "vendor/")
 
+  ;; Projectile makes switching directories and searching for files easier.
+  (use-package projectile
+    :init
+    (projectile-global-mode)
+    :ensure t)
+
   ;; Auto-save and backup files are saved as plain text.  Disable them
   ;; for encrypted file types.
   (use-package sensitive-mode
