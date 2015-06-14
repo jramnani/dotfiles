@@ -131,6 +131,10 @@
         (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)))
     :ensure t)
 
+  ;; The Nix package manager (http://nixos.org).
+  (use-package nix-mode
+    :ensure t)
+
   ;; org-mode
   (use-package org
     :bind
