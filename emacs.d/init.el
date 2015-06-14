@@ -119,6 +119,16 @@
       (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
       (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)))
 
+  ;; ERT is the Emacs Lisp Regression Testing tool. Basically, the unit testing
+  ;; framework for Elisp.
+  (use-package ert-results-mode
+    :commands ert-results-mode
+    :config
+    ;; ERT opens a new window to show me the results.  Then, when I try
+    ;; to quit the results window, it buries the buffer instead of
+    ;; deleting the window.  Delete the new window, please.
+    (bind-key (kbd "q") 'delete-window ert-results-mode-map))
+
   ;; Provides a visual indicator of where the 'fill-column' is set.
   ;; 'fill-column' is used for wrapping lines.
   (use-package fill-column-indicator
@@ -148,6 +158,21 @@
     :init
     (setq lice:default-license "mit")
     :ensure t)
+
+  (use-package lisp-mode
+    :commands emacs-lisp-mode
+    :config
+    (progn
+      ;; Set up a keybinding to run tests.  When run interactively ERT doesn't
+      ;; visit your test file to pick up changes, instead you must eval the
+      ;; buffer, because ERT just runs whatever's in memory.
+      (defun jramnani-run-ert-tests ()
+        "Run Emacs Lisp tests interactively using ERT"
+        (interactive)
+        (eval-buffer)
+        (ert t))
+      (bind-key (kbd "C-c t") 'jramnani-run-ert-tests emacs-lisp-mode-map)
+      ))
 
   (use-package magit
     :init
