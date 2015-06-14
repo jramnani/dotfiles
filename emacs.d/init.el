@@ -110,6 +110,17 @@
       :ensure t))
 
   (use-package markdown-mode
+    :config
+    (progn
+      (when (eq system-type 'darwin)
+        (defun markdown-preview-file ()
+          "Use Marked.app to preview the current file"
+          (interactive)
+          (shell-command
+           (format "open -a 'Marked 2.app' %s"
+                   (shell-quote-argument (buffer-file-name))))
+          )
+        (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)))
     :ensure t)
 
   ;; Outline magic adds some extensions to Emacs vanilla outline-mode.
@@ -397,20 +408,7 @@
 (when (eq system-type 'darwin)
   ;; Use Spotlight to locate files.  Thanks, EmacWiki.
   ;; http://www.emacswiki.org/emacs/MacOSTweaks#toc7
-  (setq locate-command "/usr/bin/mdfind")
-
-  ;; Preview Markdown files using Marked.app
-  (defun markdown-preview-file ()
-    "use Marked 2 to preview the current file"
-    (interactive)
-    (shell-command
-     (format "open -a 'Marked 2.app' %s"
-             (shell-quote-argument (buffer-file-name))))
-    )
-  (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)
-  )
-
-
+  (setq locate-command "/usr/bin/mdfind"))
 
 ;; Stop typing full "yes or no" answers to Emacs.
 (defalias 'yes-or-no-p 'y-or-n-p)
