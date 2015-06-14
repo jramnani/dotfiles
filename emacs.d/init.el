@@ -41,6 +41,14 @@
   (require 'bind-key)
 
 
+  ;; ace-jump-mode lets you jump the cursor to any position in a file
+  ;; by selecting letters near where you want to go.
+  (use-package ace-jump-mode
+    :commands ace-jump-mode
+    :bind (("C-." . ace-jump-mode)
+           ("C-," . ace-jump-line-mode))
+    :ensure t)
+
   (use-package ansible
     :defines ac-dictionary-files
     :init
