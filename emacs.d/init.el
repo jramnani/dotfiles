@@ -123,6 +123,26 @@
         (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)))
     :ensure t)
 
+  ;; org-mode
+  (use-package org
+    :bind
+    ("C-c a" . org-agenda)
+    :init
+    (progn
+      ;; Org Agenda view requires that you tell it which files to process
+      (setq org-agenda-files (quote ("~/Dropbox/Documents/OrgMode/todo.org")))
+      ;; Keywords to describe the state of a task
+      (setq org-todo-keywords
+            '((sequence "TODO(t)" "IN-PROGRESS" "WAITING" "DONE")))
+      ;; Change the font colors used for todo items.
+      ;; IN-PROGRESS = Solarized violet
+      ;; TODO = Solarized orange
+      (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#6c71c4" :weight "bold"))
+                                     ("TODO" . (:foreground "#cb4b16" :weight "bold"))))
+      ;; Attach a timestamp to completed tasks
+      (setq org-log-done 'time))
+    :ensure t)
+
   ;; Outline magic adds some extensions to Emacs vanilla outline-mode.
   ;; It adds visibility cycling and adds structural editing.
   ;; dokuwiki-mode supports outline-magic and makes it nicer to use.
