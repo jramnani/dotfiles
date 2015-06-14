@@ -202,6 +202,53 @@
     (projectile-global-mode)
     :ensure t)
 
+  ;; Python
+  (use-package python
+    :commands python-mode
+    :config
+    (progn
+      ;; Python hackers like their lines to be 72 columns.
+      (set-fill-column 72)
+
+      ;; jedi provides auto completion for Python programs. Depends on the
+      ;; Python packages "jedi" and "epc" to be installed on the host
+      ;; machine.
+      (use-package jedi
+        :init
+        (progn
+          (setq jedi:complete-on-dot t)
+          (setq jedi:setup-keys t)
+          (add-hook 'python-mode-hook 'jedi:setup))
+        :ensure t)
+
+      ;; company-jedi wires up jedi to be a backend for the auto completion
+      ;; library, company-mode.
+      (use-package company-jedi
+        :init
+        (add-hook 'python-mode-hook
+                  (lambda () (add-to-list 'company-backends 'company-jedi)))
+        :ensure t)
+
+      ;; Install Python documentation in Emacs Info format.
+      (use-package python-info
+        :ensure t)
+
+      ;; Work with virtual environments within Emacs
+      (use-package virtualenvwrapper
+        :commands (venv-activate venv-deactivate venv-mkvirtualenv venv-rmvirtualenv venv-workon)
+        :init
+        ;; Directory containing my virtualenvs
+        (setq venv-location (concat (getenv "HOME") "/.venv/"))
+        :config
+        (progn
+          ;; interactive shell support
+          (venv-initialize-interactive-shells)
+          ;; eshell support
+          (venv-initialize-eshell))
+        :ensure t)
+      )
+    :ensure t)
+
   ;; Auto-save and backup files are saved as plain text.  Disable them
   ;; for encrypted file types.
   (use-package sensitive-mode
