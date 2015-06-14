@@ -119,6 +119,13 @@
       (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
       (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)))
 
+  ;; Provides a visual indicator of where the 'fill-column' is set.
+  ;; 'fill-column' is used for wrapping lines.
+  (use-package fill-column-indicator
+    :init
+    (add-hook 'prog-mode-hook 'fci-mode)
+    :ensure t)
+
   ;; Flycheck checks your program source code on the fly as you edit.
   (use-package flycheck
   :init
