@@ -123,6 +123,14 @@
     (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
     :ensure t)
 
+  ;; Lice inserts open source license text as comments in the buffer.
+  ;; Useful for inserting file headers.
+  (use-package lice
+    :commands lice
+    :init
+    (setq lice:default-license "mit")
+    :ensure t)
+
   (use-package magit
     :init
     (setq magit-last-seen-setup-instructions "1.4.0")
