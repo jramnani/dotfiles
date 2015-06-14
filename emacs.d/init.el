@@ -88,6 +88,19 @@
       (enable-theme 'solarized))
     :ensure t)
 
+  ;; company-mode does auto-completion.
+  (use-package company
+    :init
+    (add-hook 'prog-mode-hook 'company-mode)
+    :ensure t)
+
+  ;; company-quickhelp adds tooltip functionality to company-mode. These
+  ;; tooltips usually show documentation for a given auto complete suggestion.
+  (use-package company-quickhelp
+    :init
+    (company-quickhelp-mode 1)
+    :ensure t)
+
   (use-package dokuwiki-mode
     :ensure t)
 
