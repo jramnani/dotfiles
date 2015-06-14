@@ -157,6 +157,19 @@
   (use-package outline-magic
     :ensure t)
 
+  ;; paredit is a minor-mode that for performing structured editing of
+  ;; S-expressions.  Edit code, not text.
+  (use-package paredit
+    :init
+    (progn
+      (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+      (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+      (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+      (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+      (add-hook 'scheme-mode-hook 'enable-paredit-mode)
+      )
+    :ensure t)
+
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows)
     :load-path "vendor/")
