@@ -7,6 +7,7 @@ emacs.d/auto-save
 emacs.d/auto-save-list
 emacs.d/backups
 emacs.d/elpa
+emacs.d/elpa[-.]*
 emacs.d/gnu
 emacs.d/marmalade
 emacs.d/melpa
