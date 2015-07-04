@@ -313,6 +313,10 @@
   (use-package sensitive-mode
     :mode ("\\.gpg\\'" . sensitive-mode))
 
+  (use-package shell-script-mode
+    ;; For editing my Bash profile within my dotfiles repo.
+    :mode ("bash\\(rc\\|_profile\\|machinerc\\)\\'" . shell-script-mode))
+
   ;; Smex provides history and searching on top of M-x.
   (use-package smex
     :bind (("M-x" . smex)
