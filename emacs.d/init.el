@@ -174,20 +174,10 @@
       (bind-key (kbd "C-c t") 'jramnani-run-ert-tests emacs-lisp-mode-map)
       ))
 
+  ;; Git
   (use-package magit
-    :init
-    (setq magit-last-seen-setup-instructions "1.4.0")
     :bind ("C-c g" . magit-status)
-    :diminish magit-auto-revert-mode ;; (MRev)
     :ensure t)
-
-  ;; magit-filenotify requires 'filenotify which appears in Emacs 24.4
-  (when (and (version<= "24.4" emacs-version)
-             (eq system-type 'linux))
-    (use-package magit-filenotify
-      :init
-      (add-hook 'magit-status-mode-hook 'magit-filenotify-mode)
-      :ensure t))
 
   (use-package markdown-mode
     :config
