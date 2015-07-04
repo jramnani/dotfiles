@@ -375,8 +375,9 @@
     :ensure t)
 
   (use-package yasnippet
-    :init
+    :config
     (yas-global-mode 1)
+    :defer 2
     :diminish yas-minor-mode
     :ensure t))
 
