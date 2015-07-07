@@ -82,13 +82,19 @@ set fish_greeting (fish_greeting)
 # Use my Python startup file.
 set -x PYTHONSTARTUP ~/.pythonrc
 
-# Trying a Virtualenvwrappper clone for Fish.
-# Must be done after path munging.
+# Virtualfish: a Virtualenvwrappper equivalent for Fish.
 # https://github.com/adambrenecki/virtualfish
+# This config must happen after path munging is complete.
 set -gx VIRTUALFISH_HOME $HOME/.venv
+set -gx PROJECT_HOME $HOME/code
 # Use compat aliases to help my muscle memory for now.
 set -gx VIRTUALFISH_COMPAT_ALIASES 1
-. $HOME/.config/fish/virtual.fish
+set -l VIRTUALFISH_PLUGINS auto_activation compat_aliases projects
+
+if python -m virtualfish > /dev/null 2> /dev/null
+    eval (python -m virtualfish $VIRTUALFISH_PLUGINS)
+end
+
 
 # Source local machine-specific file.
 . $HOME/.machinerc.fish
