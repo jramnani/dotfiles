@@ -12,6 +12,7 @@ emacs.d/gnu
 emacs.d/marmalade
 emacs.d/melpa
 emacs.d/projectile*
+emacs.d/.python-environments/
 emacs.d/.smex-items
 emacs.d/SessionDesktop.el
 emacs.d/url/
