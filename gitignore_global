@@ -36,3 +36,19 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Editors #
+###########
+# Emacs
+*~
+\#*\#
+*.elc
+.\#*
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
