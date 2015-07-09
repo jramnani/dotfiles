@@ -20,6 +20,7 @@
   w = whatchanged
 [core]
   autocrlf = input
+  excludesfile = ~/.gitignore_global
 [github]
   user = jramnani
 [credential]
