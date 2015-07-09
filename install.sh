@@ -90,7 +90,10 @@ function install_profile() {
   fi
 
   # Git
-  link_file gitconfig
+  for GIT_FILE in gitconfig gitignore_global; do
+      link_file $GIT_FILE
+  done
+
   if [[ ! -f "$HOME/.gitconfig-user" ]]; then
       echo "Missing ~/.gitconfig-user file.  It should contain a [user] section."
   fi
