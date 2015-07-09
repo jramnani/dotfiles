@@ -99,8 +99,8 @@ function install_profile() {
   fi
 
   # Mercurial
-  for FILE in hgext hgrc; do
-    link_file $FILE
+  for HG_FILE in hgext hgrc; do
+    link_file $HG_FILE
   done
 
   # Ruby
