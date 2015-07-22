@@ -25,7 +25,7 @@
 ######################
 *.log
 *.sql
-*.sqlite
+*.sqlite?
 
 # OS generated files #
 ######################
@@ -52,3 +52,11 @@ Thumbs.db
 Session.vim
 .netrwhist
 *~
+
+# Vagrant #
+###########
+.vagrant/
+
+# Tags #
+########
+TAGS
