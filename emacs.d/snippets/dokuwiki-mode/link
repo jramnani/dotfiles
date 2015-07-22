@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: wiki link
+# key: [[
+# --
+[[${1:URL}|${2:link text}]] $0
