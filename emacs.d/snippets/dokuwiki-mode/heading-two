@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: heading 2
+# key: h2
+# --
+===== $1 =====
+$0
