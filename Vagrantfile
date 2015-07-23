@@ -32,7 +32,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "openbsd" do |bsd|
     bsd.vm.box = "tmatilai/openbsd-5.5"
     bsd.vm.network "private_network", ip: "192.168.33.10"
-    bsd.vm.synced_folder ".", "/vagrant", type: "nfs"
+    bsd.vm.synced_folder ".", "/vagrant", type: "rsync"
+    bsd.ssh.shell = "/bin/ksh"
   end
 
 end
