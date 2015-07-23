@@ -57,14 +57,12 @@ if [ $MYOS = "OSX" ]
   load_path_helper_paths
 end
 
-# Assuming OSX for now. MacPorts, Fink, or Homebrew.
-for p in /opt/local/bin /sw/bin /usr/local/bin /usr/local/sbin
+# Third-party packages. Using Homebrew on OS X.
+for p in /usr/local/{bin,sbin}
   pathmunge p
 end
 
-for p in /opt/local/share/man /sw/share/man /usr/local/share/man
-  manpathmunge p
-end
+manpathmunge /usr/local/share/man
 
 # My bin dir
 pathmunge $HOME/bin
