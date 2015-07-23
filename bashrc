@@ -4,9 +4,6 @@
 source $HOME/.bash/environment
 source $HOME/.bash/functions
 
-# Set command mode editing to Vi.
-set -o vi
-
 #{{{  Global aliases
 
 alias c='clear'
