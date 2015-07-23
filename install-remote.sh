@@ -18,4 +18,4 @@ echo "Cloning profile repository"
 ssh $REMOTE_SERVER "cd code && git clone https://github.com/jramnani/dotfiles.git profile"
 
 echo "Installing profile"
-ssh $REMOTE_SERVER "cd code/profile && ./install.sh -p"
+ssh $REMOTE_SERVER "cd code/profile && ./install.sh"
