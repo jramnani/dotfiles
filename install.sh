@@ -1,22 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
-SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_PATH="$(dirname $(readlink -f $0))"
 
-function install_eggs() {
-  cat eggs_to_install | xargs pip install
-}
 
-function install_gems() {
-  cat gems_to_install | xargs gem install
-}
-
-function install_brews() {
-  cat brews_to_install | xargs brew install
-}
-
-function link_file() {
+function link_file {
   local FILE=$1
   if [[ -f $HOME/.${FILE} && ! -L $HOME/.${FILE} ]]; then
     mv $HOME/.${FILE} $HOME/.${FILE}.bak
@@ -30,7 +19,7 @@ function link_file() {
   fi
 }
 
-function link_script() {
+function link_script {
   local FILE="$1"
   local DESTINATION_DIR="$HOME/bin"
   local DESTINATION_FILE="$DESTINATION_DIR/$FILE"
@@ -53,7 +42,7 @@ function link_script() {
 }
 
 
-function install_profile() {
+function install_profile {
   # Bash profile
   for FILE in bash bash_profile bashrc; do
     link_file $FILE
@@ -125,31 +114,7 @@ function install_profile() {
   link_file vimrc
 }
 
-function usage() {
-  echo "Usage: $0 [-b brews] | [-e eggs] | [-g gems] | [-p profile] "
-}
 
 ## Main
 
-if [[ -z $1 ]]; then
-  usage
-  exit 1
-fi
-
-case $1 in
-  "-b")
-    install_brews
-    ;;
-  "-e")
-    install_eggs
-    ;;
-  "-g")
-    install_gems
-    ;;
-  "-p")
-    install_profile
-    ;;
-  "*")
-    usage
-    exit 1
-esac
+install_profile
