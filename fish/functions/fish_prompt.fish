@@ -4,7 +4,7 @@
 function fish_prompt -d "Write out the prompt"
   # Python Virtualenv
   if set -q VIRTUAL_ENV
-    printf '%s(%s)%s ' (set_color blue) (basename $VIRTUAL_ENV)
+    printf '%s(%s)%s ' (set_color blue) (basename $VIRTUAL_ENV) (set_color normal)
   end
 
   # Color writeable dirs green, read-only dirs red
@@ -21,6 +21,5 @@ function fish_prompt -d "Write out the prompt"
 
   printf '\n'
 
-  printf '%s%s@%s%s [%s] $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal) $vi_mode
-
+  printf '%s%s@%s%s $ ' (set_color normal) (whoami) (hostname|cut -d . -f 1) (set_color normal)
 end

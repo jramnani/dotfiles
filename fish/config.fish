@@ -67,12 +67,9 @@ manpathmunge /usr/local/share/man
 # My bin dir
 pathmunge $HOME/bin
 
+
 # Set the shell's greeting.
 set fish_greeting (fish_greeting)
-
-# Enable vi-mode. Yay!
-# From https://github.com/DarkStarSword/junk/blob/master/vi-mode.fish
-. $HOME/.config/fish/vi-mode.fish
 
 
 ## Python
