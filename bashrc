@@ -21,7 +21,7 @@ alias rm='rm -i'
 
 #}}}
 
-#{{{ OS Specific 
+#{{{ OS Specific
 
 # Solaris quirks
 if [ $MYOS == "Solaris" ]; then
@@ -69,7 +69,7 @@ fi
 # End OSX quirks
 
 # Linux
-if [ $MYOS == "Linux" ]; then 
+if [ $MYOS == "Linux" ]; then
     # Most distros comes w/ vim installed by default
     if [[ -x /usr/bin/vim ]]; then
         alias vi='/usr/bin/vim'
@@ -77,7 +77,7 @@ if [ $MYOS == "Linux" ]; then
 fi
 
 # Cygwin
-if [ $MYOS == "Cygwin" ]; then 
+if [ $MYOS == "Cygwin" ]; then
     #Don't use M$ crappy "find" command...
     alias find='/usr/bin/find'
     # Get color output from 'ls'
