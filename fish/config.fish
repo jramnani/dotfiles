@@ -39,7 +39,6 @@ set -gx EDITOR vim
 alias c 'clear'
 alias df 'df -ah'
 alias g 'egrep -i'
-alias h 'fc -l'
 alias j 'jobs'
 alias m $PAGER
 alias l 'ls -lhF'
