@@ -5,7 +5,7 @@ set -e
 SCRIPT_PATH="$(dirname $(readlink -f $0))"
 
 
-function link_file {
+link_file () {
   local FILE=$1
   if [[ -f $HOME/.${FILE} && ! -L $HOME/.${FILE} ]]; then
     mv $HOME/.${FILE} $HOME/.${FILE}.bak
@@ -19,7 +19,7 @@ function link_file {
   fi
 }
 
-function link_script {
+link_script () {
   local FILE="$1"
   local DESTINATION_DIR="$HOME/bin"
   local DESTINATION_FILE="$DESTINATION_DIR/$FILE"
@@ -42,7 +42,7 @@ function link_script {
 }
 
 
-function install_profile {
+install_profile () {
   # Bash profile
   for FILE in bash bash_profile bashrc; do
     link_file $FILE
