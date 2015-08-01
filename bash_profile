@@ -195,10 +195,6 @@ if [[ -x `which python` ]]; then
     # Use my python startup file.
     export PYTHONSTARTUP=$HOME/.pythonrc
 fi
-# Is Python software installed in $HOME?
-if [[ -d $HOME/lib/python ]]; then
-    export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
-fi
 # End Python section
 
 # Ruby section
