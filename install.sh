@@ -7,11 +7,11 @@ SCRIPT_PATH=$(dirname $(cd -P -- "$(dirname -- "$0")" && printf '%s\n' "$(pwd -P
 
 link_file () {
   local FILE=$1
-  if [[ -f $HOME/.${FILE} && ! -L $HOME/.${FILE} ]]; then
+  if [ -f $HOME/.${FILE} -a ! -L $HOME/.${FILE} ]; then
     mv $HOME/.${FILE} $HOME/.${FILE}.bak
   fi
 
-  if [[ ! -L $HOME/.${FILE} ]]; then
+  if [ ! -L $HOME/.${FILE} ]; then
     echo "Linking: $HOME/.${FILE} -> $PWD/$FILE"
     ln -s $SCRIPT_PATH/$FILE $HOME/.${FILE}
   else
@@ -24,16 +24,16 @@ link_script () {
   local DESTINATION_DIR="$HOME/bin"
   local DESTINATION_FILE="$DESTINATION_DIR/$FILE"
 
-  if [[ ! -d "$DESTINATION_DIR" ]]; then
+  if [ ! -d "$DESTINATION_DIR" ]; then
       mkdir -p "$DESTINATION_DIR"
   fi
 
-  if [[ -f "$DESTINATION_FILE" && ! -L "$DESTINATION_FILE" ]]; then
+  if [ -f "$DESTINATION_FILE" -a ! -L "$DESTINATION_FILE" ]; then
       echo "Script already exists for '$FILE'. Leaving it alone."
       return
   fi
 
-  if [[ ! -L "$DESTINATION_FILE" ]]; then
+  if [ ! -L "$DESTINATION_FILE" ]; then
     echo "Linking: $DESTINATION_FILE -> $PWD/bin/$FILE"
     ln -s "$SCRIPT_PATH/bin/$FILE" "$DESTINATION_FILE"
   else
@@ -59,7 +59,7 @@ install_profile () {
   # Fish profile
   mkdir -p $HOME/.config/fish
   for FISH_FILE in $(ls $SCRIPT_PATH/fish/); do
-      if [[ ! -L $HOME/.config/fish/$FISH_FILE ]]; then
+      if [ ! -L $HOME/.config/fish/$FISH_FILE ]; then
           echo "Linking  $HOME/.config/fish/$FISH_FILE -> $SCRIPT_PATH/fish/$FISH_FILE"
           ln -s $SCRIPT_PATH/fish/$FISH_FILE $HOME/.config/fish/$FISH_FILE
       else
@@ -74,7 +74,7 @@ install_profile () {
   # Fonts
   # Configure Font hinting for KDE.
   OS=$(uname -s)
-  if [[ $OS = "Linux" ]]; then
+  if [ $OS = "Linux" ]; then
     link_file fonts.conf
   fi
 
@@ -83,7 +83,7 @@ install_profile () {
       link_file $GIT_FILE
   done
 
-  if [[ ! -f "$HOME/.gitconfig-user" ]]; then
+  if [ ! -f "$HOME/.gitconfig-user" ]; then
       echo "Missing ~/.gitconfig-user file.  It should contain a [user] section."
   fi
 
@@ -107,7 +107,7 @@ install_profile () {
   # Vim
   # Create the directory where I place my Vim backup files
   mkdir -p $HOME/tmp/vim
-  if [[ ! -L $HOME/.vim ]]; then
+  if [ ! -L $HOME/.vim ]; then
     echo "Linking Vim config dir: $HOME/.vim -> $SCRIPT_PATH/vim"
     ln -s $SCRIPT_PATH/vim $HOME/.vim
   fi
