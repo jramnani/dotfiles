@@ -6,7 +6,7 @@ function load_path_helper_paths
   # clear the prev path
   set PATH
 
-  # add each dir in /etc/pahts, topmost first
+  # add each dir in /etc/paths, topmost first
   if test -f /etc/paths
       for dir in (cat /etc/paths)
           if test -d $dir
