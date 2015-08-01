@@ -50,8 +50,8 @@ fi
 if [[ -d /usr/local/man ]]; then
     manpathmunge /usr/local/man
 fi
-if [[ -d ~jramnani/bin ]]; then
-    pathmunge ~jramnani/bin
+if [[ -d ~/bin ]]; then
+    pathmunge ~/bin
 fi
 
 # Use OpenPKG command that will populate PATH and MANPATH correctly to find OpenPKG tools.
