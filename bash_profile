@@ -1,6 +1,6 @@
 # One profile to rule them all...and in the terminal bind them.
-# Setting terminal settings, environment variables, and path munging.
-# functions and aliases stored in .bashrc
+# Terminal settings, environment variables, and path munging.
+# Functions and aliases stored in .bashrc
 
 source $HOME/.bash/environment
 source $HOME/.bash/functions
