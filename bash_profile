@@ -182,10 +182,6 @@ if [[ -x /usr/bin/java ]]; then
        export CLASSPATH=/usr/lib/java
     fi
 fi
-# Is Java software installed in $HOME?
-if [[ -d $HOME/lib/java ]]; then
-    export CLASSPATH=$CLASSPATH:$HOME/lib/java
-fi
 # End Java section
 
 # Python section
