@@ -62,10 +62,15 @@ for p in /usr/local/{bin,sbin}
   pathmunge p
 end
 
-manpathmunge /usr/local/share/man
-
 # My bin dir
 pathmunge $HOME/bin
+
+# Configure MANPATH on OS X
+if [ $MYOS = 'OSX' ]
+    for p in (cat /etc/manpaths)
+        manpathmunge "$p"
+    end
+end
 
 
 # Set the shell's greeting.
