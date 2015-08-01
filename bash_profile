@@ -54,11 +54,6 @@ if [[ -d ~/bin ]]; then
     pathmunge ~/bin
 fi
 
-# Use OpenPKG command that will populate PATH and MANPATH correctly to find OpenPKG tools.
-if [[ -d /usr/openpkg ]]; then
-    pathmunge /usr/openpkg/bin
-    manpathmunge /usr/openpkg/man
-fi
 # Solaris
 case ${MYOS} in
     "Solaris")
