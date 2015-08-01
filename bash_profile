@@ -12,7 +12,7 @@ export LANG=en_US.UTF-8
 stty istrip
 stty erase 
 
-if [ $MYSHELL == "bash" ]; then 
+if [ $MYSHELL == "bash" ]; then
     shopt -s checkwinsize
 
     # Fix typos in 'cd'
@@ -47,7 +47,7 @@ fi
 if [[ -d /usr/local/bin ]]; then
     pathmunge /usr/local/bin
 fi
-if [[ -d /usr/local/man ]]; then 
+if [[ -d /usr/local/man ]]; then
     manpathmunge /usr/local/man
 fi
 if [[ -d ~jramnani/bin ]]; then
@@ -76,14 +76,14 @@ case ${MYOS} in
         if [[ -d /usr/platform/$platform/sbin ]]; then
             echo -e "prtdiag, \c"
             pathmunge /usr/platform/$platform/sbin after
-        fi           
-        # rsc ???    
+        fi
+        # rsc ???
         if [[ -d /usr/platform/$platform/rsc ]]; then
             echo -e "rsc tool, \c"
             pathmunge /usr/platform/$platform/rsc after
-        fi           
+        fi
         # veritas crap
-        if [[ -d /opt/VRTS ]]; then         
+        if [[ -d /opt/VRTS ]]; then
             echo -e "veritas, \c"
             pathmunge /opt/VRTS/bin after
             manpathmunge /opt/VRTS/man after
@@ -93,15 +93,15 @@ case ${MYOS} in
                 echo -e "forte, \c"
                 pathmunge /opt/SUNWspro/bin after
                 manpathmunge /opt/SUNWspro/man after
-        fi           
+        fi
         # solaris xwindows. Can you say "cruft"?
-        if [[ -d /usr/openwin/bin ]]; then         
+        if [[ -d /usr/openwin/bin ]]; then
                 echo -e "openwin, \c"
                 pathmunge /usr/openwin/bin after
                 manpathmunge /usr/openwin/man after
         fi
-        # solaris location for GNU software. why solaris, why??  
-        if [[ -d /usr/sfw ]]; then         
+        # solaris location for GNU software. why solaris, why??
+        if [[ -d /usr/sfw ]]; then
                 echo -e "sfw, \c"
                 pathmunge /usr/sfw/bin
                 manpathmunge /usr/sfw/man after
@@ -115,7 +115,7 @@ case ${MYOS} in
     "Cygwin")
         REV=`uname -r`
         echo -e "Cygwin $REV --  \c"
-        
+
         # Windows Resource Kit installed?
         if [[ -d "/cygdrive/c/Program Files/Resource Kit" ]]; then
             echo -e "Win Resource kit, \c"
@@ -150,7 +150,7 @@ case ${MYOS} in
 # End MacOSX section
     *)  ;;
 esac
-#}}} End path munging section  
+#}}} End path munging section
 
 # PAGER {{{
 if [ -x $(which less) ]; then
@@ -219,7 +219,7 @@ fi
 # End Ruby section.
 #}}} End Java / Python / Perl / Ruby
 
-#{{{ OS Specific 
+#{{{ OS Specific
 
 # Solaris quirks
 if [ $MYOS == "Solaris" ]; then
