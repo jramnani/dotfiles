@@ -35,7 +35,7 @@ function ppath () {
 }
 
 function mpath () {
-    echo $MANPATH | perl -a -n -F/:/ -e 'foreach (@F) { print "$_\n" }'
+    echo $MANPATH | tr ':' '\n'
 }
 
 # Bundler and Rails3
