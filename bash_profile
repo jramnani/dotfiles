@@ -229,11 +229,6 @@ fi
 ## Solaris quirks
 
 if [ $MYOS == "Solaris" ]; then
-    # If OpenPKG is installed, use that termcap instead of the decrepit one that comes w/ Solaris.
-    if [[ -d "/usr/openpkg/share/ncurses/terminfo" ]]; then
-        export TERMINFO="/usr/openpkg/share/ncurses/terminfo"
-    fi
-
     # Find GCC
     # Try the obvious place for gcc
     if [[ -x /usr/local/bin/gcc ]]; then
