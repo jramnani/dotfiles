@@ -179,18 +179,18 @@ export PAGER
 if [[ -x /usr/bin/java ]]; then
     JAVA_VERSION=`java -version 2>&1 | head -1 | awk '{print $3}'`
     echo -e "Java ${JAVA_VERSION}, \c"
-    # OSX keeps it's own set of symlinks that point to the current Java version.
     if [ $MYOS == "OSX" ]; then
+        # OSX keeps it's own set of symlinks that point to the current Java version.
         export JAVA_HOME=`/usr/libexec/java_home`
         export CLASSPATH=$JAVA_HOME/lib
-    # Solaris packages will install into /usr/java ...
     elif [ $MYOS == "Solaris" ]; then
+        # Solaris packages will install into /usr/java ...
         export JAVA_HOME=/usr/java
         export CLASSPATH=/usr/java/lib
     else
-     #Everyone else seems to keep this convention...
-       export JAVA_HOME=/usr/lib/java
-       export CLASSPATH=/usr/lib/java
+        # Everyone else seems to keep this convention...
+        export JAVA_HOME=/usr/lib/java
+        export CLASSPATH=/usr/lib/java
     fi
 fi
 
