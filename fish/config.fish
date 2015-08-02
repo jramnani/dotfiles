@@ -96,7 +96,8 @@ set -gx PROJECT_HOME $HOME/code
 set -gx VIRTUALFISH_COMPAT_ALIASES 1
 set -l VIRTUALFISH_PLUGINS auto_activation compat_aliases projects
 
-if python -m virtualfish > /dev/null 2> /dev/null
+
+if which python >/dev/null 2>&1; and python -m virtualfish >/dev/null 2>&1
     eval (python -m virtualfish $VIRTUALFISH_PLUGINS)
 end
 
