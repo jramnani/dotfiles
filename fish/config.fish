@@ -70,6 +70,12 @@ if [ $MYOS = 'OSX' ]
     for p in (cat /etc/manpaths)
         manpathmunge "$p"
     end
+
+    for path_file in /etc/manpaths.d/*
+        for p in (cat "$path_file")
+            manpathmunge "$p" after
+        end
+    end
 end
 
 
