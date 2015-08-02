@@ -8,6 +8,8 @@ switch (uname -s)
     set -gx MYOS "OSX"
   case "FreeBSD"
     set -gx MYOS "FreeBSD"
+  case "OpenBSD"
+    set -gx MYOS "OpenBSD"
   case "CYGWIN_NT-5.1"
     set -gx MYOS "Cygwin"
   case '*'

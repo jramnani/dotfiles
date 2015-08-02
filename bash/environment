@@ -15,6 +15,7 @@ case `uname -s` in
     "SunOS")   MYOS="Solaris";;
     "Darwin")   MYOS="OSX";;
     "FreeBSD")  MYOS="FreeBSD";;
+    "OpenBSD")  MYOS="OpenBSD";;
     "CYGWIN_NT-5.1")    MYOS="Cygwin";;
     *)  MYOS="Unknown";;
 esac
