@@ -1,8 +1,14 @@
 # One profile to rule them all...and in the terminal bind them.
 # Functions and aliases get evaluated here.
 
+# Bail if this is a non-interactive shell. i.e. scp
+if [[ -z "$PS1" ]]; then
+    return
+fi
+
 source $HOME/.bash/environment
 source $HOME/.bash/functions
+
 
 ########################################################################
 #
