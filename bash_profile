@@ -5,7 +5,12 @@
 source $HOME/.bash/environment
 source $HOME/.bash/functions
 
-#{{{ Shell configuration
+########################################################################
+#
+# Shell configuration
+#
+########################################################################
+
 export EDITOR=vim
 export VISUAL=vim
 export LANG=en_US.UTF-8
@@ -22,9 +27,13 @@ if [ $MYSHELL == "bash" ]; then
     export FIGNORE=.svn:.pyc:.pyo:~
     shopt -u force_fignore
 fi
-#}}} End Shell section
 
-#{{{ Path Munging
+
+########################################################################
+#
+# Path munging
+#
+########################################################################
 
 # time to munge the path... why can't we all just get along?
 # agnostic
@@ -54,7 +63,6 @@ if [[ -d ~/bin ]]; then
     pathmunge ~/bin
 fi
 
-# Solaris
 case ${MYOS} in
     "Solaris")
         REV=`uname -r`
@@ -102,11 +110,10 @@ case ${MYOS} in
                 manpathmunge /usr/sfw/man after
         fi
         ;;
-# End Solaris section
 
-# Cygwin
-# Can't use 'pathmunge' function.  Can only set PATH variable in Windows'
-#   system properties.
+
+    # Can't use the 'pathmunge' function on Cygwin.  Can only set PATH variable
+    # in Windows' system properties.
     "Cygwin")
         REV=`uname -r`
         echo -e "Cygwin $REV --  \c"
@@ -116,9 +123,7 @@ case ${MYOS} in
             echo -e "Win Resource kit, \c"
         fi
         ;;
-# End Cygwin Section
 
-# Mac OSX
     "OSX")
         REV=`uname -r`
         echo -e "Darwin $REV -- \c"
@@ -142,24 +147,33 @@ case ${MYOS} in
             pathmunge /Library/Frameworks/Mono.framework/Versions/2.4/bin
         fi
         ;;
-# End MacOSX section
-    *)  ;;
+    *)
+        ;;
 esac
-#}}} End path munging section
 
-# PAGER {{{
+
+########################################################################
+#
+# Pager config
+#
+########################################################################
+
 if [ -x $(which less) ]; then
     PAGER="$(which less) -isR"
 else
     PAGER="more"
 fi
 export PAGER
-#}}}
 
-#{{{ Java / Python / Perl / Ruby
 
-# Java section
-# Is Java installed?
+########################################################################
+#
+# Java / Python / Ruby config
+#
+########################################################################
+
+## Java
+
 if [[ -x /usr/bin/java ]]; then
     JAVA_VERSION=`java -version 2>&1 | head -1 | awk '{print $3}'`
     echo -e "Java ${JAVA_VERSION}, \c"
@@ -177,10 +191,9 @@ if [[ -x /usr/bin/java ]]; then
        export CLASSPATH=/usr/lib/java
     fi
 fi
-# End Java section
 
-# Python section
-# Is Python installed?
+## Python
+
 if [[ -x `which python` ]]; then
     # Python prints version information from '-V' to STDERR.
     PYFULLVERSION=`python -V 2>&1 | awk '{print $2}'`
@@ -190,9 +203,9 @@ if [[ -x `which python` ]]; then
     # Use my python startup file.
     export PYTHONSTARTUP=$HOME/.pythonrc
 fi
-# End Python section
 
-# Ruby section
+## Ruby
+
 if [[ -x `which ruby` ]]; then
     # Print which Ruby is in my path.
     RUBY_VERSION=`ruby --version 2>&1 | awk '{print $2}'`
@@ -203,62 +216,80 @@ fi
 if [[ -d $HOME/.gem/ruby/1.8/bin ]]; then
     pathmunge $HOME/.gem/ruby/1.8/bin
 fi
-# End Ruby section.
-#}}} End Java / Python / Perl / Ruby
 
-#{{{ OS Specific
 
-# Solaris quirks
+########################################################################
+#
+# OS Specific
+#
+########################################################################
+
+## Solaris quirks
+
 if [ $MYOS == "Solaris" ]; then
     # If OpenPKG is installed, use that termcap instead of the decrepit one that comes w/ Solaris.
     if [[ -d "/usr/openpkg/share/ncurses/terminfo" ]]; then
         export TERMINFO="/usr/openpkg/share/ncurses/terminfo"
     fi
+
+    # Find GCC
     # Try the obvious place for gcc
     if [[ -x /usr/local/bin/gcc ]]; then
         export CC=/usr/local/bin/gcc
     fi
+
     # Now try the solaris place for gcc...
     if [[ -x /usr/sfw/bin/gcc ]]; then
         export CC=/usr/sfw/bin/gcc
     fi
+
     # Fix Solaris lack of a USER environment variable. May be obsolete...
     if [ ! -e ${USER} ]; then
     export USER=$LOGNAME
     fi
+
     # Let me know if vim is installed
     if [[ -x /usr/local/bin/vim ]]; then
         echo -e "VIM, \c"
     fi
 fi
-# End Solaris quirks
 
-# OS X
+## OS X quirks
+
 if [ $MYOS == "OSX" ]; then
   # Use a Solarized color pallete for LSCOLORS.
   # Found at: https://github.com/seebi/dircolors-solarized/issues/10
   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
-# End OS X
 
-# Linux -- placeholder
+## Linux quirks -- placeholder
 
-# Cygwin
+## Cygwin quirks
+
 if [ $MYOS == "Cygwin" ]; then
     umask 022
 fi
 
-#}}} end OS Specific
 
-#{{{ Environment Specific
+########################################################################
+#
+# Environment Specific
+#
+########################################################################
 
-# Differences for Dev / Testing / Prod environments go here.
+## Differences for Dev / Testing / Prod environments go here.
 
-#}}} End Environment specific
+
+########################################################################
+#
+# Misc
+#
+########################################################################
 
 # Get our functions and aliases.
 if [ -r .bashrc ]; then
     . .bashrc
 fi
+
 # Add a new line after we've printed all the stuff about our environment.
 echo ""

@@ -4,7 +4,11 @@
 source $HOME/.bash/environment
 source $HOME/.bash/functions
 
-#{{{  Global aliases
+########################################################################
+#
+# Global aliases
+#
+########################################################################
 
 alias c='clear'
 alias cp='cp -i'
@@ -19,11 +23,22 @@ alias ll='ls -lhFa'
 alias lt='ls -lhFtr'
 alias rm='rm -i'
 
-#}}}
 
-#{{{ OS Specific
+########################################################################
+#
+# OS Specific config
+#
+########################################################################
 
-# Solaris quirks
+## Completions
+
+if [[ -f /etc/bash_completion ]]; then
+  source /etc/bash_completion
+fi
+
+
+## Solaris quirks
+
 if [ $MYOS == "Solaris" ]; then
     alias id='id -a'
     # Tell 'ls' to use color output. '-G'
@@ -34,9 +49,9 @@ if [ $MYOS == "Solaris" ]; then
         alias vi='/usr/local/bin/vim'
     fi
 fi
-# End Solaris quirks
 
-# OSX quirks
+## OSX quirks
+
 if [ $MYOS == "OSX" ]; then
     # Tell 'ls' to use color output. '-G'
     alias l='ls -lhFG'
@@ -66,9 +81,9 @@ if [ $MYOS == "OSX" ]; then
         . /usr/local/etc/bash_completion
     fi
 fi
-# End OSX quirks
 
-# Linux
+## Linux quirks
+
 if [ $MYOS == "Linux" ]; then
     # Most distros comes w/ vim installed by default
     if [[ -x /usr/bin/vim ]]; then
@@ -76,21 +91,22 @@ if [ $MYOS == "Linux" ]; then
     fi
 fi
 
-# Cygwin
+## Cygwin quirks
+
 if [ $MYOS == "Cygwin" ]; then
-    #Don't use M$ crappy "find" command...
+    # Don't use M$ crappy "find" command...
     alias find='/usr/bin/find'
     # Get color output from 'ls'
     alias l='ls -lFh --color=auto'
     alias ll='ls -alFh --color=auto'
 fi
-#}}} end OS Specific
 
-#{{{ Prompt
 
-if [[ -f /etc/bash_completion ]]; then
-  source /etc/bash_completion
-fi
+########################################################################
+#
+# Prompt
+#
+########################################################################
 
 # Default prompt.
 if type -t __git_ps1 2>&1 > /dev/null; then
@@ -119,11 +135,21 @@ if [ "$DRW_ENV" = "PROD" ]; then
     PS1="${GREEN}\w${NOCOLOR}"' $(__git_ps1 "(%s)") '"\n\u@${RED}\h${NOCOLOR} \$ "
 fi
 
-#}}} End prompt section
 
-#{{{ Environment Specific
-    # placeholder
-#}}} End Environment specific
+########################################################################
+#
+# Environment specific config
+#
+########################################################################
+
+## Placeholder
+
+
+########################################################################
+#
+# Machine local config
+#
+########################################################################
 
 # Allow for machine specific customizations to be quarantined to another file.
 # I don't want to do this all over again...
