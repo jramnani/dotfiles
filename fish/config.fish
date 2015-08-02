@@ -1,19 +1,19 @@
 # On what OS are we running?
 switch (uname -s)
-  case "Linux"
-    set -gx MYOS "Linux"
-  case "SunOS"
-    set -gx MYOS "Solaris"
-  case "Darwin"
-    set -gx MYOS "OSX"
-  case "FreeBSD"
-    set -gx MYOS "FreeBSD"
-  case "OpenBSD"
-    set -gx MYOS "OpenBSD"
-  case "CYGWIN_NT-5.1"
-    set -gx MYOS "Cygwin"
-  case '*'
-    set -gx MYOS "Unkown"
+    case "Linux"
+        set -gx MYOS "Linux"
+    case "SunOS"
+        set -gx MYOS "Solaris"
+    case "Darwin"
+        set -gx MYOS "OSX"
+    case "FreeBSD"
+        set -gx MYOS "FreeBSD"
+    case "OpenBSD"
+        set -gx MYOS "OpenBSD"
+    case "CYGWIN_NT-5.1"
+        set -gx MYOS "Cygwin"
+    case '*'
+        set -gx MYOS "Unkown"
 end
 
 
