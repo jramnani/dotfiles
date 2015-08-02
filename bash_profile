@@ -11,8 +11,8 @@ source $HOME/.bash/functions
 #
 ########################################################################
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=emacs
+export VISUAL=emacs
 export LANG=en_US.UTF-8
 stty istrip
 stty erase 
