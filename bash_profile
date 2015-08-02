@@ -140,6 +140,15 @@ case ${MYOS} in
             pathmunge /opt/local/sbin
             manpathmunge /opt/local/share/man
         fi
+        # Homebrew installed? Like GNU Stow but better...
+        if [[ -x /usr/local/bin/brew ]]; then
+            pathmunge /usr/local/sbin
+            pathmunge /usr/local/bin
+            manpathmunge /usr/local/share/man
+            # Homebrew Casks should install applications into /Applications.
+            export HOMEBREW_CASK_OPTS=--appdir=/Applications
+        fi
+
         # Mono installed? If so, then we have to add this to the path, or else
         # NAnt doesn't work correctly.
         if [[ -d /Library/Frameworks/Mono.framework/Versions/2.4/bin ]]; then
