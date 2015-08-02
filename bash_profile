@@ -148,13 +148,6 @@ case ${MYOS} in
             # Homebrew Casks should install applications into /Applications.
             export HOMEBREW_CASK_OPTS=--appdir=/Applications
         fi
-
-        # Mono installed? If so, then we have to add this to the path, or else
-        # NAnt doesn't work correctly.
-        if [[ -d /Library/Frameworks/Mono.framework/Versions/2.4/bin ]]; then
-            echo -e "Mono 2.4, \c"
-            pathmunge /Library/Frameworks/Mono.framework/Versions/2.4/bin
-        fi
         ;;
     *)
         ;;
