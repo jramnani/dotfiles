@@ -278,6 +278,10 @@
                   (lambda () (add-to-list 'company-backends 'company-jedi)))
         :ensure t)
 
+      ;; A major mode for editing Pip requirements files.
+      (use-package pip-requirements
+        :ensure t)
+
       ;; Install Python documentation in Emacs Info format.
       (use-package python-info
         :ensure t)
