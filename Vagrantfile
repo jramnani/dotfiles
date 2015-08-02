@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Virtualbox not reporting guest IP on private network when using DHCP.
   config.vm.define "openbsd" do |bsd|
-    bsd.vm.box = "tmatilai/openbsd-5.5"
+    bsd.vm.box = "tmatilai/openbsd-5.6"
     bsd.vm.network "private_network", ip: "192.168.33.10"
     bsd.vm.synced_folder ".", "/vagrant", type: "rsync"
     bsd.ssh.shell = "/bin/ksh"
