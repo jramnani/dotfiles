@@ -86,6 +86,13 @@ if [ $MYOS == "OSX" ]; then
     fi
 fi
 
+## OpenBSD quirks
+
+if [ $MYOS == "OpenBSD" ]; then
+    # Human readable sizes. OpenBSD's df doesn't have a '-a' option.
+    alias df='df -h'
+fi
+
 ## Linux quirks
 
 if [ $MYOS == "Linux" ]; then
