@@ -2,8 +2,8 @@
 # Terminal settings, environment variables, and path munging.
 # Functions and aliases stored in .bashrc
 
-source $HOME/.bash/environment
-source $HOME/.bash/functions
+source $HOME/.bash/environment.sh
+source $HOME/.bash/functions.sh
 
 ########################################################################
 #

@@ -6,8 +6,8 @@ if [[ -z "$PS1" ]]; then
     return
 fi
 
-source $HOME/.bash/environment
-source $HOME/.bash/functions
+source $HOME/.bash/environment.sh
+source $HOME/.bash/functions.sh
 
 
 ########################################################################
