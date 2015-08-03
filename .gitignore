@@ -15,6 +15,7 @@ emacs.d/projectile*
 emacs.d/.python-environments/
 emacs.d/.smex-items
 emacs.d/SessionDesktop.el
+emacs.d/tramp
 emacs.d/url/
 
 
