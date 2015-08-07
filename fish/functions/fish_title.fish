@@ -1,3 +1,3 @@
 function fish_title
-    echo $USER'@'(hostname) (pwd)
+    echo $USER'@'(hostname -s) (basename (pwd))
 end
