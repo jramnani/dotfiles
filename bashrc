@@ -164,6 +164,6 @@ fi
 
 # Allow for machine specific customizations to be quarantined to another file.
 # I don't want to do this all over again...
-if [[ -r .machinerc ]]; then
-    . .machinerc
+if [[ -r "$HOME/.machinerc" ]]; then
+    . "$HOME/.machinerc"
 fi
