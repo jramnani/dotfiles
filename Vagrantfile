@@ -23,9 +23,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "freebsd" do |bsd|
-    bsd.vm.box = "chef/freebsd-10.0"
+    #    bsd.vm.box = "chef/freebsd-10.0"
+    bsd.vm.box = "freebsd/FreeBSD-10.2-RELEASE"
     bsd.vm.network "private_network", type: "dhcp"
+    bsd.vm.base_mac = "080027D14C66"
     bsd.vm.synced_folder ".", "/vagrant", type: "nfs"
+    bsd.ssh.shell = "sh"
   end
 
   # Virtualbox not reporting guest IP on private network when using DHCP.
