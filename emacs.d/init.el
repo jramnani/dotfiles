@@ -134,6 +134,7 @@
   (use-package fill-column-indicator
     :init
     (add-hook 'prog-mode-hook 'fci-mode)
+    :disabled t  ;; fci-mode is messing with auto complete.
     :ensure t)
 
   ;; Flycheck checks your program source code on the fly as you edit.
