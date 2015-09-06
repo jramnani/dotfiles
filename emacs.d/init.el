@@ -300,6 +300,14 @@
       (venv-initialize-eshell))
     :ensure t)
 
+  ;; re-builder lets you build regular expressions interactively.
+  (use-package re-builder
+    :config
+    (progn
+      ;; Setting reb-re-syntax to string let's you write regexes with
+      ;; fewer backslash escapes.
+      (setq reb-re-syntax 'string)))
+
   ;; Auto-save and backup files are saved as plain text.  Disable them
   ;; for encrypted file types.
   (use-package sensitive-mode
