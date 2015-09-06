@@ -72,11 +72,9 @@
     :ensure t)
 
   (use-package clojure-mode
-    :config
-    (progn
-      (use-package cider
-        :ensure t))
-    :defer t
+    :ensure t)
+
+  (use-package cider
     :ensure t)
 
   (use-package color-theme
