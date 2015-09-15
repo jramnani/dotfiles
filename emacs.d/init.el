@@ -74,6 +74,7 @@
   (use-package clojure-mode
     :ensure t)
 
+  ;; Cider is an interactive development environment for Clojure.
   (use-package cider
     :ensure t)
 
@@ -132,7 +133,7 @@
   (use-package fill-column-indicator
     :init
     (add-hook 'prog-mode-hook 'fci-mode)
-    :disabled t  ;; fci-mode is messing with auto complete.
+    :disabled t  ;; fci-mode is messing with auto complete and quickhelp.
     :ensure t)
 
   ;; Flycheck checks your program source code on the fly as you edit.
@@ -227,7 +228,7 @@
   (use-package outline-magic
     :ensure t)
 
-  ;; paredit is a minor-mode that for performing structured editing of
+  ;; paredit is a minor-mode for performing structured editing of
   ;; S-expressions.  Edit code, not text.
   (use-package paredit
     :init
@@ -286,7 +287,7 @@
   (use-package python-info
     :ensure t)
 
-  ;; Work with virtual environments within Emacs
+  ;; Work with Python virtual environments within Emacs
   (use-package virtualenvwrapper
     :commands (venv-activate venv-deactivate venv-mkvirtualenv venv-rmvirtualenv venv-workon)
     :init
@@ -304,14 +305,15 @@
   (use-package re-builder
     :config
     (progn
-      ;; Setting reb-re-syntax to string let's you write regexes with
+      ;; Setting reb-re-syntax to 'string let's you write regexes with
       ;; fewer backslash escapes.
       (setq reb-re-syntax 'string)))
 
   ;; Auto-save and backup files are saved as plain text.  Disable them
   ;; for encrypted file types.
   (use-package sensitive-mode
-    :mode ("\\.gpg\\'" . sensitive-mode))
+    :mode ("\\.gpg\\'" . sensitive-mode)
+    :load-path "lisp/")
 
   (use-package shell-script-mode
     ;; For editing my Bash profile within my dotfiles repo.
