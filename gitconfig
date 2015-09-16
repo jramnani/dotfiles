@@ -24,7 +24,8 @@
 [github]
   user = jramnani
 [credential]
-	helper = cache --timeout=3600
+  helper = osxkeychain
+  helper = cache --timeout=3600
 [push]
   default = upstream
 
