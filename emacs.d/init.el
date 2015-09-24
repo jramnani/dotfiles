@@ -418,7 +418,7 @@
 ;; auto-fill-mode automatically wraps text. It uses the variable
 ;; "fill-column" to determine when to wrap.
 (setq-default fill-column 80)
-(add-hook 'text-mode 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Show line numbers
 (global-linum-mode t)
