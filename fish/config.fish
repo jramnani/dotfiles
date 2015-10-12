@@ -18,14 +18,7 @@ end
 
 
 # Set BROWSER for the 'help' command.
-if not set -q BROWSER
-    switch $MYOS
-        case "OSX"
-            set -U BROWSER 'open'
-        case "Linux"
-            set -U BROWSER 'google-chrome'
-    end
-end
+set -x BROWSER firefox
 
 # Shell configuration
 set -gx FIGNORE .svn .git .hg .pyc .pyo .o
