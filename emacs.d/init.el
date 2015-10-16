@@ -343,6 +343,11 @@
     :diminish undo-tree-mode
     :ensure t)
 
+  ;; The unfill package provides the inverse functions of Emacs' fill-paragraph
+  ;; and fill-region commands.
+  (use-package unfill
+    :ensure t)
+
   ;; Web mode - Emacs standard HTML mode doesn't understand templates, or CSS, or JS.
   (use-package web-mode
     :mode (;; Use web-mode for plain HTML
