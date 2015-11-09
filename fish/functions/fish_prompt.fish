@@ -17,8 +17,10 @@ function fish_prompt -d "Write out the prompt"
     end
 
     # Git branch and status
-    if git rev-parse --git-dir > /dev/null 2>&1
-        printf ' git:(%s)' (__git_status_prompt)
+    if which git > /dev/null 2>&1
+        if git rev-parse --git-dir > /dev/null 2>&1
+            printf ' git:(%s)' (__git_status_prompt)
+        end
     end
 
     printf '\n'
