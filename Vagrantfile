@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "freebsd" do |bsd|
     #    bsd.vm.box = "chef/freebsd-10.0"
     bsd.vm.box = "freebsd/FreeBSD-10.2-RELEASE"
-    bsd.vm.network "private_network", type: "dhcp"
+    bsd.vm.network "private_network", ip: "192.168.32.10"
     bsd.vm.base_mac = "080027D14C66"
     bsd.vm.synced_folder ".", "/vagrant", type: "nfs"
     bsd.ssh.shell = "sh"
@@ -44,5 +44,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bsd.vm.provision "shell",
                      inline: "PKG_PATH=#{openbsd_mirror}/#{version}/packages/#{arch}/ sudo pkg_add -I bash"
   end
-
 end
