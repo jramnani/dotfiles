@@ -23,6 +23,13 @@ function fish_prompt -d "Write out the prompt"
         end
     end
 
+    # Mercurial branch and status
+    if which hg > /dev/null 2>&1
+        if __find_hg_root 2>&1
+            printf ' hg:(%s)' (__hg_status_prompt)
+        end
+    end
+
     printf '\n'
 
     set_color normal
@@ -62,4 +69,36 @@ function __git_status_prompt -d "Print the status of git repository for use in t
             set_color normal
         end
     end
+end
+
+
+function __hg_status_prompt -d "Print the status of Mercurial repository for use in the prompt"
+    set -l hg_prompt_color blue
+
+    set_color $hg_prompt_color
+    printf '%s' (cat "$HG_ROOT/branch" 2>/dev/null; or hg branch)
+
+    if test (count (hg status)) != 0
+        set_color red
+        printf ' Δ'
+    end
+
+    set_color normal
+end
+
+
+function __find_hg_root
+    set -l dir (pwd)
+    set -e HG_ROOT
+
+    while test "$dir" != "/"
+        if test -f "$dir/.hg/dirstate"
+            set -g HG_ROOT "$dir/.hg"
+            return 0
+        end
+
+        set -l dir (dirname $dir)
+    end
+
+    return 1
 end
