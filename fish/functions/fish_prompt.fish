@@ -78,7 +78,7 @@ function __hg_status_prompt -d "Print the status of Mercurial repository for use
     set_color $hg_prompt_color
     printf '%s' (cat "$HG_ROOT/branch" 2>/dev/null; or hg branch)
 
-    if test (count (hg status)) != 0
+    if test (count (hg status --modified --added --removed --deleted)) != 0
         set_color red
         printf ' Δ'
     end
