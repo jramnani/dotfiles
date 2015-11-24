@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Virtualbox not reporting guest IP on private network when using DHCP.
   config.vm.define "openbsd" do |bsd|
     openbsd_mirror = "ftp://ftp.vim.org/mirror/OpenBSD/"
-    version = "5.6"
+    version = "5.7"
     arch = "amd64"
 
     bsd.vm.box = "tmatilai/openbsd-#{version}"
