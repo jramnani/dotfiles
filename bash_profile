@@ -36,7 +36,6 @@ fi
 ########################################################################
 
 # time to munge the path... why can't we all just get along?
-# agnostic
 if [[ -d /sbin ]]; then
     pathmunge /sbin
 fi
@@ -142,6 +141,7 @@ case ${MYOS} in
         fi
         # Homebrew installed? Like GNU Stow but better...
         if [[ -x /usr/local/bin/brew ]]; then
+            echo -e "Homebrew, \c"
             pathmunge /usr/local/sbin
             pathmunge /usr/local/bin
             manpathmunge /usr/local/share/man
