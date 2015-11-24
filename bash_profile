@@ -149,6 +149,11 @@ case ${MYOS} in
             export HOMEBREW_CASK_OPTS=--appdir=/Applications
         fi
         ;;
+    *BSD|Linux)
+        REV=`uname -r`
+        MYOS_NAME=`uname -s`
+        echo -e "$MYOS_NAME $REV -- \c"
+        ;;
     *)
         ;;
 esac
