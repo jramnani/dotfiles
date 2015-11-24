@@ -219,11 +219,6 @@ if which ruby >/dev/null 2>&1; then
     echo -e "Ruby $RUBY_VERSION, \c"
 fi
 
-# Are RubyGems installed in my $HOME dir?
-if [[ -d $HOME/.gem/ruby/1.8/bin ]]; then
-    pathmunge $HOME/.gem/ruby/1.8/bin
-fi
-
 
 ########################################################################
 #
