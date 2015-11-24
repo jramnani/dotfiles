@@ -6,7 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell",
-                      inline: "sudo -u vagrant -H /vagrant/install.sh -p"
+                      inline: "/vagrant/install.sh -p",
+                      privileged: false
 
   # Don't need a beefy virtual machine to test whether my profile works.
   config.vm.provider "virtualbox" do |v|
