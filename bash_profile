@@ -201,7 +201,7 @@ fi
 
 ## Python
 
-if [[ -x `which python` ]]; then
+if which python >/dev/null 2>&1; then
     # Python prints version information from '-V' to STDERR.
     PYFULLVERSION=`python -V 2>&1 | awk '{print $2}'`
     echo -e "Python $PYFULLVERSION, \c"
@@ -213,7 +213,7 @@ fi
 
 ## Ruby
 
-if [[ -x `which ruby` ]]; then
+if which ruby >/dev/null 2>&1; then
     # Print which Ruby is in my path.
     RUBY_VERSION=`ruby --version 2>&1 | awk '{print $2}'`
     echo -e "Ruby $RUBY_VERSION, \c"
