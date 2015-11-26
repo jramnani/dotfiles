@@ -378,6 +378,11 @@
       (add-hook 'text-mode-hook 'writegood-mode))
     :ensure t)
 
+  ;; OS X property list files.
+  (use-package xml-mode
+    :mode "\\.plist\'")
+
+
   (use-package yaml-mode
     :ensure t)
 
