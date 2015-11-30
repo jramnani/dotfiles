@@ -13,7 +13,7 @@ switch (uname -s)
     case "CYGWIN_NT-5.1"
         set -gx MYOS "Cygwin"
     case '*'
-        set -gx MYOS "Unkown"
+        set -gx MYOS "Unknown"
 end
 
 
