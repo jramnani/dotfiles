@@ -111,6 +111,10 @@
   (use-package dokuwiki-mode
     :ensure t)
 
+  (use-package dtrace-script-mode
+    :mode "\\.d\\'"
+    :ensure t)
+
   ;; eldoc provides help on elisp function arguments in the minibuffer.
   (use-package eldoc
     :init
