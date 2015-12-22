@@ -30,6 +30,10 @@ set -gx LC_ALL 'en_US.UTF-8'
 set -gx PAGER less
 set -gx EDITOR vim
 
+# Pager
+set -gx LESS '--ignore-case --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
+
+
 # Aliases
 alias c 'clear'
 alias df 'df -ah'
