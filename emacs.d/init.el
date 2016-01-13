@@ -132,6 +132,15 @@
     ;; deleting the window.  Delete the new window, please.
     (bind-key (kbd "q") 'delete-window ert-results-mode-map))
 
+  ;; Configure Emacs 'exec-path' variable to be the same as my SHELL's PATH.
+  ;; Specifically for OS X GUI editor windows because GUI apps get a different
+  ;; default environment.
+  (use-package exec-path-from-shell
+    :init
+    (when (memq window-system '(mac ns))
+      (exec-path-from-shell-initialize))
+    :ensure t)
+
   ;; Provides a visual indicator of where the 'fill-column' is set.
   ;; 'fill-column' is used for wrapping lines.
   (use-package fill-column-indicator
