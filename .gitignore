@@ -50,3 +50,4 @@ vim/bundle/vim-rails/.gitignore
 
 # Vagrant
 .vagrant/
+/emacs.d/ido.last
