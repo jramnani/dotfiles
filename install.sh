@@ -56,6 +56,10 @@ install_profile () {
   done
   unset FILE
 
+  # Clojure's leiningen
+  mkdir -p $HOME/.lein
+  link_file lein/profiles.clj
+
   # Fish profile
   mkdir -p $HOME/.config/fish
   for FISH_FILE in $(ls $SCRIPT_PATH/fish/); do
