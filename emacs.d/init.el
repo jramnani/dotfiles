@@ -345,6 +345,14 @@
     (smex-initialize)
     :ensure t)
 
+  ;; Edit SSH Config files.
+  (use-package ssh-config-mode
+    :mode ((".ssh/config\\'"       . ssh-config-mode)
+           ("sshd?_config\\'"      . ssh-config-mode)
+           ("known_hosts\\'"       . ssh-known-hosts-mode)
+           ("authorized_keys2?\\'" . ssh-authorized-keys-mode))
+    :ensure t)
+
   ;; Rename buffers and files together.
   (use-package steve-yegge-buffer-utils
     :load-path "vendor/")
