@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "ubuntu" do |ubuntu|
-    ubuntu.vm.box = "trusty"
+    ubuntu.vm.box = "ubuntu/trusty64"
   end
 
   config.vm.define "centos" do |centos|
