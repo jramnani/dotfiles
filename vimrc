@@ -20,8 +20,7 @@ if $SHELL =~ "fish"
 endif
 
 " Use Pathogen plugin to load all other plugins
-call pathogen#incubate()
-call pathogen#helptags()
+call pathogen#infect()
 
 set nocompatible        " Disable vi compatibility.
 set nobackup            " Do not keep a backup file.
