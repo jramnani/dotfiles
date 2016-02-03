@@ -272,6 +272,11 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile      *.csproj    setlocal filetype=xml
   augroup END
 
+  augroup clojure
+    autocmd!
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesToggle
+  augroup END
+
   augroup css
     autocmd!
     autocmd BufRead,FileReadPre,BufNewFile     *.less setlocal filetype=css
