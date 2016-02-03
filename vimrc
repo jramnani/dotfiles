@@ -248,11 +248,7 @@ let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.o', '\.pyc', '\.pyo', '.Pytho
 nmap <leader>d :NERDTreeToggle<CR>
 
 " VimClojure settings
-let clj_highlight_builtins = 1
-let clj_highlight_contrib = 1
-let clj_paren_rainbow = 1
-
-
+let g:clojure_fuzzy_indent = 1
 
 "------------------------------------------------------------------------------
 " File-type specific settings.
@@ -274,11 +270,6 @@ if has("autocmd")
     " MSBuild / Visual Studio
     autocmd BufRead,FileReadPre,BufNewFile      *.proj    setlocal filetype=xml
     autocmd BufRead,FileReadPre,BufNewFile      *.csproj    setlocal filetype=xml
-  augroup END
-
-  augroup clojure
-    autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   setlocal filetype=clojure
   augroup END
 
   augroup css
