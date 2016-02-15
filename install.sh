@@ -98,6 +98,7 @@ install_profile () {
 
   # Ruby
   link_file irbrc
+  link_file gemrc
 
   # RPM
   link_file rpmmacros
