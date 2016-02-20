@@ -74,6 +74,11 @@ install_profile () {
 
   # Emacs
   link_file emacs.d
+  for EMACS_DIR in emacs.d/{auto-save,auto-save-list,backups}; do
+    mkdir -p $EMACS_DIR
+    chmod 0700 $EMACS_DIR
+  done
+  unset EMACS_DIR
 
   # Fonts
   # Configure Font hinting for KDE.
