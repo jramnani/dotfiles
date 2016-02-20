@@ -12,7 +12,7 @@ link_file () {
   fi
 
   if [ ! -L $HOME/.${FILE} ]; then
-    echo "Linking: $HOME/.${FILE} -> $PWD/$FILE"
+    echo "Linking: $HOME/.${FILE} -> $SCRIPT_PATH/$FILE"
     ln -s $SCRIPT_PATH/$FILE $HOME/.${FILE}
   else
     echo "Link already exists for '$FILE'. Nothing to do."
@@ -34,7 +34,7 @@ link_script () {
   fi
 
   if [ ! -L "$DESTINATION_FILE" ]; then
-    echo "Linking: $DESTINATION_FILE -> $PWD/bin/$FILE"
+    echo "Linking: $DESTINATION_FILE -> $SCRIPT_PATH/bin/$FILE"
     ln -s "$SCRIPT_PATH/bin/$FILE" "$DESTINATION_FILE"
   else
     echo "Link already exists for 'bin/$FILE'. Nothing to do."
