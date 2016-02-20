@@ -164,6 +164,10 @@
     (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
     :ensure t)
 
+  ;; Date and time utility functions.
+  (use-package jramnani-date
+    :load-path "lisp/")
+
   ;; Lice inserts open source license text as comments in the buffer.
   ;; Useful for inserting file headers.
   (use-package lice
