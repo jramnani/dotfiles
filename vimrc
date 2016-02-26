@@ -187,9 +187,10 @@ iab friday     Friday
 iab saturday   Saturday
 iab sunday     Sunday
 
-" Enable this if you mistype :w as :W or :q as :Q.
-" nmap :W :w
-" nmap :Q :q
+" Enable these if you mistype :w as :W or :q as :Q.
+nmap :W :w
+" I never use 'Ex' mode. Intentionally.
+nmap :Q :q
 " Enable this if you mistype :x as :X.
 nmap :X :x
 
