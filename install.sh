@@ -116,6 +116,7 @@ install_profile () {
   # Vim
   # Create the directory where I place my Vim backup files
   mkdir -p $HOME/tmp/vim
+  chmod 0700 $HOME/tmp/vim
   if [ ! -L $HOME/.vim ]; then
     echo "Linking Vim config dir: $HOME/.vim -> $SCRIPT_PATH/vim"
     ln -s $SCRIPT_PATH/vim $HOME/.vim
