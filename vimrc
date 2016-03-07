@@ -187,9 +187,10 @@ iab friday     Friday
 iab saturday   Saturday
 iab sunday     Sunday
 
-" Enable this if you mistype :w as :W or :q as :Q.
-" nmap :W :w
-" nmap :Q :q
+" Enable these if you mistype :w as :W or :q as :Q.
+nmap :W :w
+" I never use 'Ex' mode. Intentionally.
+nmap :Q :q
 " Enable this if you mistype :x as :X.
 nmap :X :x
 
@@ -379,14 +380,15 @@ endif
 if has("win32")
     set backupdir=$HOME\\tmp\\vim\\backups\\   " backups
     set directory=$HOME\\tmp\\vim\\swap\\      " swap files
-    if has("undodir")
+    if has("persistent_undo")
       set undodir=$HOME\\tmp\\vim\\undo\\        " undo files
     endif
 else
     set backupdir=$HOME/tmp/vim/backup//
     set directory=$HOME/tmp/vim/swap//
-    if has("undodir")
+    if has("persistent_undo")
       set undodir=$HOME/tmp/vim/undo//
+      set undofile
     endif
 endif
 
