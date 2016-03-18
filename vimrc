@@ -276,6 +276,10 @@ if has("autocmd")
   augroup clojure
     autocmd!
     autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesToggle
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadRound
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadSquare
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadBraces
+    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadChevrons
   augroup END
 
   augroup css
