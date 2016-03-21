@@ -26,6 +26,7 @@ case `uname -s` in
     *)
         MYOS="Unknown";;
 esac
+export MYOS
 
 # Detect: Shell
 MYSHELL=`basename $SHELL`
