@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+if [[ $MYOS == "OSX" ]]; then
+  echo "Opening file in Marked 2.app"
+  command open -a 'Marked 2' $@
+else
+  echo "Not on OS X. No Markdown preview available."
+  exit 1
+fi
