@@ -308,6 +308,11 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile     *.git/* setlocal t_Co=256
   augroup END
 
+  augroup javascript
+    autocmd!
+    autocmd BufRead,BufReadPre,BufNewFile   *.json setlocal filetype=javascript
+  augroup END
+
   " Jinja templates
   augroup jinja
     autocmd!
