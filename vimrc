@@ -270,16 +270,12 @@ if has("autocmd")
     autocmd BufRead,FileReadPre,BufNewFile      *.nant    setlocal filetype=xml
     " MSBuild / Visual Studio
     autocmd BufRead,FileReadPre,BufNewFile      *.proj    setlocal filetype=xml
-    autocmd BufRead,FileReadPre,BufNewFile      *.csproj    setlocal filetype=xml
+    autocmd BufRead,FileReadPre,BufNewFile      *.csproj  setlocal filetype=xml
   augroup END
 
-  augroup clojure
+  augroup rainbow_lisp
     autocmd!
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesToggle
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadRound
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadSquare
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadBraces
-    autocmd BufRead,FileReadPre,BufNewFile     *.clj   RainbowParenthesesLoadChevrons
+    autocmd FileType lisp,clojure,scheme  RainbowParentheses
   augroup END
 
   augroup css
