@@ -248,6 +248,15 @@ let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.o', '\.pyc', '\.pyo', '.Pytho
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
 
+" lightline - lightweight fancy status line.
+" Configure Vim to show a status bar even if only one window is showing.
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+
+
+
 " VimClojure settings
 let g:clojure_fuzzy_indent = 1
 
