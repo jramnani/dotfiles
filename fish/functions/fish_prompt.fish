@@ -17,14 +17,14 @@ function fish_prompt -d "Write out the prompt"
     end
 
     # Git branch and status
-    if command -s git > /dev/null
+    if which git > /dev/null 2>&1
         if git rev-parse --git-dir > /dev/null 2>&1
             printf ' git:%s' (__fish_git_prompt | sed -e 's/^ //')
         end
     end
 
     # Mercurial branch and status
-    if command -s hg > /dev/null
+    if which hg > /dev/null 2>&1
         if __find_hg_root 2>&1
             printf ' hg:(%s)' (__hg_status_prompt)
         end
