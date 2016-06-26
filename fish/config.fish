@@ -103,7 +103,7 @@ set -gx VIRTUALFISH_COMPAT_ALIASES 1
 set -l VIRTUALFISH_PLUGINS auto_activation compat_aliases projects
 
 
-if which python >/dev/null 2>&1; and python -m virtualfish >/dev/null 2>&1
+if begin which python >/dev/null 2>&1; and python -m virtualfish >/dev/null 2>&1; end
     eval (python -m virtualfish $VIRTUALFISH_PLUGINS)
 end
 
