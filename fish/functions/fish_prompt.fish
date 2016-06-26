@@ -17,14 +17,14 @@ function fish_prompt -d "Write out the prompt"
     end
 
     # Git branch and status
-    if which git > /dev/null 2>&1
+    if command -s git > /dev/null
         if git rev-parse --git-dir > /dev/null 2>&1
-            printf ' git:(%s)' (__git_status_prompt)
+            printf ' git:%s' (__fish_git_prompt | sed -e 's/^ //')
         end
     end
 
     # Mercurial branch and status
-    if which hg > /dev/null 2>&1
+    if command -s hg > /dev/null
         if __find_hg_root 2>&1
             printf ' hg:(%s)' (__hg_status_prompt)
         end
@@ -44,31 +44,6 @@ function fish_prompt -d "Write out the prompt"
     end
 
     set_color normal
-end
-
-
-function __git_status_prompt -d "Print the status of git repository for use in the prompt."
-    set -l git_prompt_color blue
-
-    # The command, 'git branch', outputs one branch per line, the current branch
-    # is prefixed with a '*'.  If HEAD is a commit without a symbolic reference
-    # it will look like: '(HEAD detached at c2814fa)'.  If it is a new repository
-    # there will be no branch.
-    set -l branch (git branch --no-color ^&- | awk '/^\*/ {print $0}' | sed -e 's/\* //' | sed -e 's/[()]//g')
-
-    if test -n "$branch"
-        set_color $git_prompt_color
-        printf '%s' $branch
-        set_color normal
-
-        # Get the status of the working directory. Are there modified files?
-        git diff --quiet HEAD 2>&1
-        if test $status = 1
-            set_color red
-            printf ' Δ'
-            set_color normal
-        end
-    end
 end
 
 

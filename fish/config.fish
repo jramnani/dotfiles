@@ -33,6 +33,13 @@ set -gx EDITOR vim
 # Pager
 set -gx LESS '--ignore-case --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
 
+# Prompt
+set -g __fish_git_prompt_showcolorhints 1
+set -g __fish_git_prompt_showdirtystate 1
+set -g __fish_git_prompt_char_dirtystate 'Δ'
+set -g ___fish_git_prompt_color_branch (set_color blue)
+set -g ___fish_git_prompt_color_branch_done (set_color normal)
+
 
 # Aliases
 alias c 'clear'
