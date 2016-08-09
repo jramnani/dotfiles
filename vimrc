@@ -220,7 +220,6 @@ map ;H lBi<a href="<ESC>Ea"></a><ESC>3hi
 " Ctrlp
 " Recycle my old mappings for Command-t and BufExplorer until I get used to
 " how Ctrlp does things.
-nmap <leader>t :CtrlP<CR>
 nmap <leader>be :CtrlPBuffer<CR>
 
 " FuzzyFinder mapping
