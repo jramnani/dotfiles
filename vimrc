@@ -243,7 +243,18 @@ let NERDTreeShowHidden = 1
 "let NERDTreeHijackNetrw = 0
 " Ignoring: dotfiles, vim backup files, OS X droppings, Python bytecode,
 " Go compiler output.
-let NERDTreeIgnore=['\.$', '\~$', '\.DS_Store', '\.o', '\.pyc', '\.pyo', '.Python', '\.8', '\.6']
+let NERDTreeIgnore=[
+      \ '\.$',
+      \ '\~$',
+      \ '\.DS_Store',
+      \ '\.o$',
+      \ '\.pyc$',
+      \ '\.pyo$',
+      \ '.Python',
+      \ '__pycache__',
+      \ '\.8$',
+      \ '\.6$'
+\ ]
 
 " Make ,d open NERDTree
 nmap <leader>d :NERDTreeToggle<CR>
@@ -381,7 +392,7 @@ if &term =~ "xterm-256color"
 endif
 
 " Set color scheme based on the background of your terminal.
-if &term =~ "xterm"
+if &term =~ "xterm" || &term =~ "screen"
   set background=dark
   colorscheme solarized
 endif
