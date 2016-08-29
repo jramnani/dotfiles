@@ -31,3 +31,5 @@
 
 [include]
   path = .gitconfig-user
+[rerere]
+	enabled = true
