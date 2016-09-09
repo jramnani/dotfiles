@@ -437,6 +437,8 @@ if has("gui_running")
     " Set the color scheme.
     set background=dark
     colorscheme solarized
+    " Disable cursor blinking
+    set guicursor+=a:blinkon0
 endif
 
 " Mac specific GUI settings.
