@@ -145,8 +145,6 @@ case ${MYOS} in
             pathmunge /usr/local/sbin
             pathmunge /usr/local/bin
             manpathmunge /usr/local/share/man
-            # Homebrew Casks should install applications into /Applications.
-            export HOMEBREW_CASK_OPTS=--appdir=/Applications
         fi
         ;;
     *BSD|Linux)
