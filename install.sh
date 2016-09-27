@@ -101,6 +101,9 @@ install_profile () {
     link_file $HG_FILE
   done
 
+  # Python
+  link_file pythonrc
+
   # Ruby
   link_file irbrc
   link_file gemrc
