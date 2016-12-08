@@ -33,3 +33,12 @@
   path = .gitconfig-user
 [rerere]
 	enabled = true
+
+# Ansible Vault files
+[diff "ansible-vault"]
+  textconv = ansible-vault view
+  cachetextconv = false
+
+[merge "ansible-vault"]
+  name = ansible-vault merge driver
+  driver = /usr/local/bin/ansible-vault-merge -- %O %A %B %P
