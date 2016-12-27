@@ -61,3 +61,7 @@ Session.vim
 # Tags #
 ########
 TAGS
+
+# IntelliJ #
+############
+.idea/workspace.xml
