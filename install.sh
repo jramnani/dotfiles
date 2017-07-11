@@ -101,6 +101,13 @@ install_profile () {
     link_file $HG_FILE
   done
 
+  # Molecule
+  if [[ ! -L "$HOME/.config/molecule/config.yml" ]]; then
+    echo "Linking Molecule config file: $HOME/.config/molecule/config.yml -> $SCRIPT_PATH/molecule.yml"
+    mkdir -p "$HOME/.config/molecule"
+    ln -f -s "$SCRIPT_PATH/molecule.yml" "$HOME/.config/molecule/config.yml"
+  fi
+
   # Python
   link_file pythonrc
 

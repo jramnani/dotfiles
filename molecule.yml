@@ -1,0 +1,9 @@
+---
+vagrant:
+  platforms:
+    - name: xenial
+      box: "bento/ubuntu-16.04"
+      box_url: "bento/ubuntu-16.04"
+    - name: trusty
+      box: "bento/ubuntu-14.04"
+      box_url: "bento/ubuntu-14.04"
