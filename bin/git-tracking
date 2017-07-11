@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo -n "This local branch is tracking: "
+git rev-parse --abbrev-ref --symbolic-full-name '@{u}'
