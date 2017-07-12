@@ -14,11 +14,11 @@ if [ "${CURRENT_BRANCH}" != "" ]; then
       REMOTE_REPOSITORY="${TRACKING_REPOSITORY}"
       REMOTE_BRANCH="$(git config branch.${CURRENT_BRANCH}.merge | sed -e 's#^[^/]*/[^/]*/##')"
       TARGET="${REMOTE_REPOSITORY}/${REMOTE_BRANCH}"
+
+      echo "To: ${TARGET}"
+      echo ""
+      
+      git log ${TARGET}..
     fi
   fi
-  
-  echo "To: ${TARGET}"
-  echo ""
-  
-  git log ${TARGET}..
 fi
