@@ -44,7 +44,7 @@ set -g ___fish_git_prompt_color_branch_done (set_color normal)
 # Aliases
 alias c 'clear'
 alias df 'df -ah'
-alias g 'egrep -i'
+alias g 'egrep --color=auto -i'
 alias j 'jobs'
 alias m $PAGER
 alias l 'ls -lhF'
