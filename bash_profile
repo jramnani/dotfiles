@@ -292,8 +292,8 @@ fi
 ########################################################################
 
 # Get our functions and aliases.
-if [ -r .bashrc ]; then
-    . .bashrc
+if [ -r "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
 fi
 
 # Add a new line after we've printed all the stuff about our environment.
