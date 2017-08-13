@@ -255,6 +255,16 @@ if [ $MYOS == "OSX" ]; then
   # Use a Solarized color pallete for LSCOLORS.
   # Found at: https://github.com/seebi/dircolors-solarized/issues/10
   export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+  # Homebrew on macOS installs Python with a versioned executable. e.g. python3
+  if [[ -x /usr/local/bin/python3 ]]; then
+    VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+  elif [[ -x /usr/local/bin/python2 ]]; then
+    VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+  else
+    VIRTUALENVWRAPPER_PYTHON=$(which python)
+  fi
+  export VIRTUALENVWRAPPER_PYTHON
 fi
 
 ## Linux quirks -- placeholder
