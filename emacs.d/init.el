@@ -215,6 +215,11 @@
     :bind (("C-c h" . monky-status))
     :ensure t)
 
+  ;; Directory browser like NERDTree for Vim
+  (use-package neotree
+    :bind (("C-c d" . neotree-toggle))
+    :ensure t)
+
   ;; The Nix package manager (http://nixos.org).
   (use-package nix-mode
     :ensure t)
