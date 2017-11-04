@@ -218,6 +218,9 @@
   ;; Directory browser like NERDTree for Vim
   (use-package neotree
     :bind (("C-c d" . neotree-toggle))
+    :config
+    (progn
+      (setq projectile-switch-project-action 'neotree-projectile-action))
     :ensure t)
 
   ;; The Nix package manager (http://nixos.org).
