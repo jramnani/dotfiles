@@ -21,6 +21,8 @@
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore_global
+[diff]
+  submodule = log
 [github]
   user = jramnani
 [credential]
