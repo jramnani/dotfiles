@@ -159,6 +159,12 @@
   (use-package go-mode
     :ensure t)
 
+  ;; Groovy
+  (use-package groovy-mode
+    :init
+    (add-to-list 'auto-mode-alist '("Jenkinsfile\\'" . groovy-mode))
+    :ensure t)
+
   (use-package jinja2-mode
     :init
     (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
