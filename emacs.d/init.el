@@ -627,7 +627,7 @@
 ;; TODO: Emacs doesn't like Fish in shell-mode, or it doesn't like something
 ;; in my fish config.
 (setenv "ESHELL" "/bin/bash")
-
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
