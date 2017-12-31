@@ -285,6 +285,11 @@
   ;; Python
   (use-package python
     :commands python-mode
+    :init
+    (progn
+      ;; Configure modes for Pipenv files
+      (add-to-list 'auto-mode-alist '("Pipfile\\'" . conf-mode))
+      (add-to-list 'auto-mode-alist '("Pipfile\\.lock\\'" . javascript-mode)))
     :config
     (progn
       ;; Python hackers like their lines to be 72 columns.
