@@ -109,4 +109,6 @@ end
 
 
 # Source local machine-specific file.
-. $HOME/.machinerc.fish
+if test -f $HOME/.machinerc.fish
+    . $HOME/.machinerc.fish
+end
