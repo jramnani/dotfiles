@@ -18,7 +18,7 @@ end
 
 
 # Set BROWSER for the 'help' command.
-set -x BROWSER firefox
+set -x BROWSER "open -a 'Safari'"
 
 # Shell configuration
 set -gx FIGNORE .svn .git .hg .pyc .pyo .o
