@@ -17,7 +17,7 @@
   (package-initialize)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("org" . "http://code.orgmode.org/elpa/") t)
 
   ;; Lisp code I find on the Internets that may not be packaged
   (add-to-list 'load-path "~/.emacs.d/vendor/")
