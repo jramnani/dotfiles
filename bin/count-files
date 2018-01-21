@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DIR=$1
+
+if [[ -z $DIR ]]; then
+   echo "Usage: $0 DIR"
+   exit 1
+fi
+
+find "$DIR" -type f -print | wc -l
