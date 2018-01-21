@@ -96,12 +96,13 @@ set -x PYTHONSTARTUP ~/.pythonrc
 # Virtualfish: a Virtualenvwrappper equivalent for Fish.
 # https://github.com/adambrenecki/virtualfish
 # This config must happen after path munging is complete.
-set -gx VIRTUALFISH_HOME $HOME/.venv
+set -gx VIRTUALFISH_HOME $HOME/.local/share/virtualenvs/
 set -gx PROJECT_HOME $HOME/code
 # Use compat aliases to help my muscle memory for now.
 set -gx VIRTUALFISH_COMPAT_ALIASES 1
-set -l VIRTUALFISH_PLUGINS auto_activation compat_aliases projects
-
+# Disable auto_activation plugin while I figure out how to make it play nice with Pipenv
+#set -l VIRTUALFISH_PLUGINS auto_activation compat_aliases projects
+set -l VIRTUALFISH_PLUGINS compat_aliases projects
 
 if begin which python3 >/dev/null 2>&1; and python3 -m virtualfish >/dev/null 2>&1; end
     eval (python3 -m virtualfish $VIRTUALFISH_PLUGINS)
