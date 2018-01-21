@@ -29,4 +29,4 @@
 KEY_TYPE=ed25519
 WORK_FACTOR=100
 
-ssh-keygen -t $KEY_TYPE -a 100 $@
+ssh-keygen -t $KEY_TYPE -a $WORK_FACTOR $@
