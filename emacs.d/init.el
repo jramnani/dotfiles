@@ -667,7 +667,12 @@
 (when (eq system-type 'darwin)
   ;; Use Spotlight to locate files.  Thanks, EmacWiki.
   ;; http://www.emacswiki.org/emacs/MacOSTweaks#toc7
-  (setq locate-command "/usr/bin/mdfind"))
+  (setq locate-command "/usr/bin/mdfind")
+
+  ;; Prefer to open new files in an existing Frame, rather than creating a new
+  ;; Frame each time.
+  ;; https://superuser.com/questions/277755/emacs-opens-files-in-a-new-frame-when-opened-with-open-a
+  (setq ns-pop-up-frames nil))
 
 ;; Stop typing full "yes or no" answers to Emacs.
 (defalias 'yes-or-no-p 'y-or-n-p)
