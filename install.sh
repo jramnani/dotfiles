@@ -111,6 +111,15 @@ install_profile () {
   # Python
   link_file pythonrc
 
+  # IPython
+  if [[ ! -L "$HOME/.ipython/profile_default/ipython_config.py" ]]; then
+      echo "Linking IPython config file for the default profile: $HOME/.ipython/profile_default/ipython_config.py -> $SCRIPT_PATH/ipython/ipython_config.py"
+      mkdir -p ~/.ipython/profile_default
+      ln -f -s "$SCRIPT_PATH/ipython/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
+  else
+      echo "Link already exists for $HOME/.ipython/profile_default/ipython_config.py. Nothing to do."
+  fi
+
   # Ruby
   link_file irbrc
   link_file gemrc
