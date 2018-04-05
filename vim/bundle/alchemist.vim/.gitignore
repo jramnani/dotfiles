@@ -1,0 +1,9 @@
+/_build
+/cover
+/deps
+/doc/tags
+tags
+erl_crash.dump
+*.ez
+*.sw?
+*.py?
