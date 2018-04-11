@@ -132,6 +132,7 @@ install_profile () {
 
   # Tmux
   link_file tmux.conf
+  link_file tmux-macos.conf
 
   # Vim
   # Create the directory where I place my Vim backup files
