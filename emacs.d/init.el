@@ -20,7 +20,7 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
   ;; Lisp code I find on the Internets that may not be packaged
