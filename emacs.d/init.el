@@ -133,6 +133,7 @@
     :ensure t)
 
   (use-package ruby-end
+    :diminish ruby-end-mode
     :ensure t)
 
   (use-package elixir-yasnippets
