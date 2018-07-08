@@ -55,6 +55,10 @@
            ("C-," . ace-jump-line-mode))
     :ensure t)
 
+  (use-package ace-window
+    :bind ("M-o" . 'ace-window)
+    :ensure t)
+
   (use-package ansible
     :defines ac-dictionary-files
     :init
