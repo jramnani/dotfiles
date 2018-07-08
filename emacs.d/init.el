@@ -41,7 +41,9 @@
   ;; Load use-package and its dependencies.
   (eval-when-compile
     (require 'use-package))
-  (require 'diminish)
+  ;; Diminish needs to be loaded before any packages that depend on it.
+  (use-package diminish
+    :ensure t)
   (require 'bind-key)
 
 
