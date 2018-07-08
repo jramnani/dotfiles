@@ -125,7 +125,7 @@
     :mode "\\.d\\'"
     :ensure t)
 
- ;;; Elixir
+  ;;; Elixir
   (use-package elixir-mode
     :init
     (add-hook 'elixir-mode-hook
@@ -204,6 +204,16 @@
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode)
   :ensure t)
+
+  ;; GitLab CI
+  (use-package gitlab-ci-mode
+    :ensure t)
+
+  (use-package gitlab-ci-mode-flycheck
+    :after flycheck gitlab-ci-mode
+    :init
+    (gitlab-ci-mode-flycheck-enable)
+    :ensure t)
 
   ;; Golang
   (use-package go-mode
