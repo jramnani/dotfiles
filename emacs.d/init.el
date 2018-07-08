@@ -125,6 +125,46 @@
     :mode "\\.d\\'"
     :ensure t)
 
+ ;;; Elixir
+  (use-package elixir-mode
+    :init
+    (add-hook 'elixir-mode-hook
+              (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+    :ensure t)
+
+  (use-package ruby-end
+    :ensure t)
+
+  (use-package elixir-yasnippets
+    :ensure t)
+
+  (use-package flycheck-credo
+    :init
+    (eval-after-load 'flycheck
+      '(flycheck-credo-setup))
+    :hook (elixir-mode . flycheck-mode)
+    :ensure t)
+
+  (use-package flycheck-dialyxir
+    :init
+    (eval-after-load 'flycheck
+      '(flycheck-dialyxir-setup))
+    :hook (elixir-mode . flycheck-mode)
+    :ensure t)
+
+  (use-package alchemist
+    :init
+    (setq alchemist-goto-elixir-source-dir "~/code/elixir/elixir")
+    (add-to-list 'elixir-mode-hook
+                 (defun auto-activate-ruby-end-mode-for-elixir-mode ()
+                   (set (make-variable-buffer-local 'ruby-end-expand-keywords-before-re)
+                        "\\(?:^\\|\\s-+\\)\\(?:do\\)")
+                   (set (make-variable-buffer-local 'ruby-end-check-statement-modifiers) nil)
+                   (ruby-end-mode +1)))
+    :hook (elixir-mode . alchemist-mode)
+    :ensure t)
+
+
   ;; eldoc provides help on elisp function arguments in the minibuffer.
   (use-package eldoc
     :init
