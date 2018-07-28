@@ -18,6 +18,7 @@
   last = log -1 HEAD
   hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
   w = whatchanged
+  recent = branch --sort=-committerdate
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore_global
