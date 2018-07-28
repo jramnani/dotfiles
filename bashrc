@@ -69,7 +69,7 @@ if [ $MYOS == "OSX" ]; then
     alias vmstat='vm_stat'
     # These aliases allow for easy switching between jvm's.
     alias java18="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
-    alias java19="export JAVA_HOME=$(/usr/libexec/java_home -v 1.9)"
+    alias java19="export JAVA_HOME=$(/usr/libexec/java_home -v 9)"
 
     # If the MacPorts version of Vim is available, then use it.
     if [[ -x /opt/local/bin/vim ]]; then
