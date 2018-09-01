@@ -448,7 +448,8 @@
     :load-path "vendor/")
 
   (use-package undo-tree
-    :bind ("C-c u" . undo-tree-visualize)
+    :bind (("C-c u" . undo-tree-visualize)
+           ("s-Z" . undo-tree-redo))
     :config
     (global-undo-tree-mode)
     :diminish undo-tree-mode
