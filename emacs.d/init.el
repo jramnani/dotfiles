@@ -132,6 +132,9 @@
               (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
     :ensure t)
 
+  (use-package fish-mode
+    :ensure t)
+
   (use-package ruby-end
     :diminish ruby-end-mode
     :ensure t)
