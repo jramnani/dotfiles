@@ -343,7 +343,7 @@
   ;; Projectile makes switching directories and searching for files easier.
   (use-package projectile
     :init
-    (projectile-global-mode)
+    (projectile-mode 1)
     :ensure t)
 
   ;; Python
