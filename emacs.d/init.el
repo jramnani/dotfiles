@@ -41,55 +41,49 @@
   ;; Load use-package and its dependencies.
   (eval-when-compile
     (require 'use-package))
+
   ;; Diminish needs to be loaded before any packages that depend on it.
-  (use-package diminish
-    :ensure t)
+  (use-package diminish)
+
   (require 'bind-key)
 
+  ;; Assume packages should be installed
+  (setq use-package-always-ensure t)
 
   ;; ace-jump-mode lets you jump the cursor to any position in a file
   ;; by selecting letters near where you want to go.
   (use-package ace-jump-mode
     :commands ace-jump-mode
     :bind (("C-." . ace-jump-mode)
-           ("C-," . ace-jump-line-mode))
-    :ensure t)
+           ("C-," . ace-jump-line-mode)))
 
   (use-package ace-window
-    :bind ("M-o" . 'ace-window)
-    :ensure t)
+    :bind ("M-o" . 'ace-window))
 
   (use-package ansible
     :defines ac-dictionary-files
     :init
-    (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
-    :ensure t)
+    (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
 
   (use-package ansible-doc
     :init
-    (add-hook 'yaml-mode-hook #'ansible-doc-mode)
-    :ensure t)
+    (add-hook 'yaml-mode-hook #'ansible-doc-mode))
 
   ;; Apache web sever config files
-  (use-package apache-mode
-    :ensure t)
+  (use-package apache-mode)
 
   (use-package browse-kill-ring
     :init
     (progn
       (browse-kill-ring-default-keybindings))
-    :bind ("C-c y" . browse-kill-ring)
-    :ensure t)
+    :bind ("C-c y" . browse-kill-ring))
 
-  (use-package clojure-mode
-    :ensure t)
+  (use-package clojure-mode)
 
   ;; Cider is an interactive development environment for Clojure.
-  (use-package cider
-    :ensure t)
+  (use-package cider)
 
-  (use-package color-theme
-    :ensure t)
+  (use-package color-theme)
 
   (use-package color-theme-solarized
     :init
@@ -102,59 +96,48 @@
       (when (not (display-graphic-p))
         (set-terminal-parameter nil 'background-mode 'dark))
       ;; Call enable-theme to pick up the change to 'background-mode.
-      (enable-theme 'solarized))
-    :ensure t)
+      (enable-theme 'solarized)))
 
   ;; company-mode does auto-completion.
   (use-package company
     :init
-    (add-hook 'prog-mode-hook 'company-mode)
-    :ensure t)
+    (add-hook 'prog-mode-hook 'company-mode))
 
   ;; company-quickhelp adds tooltip functionality to company-mode. These
   ;; tooltips usually show documentation for a given auto complete suggestion.
   (use-package company-quickhelp
     :init
-    (company-quickhelp-mode 1)
-    :ensure t)
+    (company-quickhelp-mode 1))
 
-  (use-package dokuwiki-mode
-    :ensure t)
+  (use-package dokuwiki-mode)
 
   (use-package dtrace-script-mode
-    :mode "\\.d\\'"
-    :ensure t)
+    :mode "\\.d\\'")
 
   ;;; Elixir
   (use-package elixir-mode
     :init
     (add-hook 'elixir-mode-hook
-              (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
-    :ensure t)
+              (lambda () (add-hook 'before-save-hook 'elixir-format nil t))))
 
-  (use-package fish-mode
-    :ensure t)
+  (use-package fish-mode)
 
   (use-package ruby-end
-    :diminish ruby-end-mode
-    :ensure t)
+    :diminish ruby-end-mode)
 
-  (use-package elixir-yasnippets
-    :ensure t)
+  (use-package elixir-yasnippets)
 
   (use-package flycheck-credo
     :init
     (eval-after-load 'flycheck
       '(flycheck-credo-setup))
-    :hook (elixir-mode . flycheck-mode)
-    :ensure t)
+    :hook (elixir-mode . flycheck-mode))
 
   (use-package flycheck-dialyxir
     :init
     (eval-after-load 'flycheck
       '(flycheck-dialyxir-setup))
-    :hook (elixir-mode . flycheck-mode)
-    :ensure t)
+    :hook (elixir-mode . flycheck-mode))
 
   (use-package alchemist
     :init
@@ -168,8 +151,7 @@
     :config
     (add-to-list 'alchemist-iex-mode-hook
                  (lambda () (company-mode-on)))
-    :hook (elixir-mode . alchemist-mode)
-    :ensure t)
+    :hook (elixir-mode . alchemist-mode))
 
 
   ;; eldoc provides help on elisp function arguments in the minibuffer.
@@ -195,47 +177,40 @@
   (use-package exec-path-from-shell
     :init
     (when (memq window-system '(mac ns))
-      (exec-path-from-shell-initialize))
-    :ensure t)
+      (exec-path-from-shell-initialize)))
 
   ;; Provides a visual indicator of where the 'fill-column' is set.
   ;; 'fill-column' is used for wrapping lines.
   (use-package fill-column-indicator
     :init
     (add-hook 'prog-mode-hook 'fci-mode)
-    :disabled t  ;; fci-mode is messing with auto complete and quickhelp.
-    :ensure t)
+    ;; fci-mode is messing with auto complete and quickhelp.
+    :disabled t)
 
   ;; Flycheck checks your program source code on the fly as you edit.
   (use-package flycheck
   :init
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-  :ensure t)
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
   ;; GitLab CI
-  (use-package gitlab-ci-mode
-    :ensure t)
+  (use-package gitlab-ci-mode)
 
   (use-package gitlab-ci-mode-flycheck
     :after flycheck gitlab-ci-mode
     :init
-    (gitlab-ci-mode-flycheck-enable)
-    :ensure t)
+    (gitlab-ci-mode-flycheck-enable))
 
   ;; Golang
-  (use-package go-mode
-    :ensure t)
+  (use-package go-mode)
 
   ;; Groovy
   (use-package groovy-mode
     :init
-    (add-to-list 'auto-mode-alist '("Jenkinsfile\\'" . groovy-mode))
-    :ensure t)
+    (add-to-list 'auto-mode-alist '("Jenkinsfile\\'" . groovy-mode)))
 
   (use-package jinja2-mode
     :init
-    (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
-    :ensure t)
+    (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode)))
 
   ;; Date and time utility functions.
   (use-package jramnani-date
@@ -246,8 +221,7 @@
   (use-package lice
     :commands lice
     :init
-    (setq lice:default-license "mit")
-    :ensure t)
+    (setq lice:default-license "mit"))
 
   (use-package lisp-mode
     :commands emacs-lisp-mode
@@ -261,13 +235,11 @@
         (interactive)
         (eval-buffer)
         (ert t))
-      (bind-key (kbd "C-c t") 'jramnani-run-ert-tests emacs-lisp-mode-map)
-      ))
+      (bind-key (kbd "C-c t") 'jramnani-run-ert-tests emacs-lisp-mode-map)))
 
   ;; Git
   (use-package magit
-    :bind ("C-c g" . magit-status)
-    :ensure t)
+    :bind ("C-c g" . magit-status))
 
   (use-package markdown-mode
     :config
@@ -280,25 +252,21 @@
            (format "open -a 'Marked 2.app' %s"
                    (shell-quote-argument (buffer-file-name))))
           )
-        (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)))
-    :ensure t)
+        (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file))))
 
   ;; Mercurial
   (use-package monky
-    :bind (("C-c h" . monky-status))
-    :ensure t)
+    :bind (("C-c h" . monky-status)))
 
   ;; Directory browser like NERDTree for Vim
   (use-package neotree
     :bind (("C-c d" . neotree-toggle))
     :config
     (progn
-      (setq projectile-switch-project-action 'neotree-projectile-action))
-    :ensure t)
+      (setq projectile-switch-project-action 'neotree-projectile-action)))
 
   ;; The Nix package manager (http://nixos.org).
-  (use-package nix-mode
-    :ensure t)
+  (use-package nix-mode)
 
   ;; org-mode
   (use-package org
@@ -317,14 +285,12 @@
       (setq org-todo-keyword-faces '(("IN-PROGRESS" . (:foreground "#6c71c4" :weight "bold"))
                                      ("TODO" . (:foreground "#cb4b16" :weight "bold"))))
       ;; Attach a timestamp to completed tasks
-      (setq org-log-done 'time))
-    :ensure t)
+      (setq org-log-done 'time)))
 
   ;; Outline magic adds some extensions to Emacs vanilla outline-mode.
   ;; It adds visibility cycling and adds structural editing.
   ;; dokuwiki-mode supports outline-magic and makes it nicer to use.
-  (use-package outline-magic
-    :ensure t)
+  (use-package outline-magic)
 
   ;; paredit is a minor-mode for performing structured editing of
   ;; S-expressions.  Edit code, not text.
@@ -335,9 +301,7 @@
       (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
       (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
       (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-      (add-hook 'scheme-mode-hook 'enable-paredit-mode)
-      )
-    :ensure t)
+      (add-hook 'scheme-mode-hook 'enable-paredit-mode)))
 
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows)
@@ -346,8 +310,7 @@
   ;; Projectile makes switching directories and searching for files easier.
   (use-package projectile
     :init
-    (projectile-mode 1)
-    :ensure t)
+    (projectile-mode 1))
 
   ;; Python
   (use-package python
@@ -360,8 +323,7 @@
     :config
     (progn
       ;; Python hackers like their lines to be 72 columns.
-      (set-fill-column 72))
-    :ensure t)
+      (set-fill-column 72)))
 
   ;; jedi provides auto completion for Python programs. Depends on the
   ;; Python packages "jedi" and "epc" to be installed on the host
@@ -371,24 +333,20 @@
     (progn
       (setq jedi:complete-on-dot t)
       (setq jedi:setup-keys t)
-      (add-hook 'python-mode-hook 'jedi:setup))
-    :ensure t)
+      (add-hook 'python-mode-hook 'jedi:setup)))
 
   ;; company-jedi wires up jedi to be a backend for the auto completion
   ;; library, company-mode.
   (use-package company-jedi
     :init
     (add-hook 'python-mode-hook
-              (lambda () (add-to-list 'company-backends 'company-jedi)))
-    :ensure t)
+              (lambda () (add-to-list 'company-backends 'company-jedi))))
 
   ;; A major mode for editing Pip requirements files.
-  (use-package pip-requirements
-    :ensure t)
+  (use-package pip-requirements)
 
   ;; Install Python documentation in Emacs Info format.
-  (use-package python-info
-    :ensure t)
+  (use-package python-info)
 
   ;; Work with Python virtual environments within Emacs
   (use-package virtualenvwrapper
@@ -401,8 +359,7 @@
       ;; interactive shell support
       (venv-initialize-interactive-shells)
       ;; eshell support
-      (venv-initialize-eshell))
-    :ensure t)
+      (venv-initialize-eshell)))
 
   ;; re-builder lets you build regular expressions interactively.
   (use-package re-builder
@@ -432,16 +389,14 @@
     (progn
       (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
     :config
-    (smex-initialize)
-    :ensure t)
+    (smex-initialize))
 
   ;; Edit SSH Config files.
   (use-package ssh-config-mode
     :mode ((".ssh/config\\'"       . ssh-config-mode)
            ("sshd?_config\\'"      . ssh-config-mode)
            ("known_hosts\\'"       . ssh-known-hosts-mode)
-           ("authorized_keys2?\\'" . ssh-authorized-keys-mode))
-    :ensure t)
+           ("authorized_keys2?\\'" . ssh-authorized-keys-mode)))
 
   ;; Rename buffers and files together.
   (use-package steve-yegge-buffer-utils
@@ -452,13 +407,11 @@
            ("s-Z" . undo-tree-redo))
     :config
     (global-undo-tree-mode)
-    :diminish undo-tree-mode
-    :ensure t)
+    :diminish undo-tree-mode)
 
   ;; The unfill package provides the inverse functions of Emacs' fill-paragraph
   ;; and fill-region commands.
-  (use-package unfill
-    :ensure t)
+  (use-package unfill)
 
   ;; Web mode - Emacs standard HTML mode doesn't understand templates, or CSS, or JS.
   (use-package web-mode
@@ -480,30 +433,26 @@
            "\\.jinja2\\'")
     :init
     ;; fci-mode causes weird issues with web-mode. e.g. indentation.
-    (add-hook 'web-mode-hook 'turn-off-fci-mode)
-    :ensure t)
+    (add-hook 'web-mode-hook 'turn-off-fci-mode))
 
   ;; writegood-mode can improve my writing style for prose.
   (use-package writegood-mode
     :init
     (progn
-      (add-hook 'text-mode-hook 'writegood-mode))
-    :ensure t)
+      (add-hook 'text-mode-hook 'writegood-mode)))
 
   ;; OS X property list files.
   (use-package xml-mode
     :mode "\\.plist\'")
 
 
-  (use-package yaml-mode
-    :ensure t)
+  (use-package yaml-mode)
 
   (use-package yasnippet
     :config
     (yas-global-mode 1)
     :defer 2
-    :diminish yas-minor-mode
-    :ensure t))
+    :diminish yas-minor-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
