@@ -239,9 +239,12 @@
         (ert t))
       (bind-key (kbd "C-c t") 'jramnani-run-ert-tests emacs-lisp-mode-map)))
 
-  ;; Git
+  ;; Git client for Emacs
   (use-package magit
-    :bind ("C-c g" . magit-status))
+    :bind ("C-c g" . magit-status)
+    :hook (git-commit-mode . (lambda () (set-fill-column 72)))
+    :config
+    (setq git-commit-summary-max-length 50))
 
   (use-package markdown-mode
     :config
