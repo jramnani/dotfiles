@@ -164,6 +164,7 @@
   ;; ERT is the Emacs Lisp Regression Testing tool. Basically, the unit testing
   ;; framework for Elisp.
   (use-package ert-results-mode
+    :ensure nil
     :commands ert-results-mode
     :config
     ;; ERT opens a new window to show me the results.  Then, when I try
@@ -224,6 +225,7 @@
     (setq lice:default-license "mit"))
 
   (use-package lisp-mode
+    :ensure nil
     :commands emacs-lisp-mode
     :config
     (progn
@@ -376,6 +378,7 @@
     :load-path "lisp/")
 
   (use-package shell-script-mode
+    :ensure nil
     ;; For editing my Bash profile within my dotfiles repo.
     :mode ("bash\\(rc\\|_profile\\|machinerc\\)\\'" . shell-script-mode))
 
@@ -443,6 +446,7 @@
 
   ;; OS X property list files.
   (use-package xml-mode
+    :ensure nil
     :mode "\\.plist\'")
 
 
