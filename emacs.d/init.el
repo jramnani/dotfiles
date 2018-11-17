@@ -315,7 +315,8 @@
   ;; Projectile makes switching directories and searching for files easier.
   (use-package projectile
     :init
-    (projectile-mode 1))
+    (projectile-mode +1)
+    :bind (("C-c p" . projectile-command-map)))
 
   ;; Python
   (use-package python
