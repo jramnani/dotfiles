@@ -264,11 +264,24 @@
     :bind (("C-c h" . monky-status)))
 
   ;; Directory browser like NERDTree for Vim
+  (defun neotree-project-dir ()
+   "Open NeoTree at the projectile root."
+    (interactive)
+    (let ((project-dir (projectile-project-root))
+          (file-name (buffer-file-name)))
+      (neotree-toggle)
+      (if project-dir
+          (if (neo-global--window-exists-p)
+              (progn
+                (neotree-dir project-dir)
+                (neotree-find file-name))))))
+
   (use-package neotree
-    :bind (("C-c d" . neotree-toggle))
+    :bind (("C-c d" . neotree-project-dir))
     :config
     (progn
-      (setq projectile-switch-project-action 'neotree-projectile-action)))
+      (setq neo-create-file-auto-open t)
+      (setq neo-auto-indent-point t)))
 
   ;; The Nix package manager (http://nixos.org).
   (use-package nix-mode)
