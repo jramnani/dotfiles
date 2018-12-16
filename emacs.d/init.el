@@ -467,6 +467,15 @@
     ;; fci-mode causes weird issues with web-mode. e.g. indentation.
     (add-hook 'web-mode-hook 'turn-off-fci-mode))
 
+  ;; winner mode remembers window configurations
+  ;; It's like undo/redo for window configurations
+  (use-package winner
+    :ensure nil
+    :init
+    (progn
+      (when (fboundp 'winner-mode)
+	(winner-mode 1))))
+
   ;; writegood-mode can improve my writing style for prose.
   (use-package writegood-mode
     :init
@@ -485,7 +494,7 @@
     :config
     (yas-global-mode 1)
     :defer 2
-    :diminish yas-minor-mode))
+    :diminish yas-minor-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
