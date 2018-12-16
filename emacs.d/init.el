@@ -291,9 +291,11 @@
   (use-package neotree
     :bind (("C-c d" . neotree-project-dir))
     :config
-    (progn
-      (setq neo-create-file-auto-open t)
-      (setq neo-auto-indent-point t)))
+    (setq neo-create-file-auto-open t
+        neo-smart-open t
+        neo-show-hidden-files t
+        neo-auto-indent-point t)
+    (setq neo-theme (if (display-graphic-p) 'nerd 'arrow)))
 
   ;; The Nix package manager (http://nixos.org).
   (use-package nix-mode)
