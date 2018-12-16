@@ -640,6 +640,12 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; M-f should go to the beginning of the next word. Like Vim's `w'` command
+;; Emacs default behavior of moving you to the *end* of a word has always been
+;; awkward for me.
+(global-set-key (kbd "M-f") 'forward-to-word)
+(global-set-key (kbd "M-F") 'forward-word)
+
 ;; Remap M-x to something more comfortable
 (global-set-key (kbd "C-c C-m") 'execute-extended-command)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
