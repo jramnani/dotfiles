@@ -31,7 +31,7 @@
 
   ;; Keep customizations in a separate file
   (setq custom-file "~/.emacs.d/customizations.el")
-  (load custom-file)
+  (load custom-file 'noerror)
 
   (if (not (package-installed-p 'use-package))
       (progn
