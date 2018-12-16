@@ -436,9 +436,15 @@
 
   (use-package undo-tree
     :bind (("C-c u" . undo-tree-visualize)
+           ("s-z" . undo-tree-undo)
            ("s-Z" . undo-tree-redo))
-    :config
-    (global-undo-tree-mode)
+    :init
+    (progn
+      (global-undo-tree-mode)
+      (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/tmp/undo"))
+            undo-tree-auto-save-history t
+            undo-tree-visualizer-timestamps t
+            undo-tree-visualizer-diff t))
     :diminish undo-tree-mode)
 
   ;; The unfill package provides the inverse functions of Emacs' fill-paragraph
