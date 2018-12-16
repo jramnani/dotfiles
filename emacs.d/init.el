@@ -547,9 +547,6 @@
 ;; Show trailing whitespace
 (setq show-trailing-whitespace t)
 
-;; Don't need the startup message any more
-(setq inhibit-startup-message t)
-
 ;; Smoother scrolling
 ;; http://stackoverflow.com/questions/445873/how-can-i-make-emacs-mouse-scrolling-slower-and-smoother
 (setq mouse-wheel-follow-mouse 't)
@@ -742,6 +739,21 @@
 ;; Stop typing full "yes or no" answers to Emacs.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Startup message and scratch buffer
+(setq
+ ;; don't need the startup message anymore
+ inhibit-startup-message t
+ ;; empty scratch buffer
+ initial-scratch-message nil
+ ;; scratch buffer default
+ initial-major-mode 'text-mode
+ ; Select help window so it's easy to quit it with 'q'
+ help-window-select t
+ )
+
+;; Delete selected text when typing. This also overwrites highlighted text
+;; during copy/paste. This makes copy/paste a lot easier for me.
+(delete-selection-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
