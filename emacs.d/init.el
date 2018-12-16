@@ -335,6 +335,12 @@
       (add-hook 'lisp-mode-hook 'enable-paredit-mode)
       (add-hook 'scheme-mode-hook 'enable-paredit-mode)))
 
+  (use-package prelude-smarter-move-beginning-of-line
+    :init
+    (global-set-key [remap move-beginning-of-line]
+                'prelude-smarter-move-beginning-of-line)
+    :load-path "vendor/")
+
   (use-package prelude-swap-windows
     :bind ("C-c s" . prelude-swap-windows)
     :load-path "vendor/")
