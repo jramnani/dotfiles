@@ -229,6 +229,10 @@
   (use-package jramnani-date
     :load-path "lisp/")
 
+  ;; Pretty print JSON in a buffer
+  (use-package json-format
+    :load-path "lisp/")
+
   ;; Lice inserts open source license text as comments in the buffer.
   ;; Useful for inserting file headers.
   (use-package lice
