@@ -525,7 +525,7 @@
 (if (file-exists-p abbrev-file-name)
     (progn
       (quietly-read-abbrev-file)
-      (setq default-abbrev-mode t)))
+      (setq-default abbrev-mode t)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
