@@ -404,6 +404,11 @@
       ;; eshell support
       (venv-initialize-eshell)))
 
+  (use-package rainbow-delimiters
+    :hook ((clojure-mode . rainbow-delimiters-mode)
+           (emacs-lisp-mode . rainbow-delimiters-mode)
+           (lisp-mode . rainbow-delimiters-mode)))
+
   ;; re-builder lets you build regular expressions interactively.
   (use-package re-builder
     :config
