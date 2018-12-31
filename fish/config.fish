@@ -93,6 +93,9 @@ set fish_greeting (fish_greeting)
 # Use my Python startup file.
 set -x PYTHONSTARTUP ~/.pythonrc
 
+# Don't override my prompt. I put the virtualenv where I want it in fish_prompt.
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
 # Virtualfish: a Virtualenvwrappper equivalent for Fish.
 # https://github.com/adambrenecki/virtualfish
 # This config must happen after path munging is complete.
