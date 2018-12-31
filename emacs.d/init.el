@@ -16,7 +16,9 @@
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=28603#5
 (setq gnutls-trustfiles '("/etc/ssl/cert.pem"))
 
-(when (>= emacs-major-version 24)
+(defun init-packages ()
+  "Initialize Emacs package management."
+
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
@@ -31,18 +33,21 @@
 
   ;; Keep customizations in a separate file
   (setq custom-file "~/.emacs.d/customizations.el")
-  (load custom-file 'noerror)
+  (load custom-file 'noerror))
 
-  (if (not (package-installed-p 'use-package))
+(defun install-packages ()
+  "Install and configure third-party packages."
+
+    (if (not (package-installed-p 'use-package))
       (progn
         (package-refresh-contents)
         (package-install 'use-package)))
 
-  ;; Load use-package and its dependencies.
-  (eval-when-compile
-    (require 'use-package))
+    ;; Load use-package and its dependencies.
+    (eval-when-compile
+      (require 'use-package))
 
-  ;; Diminish needs to be loaded before any packages that depend on it.
+      ;; Diminish needs to be loaded before any packages that depend on it.
   (use-package diminish)
 
   (require 'bind-key)
@@ -518,6 +523,15 @@
     (yas-global-mode 1)
     :defer 2
     :diminish yas-minor-mode)
+
+  (use-package yasnippet-snippets)
+)
+
+
+(when (>= emacs-major-version 24)
+  (progn
+    (init-packages)
+    (install-packages)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
