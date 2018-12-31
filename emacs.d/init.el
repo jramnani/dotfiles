@@ -211,7 +211,7 @@
   ;; Optionally open it in the browser.
   (use-package git-link
     :config
-    (setq git-link-open-in-browser nil)))
+    (setq git-link-open-in-browser nil))
 
   ;; Golang
   (use-package go-mode)
