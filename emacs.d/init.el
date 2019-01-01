@@ -401,7 +401,7 @@
     :commands (venv-activate venv-deactivate venv-mkvirtualenv venv-rmvirtualenv venv-workon)
     :init
     ;; Directory containing my virtualenvs
-    (setq venv-location (concat (getenv "HOME") "/.venv/"))
+    (setq venv-location (concat (getenv "HOME") "/.virtualenvs"))
     :config
     (progn
       ;; interactive shell support
