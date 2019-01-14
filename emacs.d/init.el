@@ -344,6 +344,9 @@
       (add-hook 'lisp-mode-hook 'enable-paredit-mode)
       (add-hook 'scheme-mode-hook 'enable-paredit-mode)))
 
+  (use-package prelude-copy-file-name-to-clipboard
+    :load-path "vendor/")
+
   (use-package prelude-smarter-move-beginning-of-line
     :init
     (global-set-key [remap move-beginning-of-line]
