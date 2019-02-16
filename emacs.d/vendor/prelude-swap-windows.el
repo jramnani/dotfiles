@@ -1,3 +1,5 @@
+;;; prelude-swap-windows -- Summary
+
 ;; Copied from Emacs Prelude
 ;; https://github.com/bbatsov/prelude/blob/3017a151501d12695541706c717558dfb614f0c4/core/prelude-core.el
 
@@ -31,6 +33,8 @@
 ;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ;; Boston, MA 02110-1301, USA.
 
+;;; Code:
+
 (defun prelude-swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)
@@ -49,3 +53,5 @@
   (other-window 1))
 
 (provide 'prelude-swap-windows)
+
+;;; prelude-swap-windows.el ends here

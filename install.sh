@@ -108,6 +108,9 @@ install_profile () {
     ln -f -s "$SCRIPT_PATH/molecule.yml" "$HOME/.config/molecule/config.yml"
   fi
 
+  # PostgreSQL client
+  link_file psqlrc
+
   # Python
   link_file pythonrc
 

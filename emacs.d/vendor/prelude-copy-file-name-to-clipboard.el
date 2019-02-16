@@ -14,4 +14,6 @@
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
+(provide 'prelude-copy-file-name-to-clipboard)
+
 ;;; prelude-copy-file-name-to-clipboard ends here
