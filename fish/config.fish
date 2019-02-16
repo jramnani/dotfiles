@@ -1,3 +1,6 @@
+# Fish major version. For detecting backwards incompatible changes.
+set -x MY_FISH_MAJOR_VERSION (string split . $version | head -n 1)
+
 # On what OS are we running?
 switch (uname -s)
     case "Linux"
@@ -60,7 +63,11 @@ end
 ## Path
 # Set the PATH on OS X using /etc/paths like /usr/libexec/path_helper would.
 if [ $MYOS = "OSX" ]
-  load_path_helper_paths
+    # Fish version > 3.x loads paths correctly on macOS / OS X.
+    if test $MY_FISH_MAJOR_VERSION -lt 3
+        echo "Loading paths from /etc/paths..."
+        load_path_helper_paths
+    end
 end
 
 # Third-party packages. Using Homebrew on OS X.
