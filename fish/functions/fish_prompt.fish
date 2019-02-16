@@ -24,10 +24,8 @@ function fish_prompt -d "Write out the prompt"
     end
 
     # Mercurial branch and status
-    if which hg > /dev/null 2>&1
-        if __find_hg_root 2>&1
-            printf ' hg:(%s)' (__hg_status_prompt)
-        end
+    if which hg > /dev/null 2>&1; and __find_hg_root
+        printf ' hg:(%s)' (__hg_status_prompt)
     end
 
     printf '\n'
@@ -63,16 +61,13 @@ end
 
 
 function __find_hg_root
-    set -l dir (pwd)
     set -e HG_ROOT
 
-    while test "$dir" != "/"
+    for dir in (__fish_parent_directories (pwd))
         if test -f "$dir/.hg/dirstate"
             set -g HG_ROOT "$dir/.hg"
             return 0
         end
-
-        set -l dir (dirname $dir)
     end
 
     return 1
