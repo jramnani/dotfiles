@@ -38,16 +38,16 @@
 (defun install-packages ()
   "Install and configure third-party packages."
 
-    (if (not (package-installed-p 'use-package))
+  (if (not (package-installed-p 'use-package))
       (progn
         (package-refresh-contents)
         (package-install 'use-package)))
 
-    ;; Load use-package and its dependencies.
-    (eval-when-compile
-      (require 'use-package))
+  ;; Load use-package and its dependencies.
+  (eval-when-compile
+    (require 'use-package))
 
-      ;; Diminish needs to be loaded before any packages that depend on it.
+  ;; Diminish needs to be loaded before any packages that depend on it.
   (use-package diminish)
 
   (require 'bind-key)
@@ -119,7 +119,7 @@
   (use-package dtrace-script-mode
     :mode "\\.d\\'")
 
-  ;;; Elixir
+  ;; Elixir
   (use-package elixir-mode
     :init
     (add-hook 'elixir-format-hook (lambda ()
@@ -201,8 +201,8 @@
 
   ;; Flycheck checks your program source code on the fly as you edit.
   (use-package flycheck
-  :init
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+    :init
+    (add-hook 'after-init-hook #'global-flycheck-mode))
 
   ;; GitLab CI
   (use-package gitlab-ci-mode)
@@ -286,7 +286,7 @@
 
   ;; Directory browser like NERDTree for Vim
   (defun neotree-project-dir ()
-   "Open NeoTree at the projectile root."
+    "Open NeoTree at the projectile root."
     (interactive)
     (let ((project-dir (projectile-project-root))
           (file-name (buffer-file-name)))
@@ -301,9 +301,9 @@
     :bind (("C-c d" . neotree-project-dir))
     :config
     (setq neo-create-file-auto-open t
-        neo-smart-open t
-        neo-show-hidden-files t
-        neo-auto-indent-point t)
+          neo-smart-open t
+          neo-show-hidden-files t
+          neo-auto-indent-point t)
     (setq neo-theme (if (display-graphic-p) 'nerd 'arrow)))
 
   ;; The Nix package manager (http://nixos.org).
@@ -350,7 +350,7 @@
   (use-package prelude-smarter-move-beginning-of-line
     :init
     (global-set-key [remap move-beginning-of-line]
-                'prelude-smarter-move-beginning-of-line)
+                    'prelude-smarter-move-beginning-of-line)
     :load-path "vendor/")
 
   (use-package prelude-swap-windows
@@ -505,7 +505,7 @@
     :init
     (progn
       (when (fboundp 'winner-mode)
-	(winner-mode 1))))
+	    (winner-mode 1))))
 
   ;; writegood-mode can improve my writing style for prose.
   (use-package writegood-mode
@@ -793,7 +793,7 @@
  initial-scratch-message nil
  ;; scratch buffer default
  initial-major-mode 'text-mode
- ; Select help window so it's easy to quit it with 'q'
+ ;; Select help window so it's easy to quit it with 'q'
  help-window-select t
  )
 
