@@ -379,12 +379,18 @@
   ;; jedi provides auto completion for Python programs. Depends on the
   ;; Python packages "jedi" and "epc" to be installed on the host
   ;; machine.
-  (use-package jedi
+  ;; To install on a new machine run the following commands:
+  ;; M-x jedi:install-server
+  (use-package jedi-core
     :init
-    (progn
-      (setq jedi:complete-on-dot t)
-      (setq jedi:setup-keys t)
-      (add-hook 'python-mode-hook 'jedi:setup)))
+    ;; This variable needs to be set for the jedi:environment-virtualenv config to work.
+    (setq jedi:environment-root "default")
+    ;; Use Python 3 for Jedi
+    ;; Add --always-copy to virtualenv invocation. Homebrew keeps breaking
+    ;; symlinks when upgrading Python, even for patch releases.
+    (setq jedi:environment-virtualenv
+          '("virtualenv" "--quiet" "--python" "python3" "--always-copy"))
+    (add-hook 'python-mode-hook 'jedi:setup))
 
   ;; company-jedi wires up jedi to be a backend for the auto completion
   ;; library, company-mode.
