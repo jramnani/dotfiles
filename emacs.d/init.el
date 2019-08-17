@@ -99,6 +99,8 @@
     :init
     (company-quickhelp-mode 1))
 
+  (use-package dracula)
+
   (use-package dokuwiki-mode)
 
   (use-package dtrace-script-mode
