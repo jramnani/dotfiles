@@ -88,21 +88,6 @@
   ;; Cider is an interactive development environment for Clojure.
   (use-package cider)
 
-  (use-package color-theme)
-
-  (use-package color-theme-solarized
-    :init
-    (progn
-      (load-theme 'solarized t)
-      ;; This theme uses the frame-parameter 'background-mode' to
-      ;; determine whether to use the light or dark version of the
-      ;; theme.
-      (set-frame-parameter nil 'background-mode 'dark)
-      (when (not (display-graphic-p))
-        (set-terminal-parameter nil 'background-mode 'dark))
-      ;; Call enable-theme to pick up the change to 'background-mode.
-      (enable-theme 'solarized)))
-
   ;; company-mode does auto-completion.
   (use-package company
     :init
