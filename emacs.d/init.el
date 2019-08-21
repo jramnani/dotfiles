@@ -99,7 +99,7 @@
     :init
     (company-quickhelp-mode 1))
 
-  (use-package dracula)
+  (use-package dracula-theme)
 
   (use-package dokuwiki-mode)
 
