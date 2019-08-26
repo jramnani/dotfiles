@@ -18,7 +18,7 @@ if [ "${CURRENT_BRANCH}" != "" ]; then
       echo "From: ${TARGET}"
       echo ""
 
-      git log ..${TARGET}
+      git log ..${TARGET} $@
     fi
   fi
 fi
