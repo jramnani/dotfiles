@@ -41,6 +41,7 @@
   (if (not (package-installed-p 'use-package))
       (progn
         (package-refresh-contents)
+        (package-install 'diminish)
         (package-install 'use-package)))
 
   ;; Load use-package and its dependencies.
@@ -48,7 +49,7 @@
     (require 'use-package))
 
   ;; Diminish needs to be loaded before any packages that depend on it.
-  (use-package diminish)
+  ;; (use-package diminish)
 
   (require 'bind-key)
 
