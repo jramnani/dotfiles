@@ -371,8 +371,10 @@
   ;; M-x jedi:install-server
   (use-package jedi-core
     :init
+    ;; Tell Jedi to use python3
+    (setq py-python-command "/usr/bin/env python3")
     ;; This variable needs to be set for the jedi:environment-virtualenv config to work.
-    (setq jedi:environment-root "default")
+    (setq jedi:environment-root "jedi")
     ;; Use Python 3 for Jedi
     ;; Add --always-copy to virtualenv invocation. Homebrew keeps breaking
     ;; symlinks when upgrading Python, even for patch releases.
