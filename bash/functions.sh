@@ -20,9 +20,19 @@ manpathmunge () {
         fi
 }
 
+function backup () {
+    local file_to_backup=$1
+    if [[ -z $file_to_backup ]]; then
+        echo "Usage: backup FILENAME"
+        return 1
+    fi
+
+    local yymmdd=$(date +"%Y%m%d")
+    cp "${file_to_backup}" "${file_to_backup}.${yymmdd}"
+}
+
 # swap 2 filenames around
-function swap ()
-{
+function swap () {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE
     mv "$2" "$1"
