@@ -23,6 +23,9 @@ if [ $MYSHELL == "bash" ]; then
     # Fix typos in 'cd'
     shopt -s cdspell
 
+    # Configure Bash history to ignore commands prefixed with space, and
+    # duplicates.
+    export HISTCONTROL=ignoreboth
     # Make bash tab completion ignore certain files (like .svn directories)
     export FIGNORE=.svn:.pyc:.pyo:~
     shopt -u force_fignore
