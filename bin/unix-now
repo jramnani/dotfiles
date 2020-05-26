@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case "$MYOS" in
+    "Linux")
+        date "+%s%3N"
+        ;;
+    "OSX")
+        # macOS date doesn't support nanoseconds
+        date +"%s"
+        ;;
+esac

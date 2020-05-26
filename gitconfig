@@ -24,6 +24,7 @@
   excludesfile = ~/.gitignore_global
 [diff]
   submodule = log
+  noprefix = true
 [github]
   user = jramnani
 [credential]
