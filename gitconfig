@@ -31,6 +31,8 @@
   helper = cache --timeout=3600
 [push]
   default = upstream
+[pull]
+  ff = only
 
 [include]
   path = .gitconfig-user
