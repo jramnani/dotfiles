@@ -1,49 +1,56 @@
 # Emacs: -*-conf-*-
 
 [color]
-  ui = true
+    ui = true
 
 [alias]
-  ci = 'commit'
-  co = 'checkout'
-  br = 'branch'
-  up = 'checkout'
-  st = status -sb
-  # Incoming changes
-  in = incoming
-  # outgoing changes
-  out = outgoing
-  undo = reset --soft HEAD^
-  unstage = reset HEAD --
-  last = log -1 HEAD
-  hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
-  w = whatchanged
-  recent = branch --sort=-committerdate
+    ci = 'commit'
+    co = 'checkout'
+    br = 'branch'
+    up = 'checkout'
+    st = status -sb
+    # Incoming changes
+    in = incoming
+    # outgoing changes
+    out = outgoing
+    undo = reset --soft HEAD^
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+    w = whatchanged
+    recent = branch --sort=-committerdate
+
 [core]
-  autocrlf = input
-  excludesfile = ~/.gitignore_global
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
 [diff]
-  submodule = log
-  noprefix = true
+    submodule = log
+    noprefix = true
+
 [github]
-  user = jramnani
+    user = jramnani
+
 [credential]
-  helper = cache --timeout=3600
+    helper = cache --timeout=3600
+
 [push]
-  default = upstream
+    default = upstream
+
 [pull]
-  ff = only
+    ff = only
 
 [include]
-  path = .gitconfig-user
+    path = .gitconfig-user
+
 [rerere]
-	enabled = true
+    enabled = true
 
 # Ansible Vault files
 [diff "ansible-vault"]
-  textconv = ansible-vault view
-  cachetextconv = false
+      textconv = ansible-vault view
+      cachetextconv = false
 
 [merge "ansible-vault"]
-  name = ansible-vault merge driver
-  driver = /usr/local/bin/ansible-vault-merge -- %O %A %B %P
+       name = ansible-vault merge driver
+       driver = /usr/local/bin/ansible-vault-merge -- %O %A %B %P
