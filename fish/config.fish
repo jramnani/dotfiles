@@ -115,9 +115,18 @@ set -gx VIRTUALFISH_COMPAT_ALIASES 1
 set -l VIRTUALFISH_PLUGINS compat_aliases projects
 
 if begin which python3 >/dev/null 2>&1; and python3 -m virtualfish >/dev/null 2>&1; end
-    eval (python3 -m virtualfish $VIRTUALFISH_PLUGINS)
+    set -l _virtualfish_major_version (pip3 list --format columns \
+        | grep virtualfish \
+        | awk '{print $2}' \
+        | awk -F. '{print $1}')
+    # For virtualfish 1.x and earlier
+    # Remove this when I'm sure no machines I interact with are running
+    # virtualfish 1.x. e.g. old versions of Ubuntu LTS
+    if test 1 -ge $_virtualfish_major_version
+        eval (python3 -m virtualfish $VIRTUALFISH_PLUGINS)
+    end
+    # For virtualfish 2.x and later, run "vf install" once from the terminal.
 end
-
 
 # Source local machine-specific file.
 if test -f $HOME/.machinerc.fish
