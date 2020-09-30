@@ -444,6 +444,11 @@
     :config
     (smex-initialize))
 
+  ;; Solarized color theme
+  (use-package solarized-theme
+    :init
+    (load-theme 'solarized-dark t))
+
   ;; Edit SSH Config files.
   (use-package ssh-config-mode
     :mode ((".ssh/config\\'"       . ssh-config-mode)
