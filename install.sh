@@ -73,7 +73,9 @@ install_profile () {
   unset FISH_FILE
 
   # Emacs
-  link_file emacs.d
+  # link_file emacs.d
+  # Doom emacs config
+  link_file doom.d
   for EMACS_DIR in emacs.d/{auto-save,auto-save-list,backups}; do
     mkdir -p $EMACS_DIR
     chmod 0700 $EMACS_DIR
