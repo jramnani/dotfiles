@@ -133,6 +133,13 @@ install_profile () {
   # Screen
   link_file screenrc
 
+  # Starship CLI prompt
+  if [[ ! -L "$HOME/.config/starship.toml" ]]; then
+    echo "Linking Starship config file: $HOME/.config/starship.toml -> $SCRIPT_PATH/starship.toml"
+    mkdir -p "$HOME/.config"
+    ln -f -s "$SCRIPT_PATH/starship.toml" "$HOME/.config/starship.toml"
+  fi
+
   # Tmux
   link_file tmux.conf
   link_file tmux-macos.conf

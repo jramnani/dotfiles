@@ -1,0 +1,8 @@
+[git_branch]
+symbol = "🌱 "
+
+[hg_branch]
+symbol = "🌱 "
+
+[status]
+disabled = false
