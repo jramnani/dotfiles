@@ -346,6 +346,8 @@
     :load-path "vendor/")
 
   ;; Projectile makes switching directories and searching for files easier.
+  ;; Set projectile-project-search-path to my local project directories in my
+  ;; local machine config.
   (use-package projectile
     :init
     (projectile-mode +1)
