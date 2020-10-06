@@ -467,6 +467,7 @@
     :init
     (progn
       (global-undo-tree-mode)
+      (defalias 'redo 'undo-tree-redo)
       (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/tmp/undo"))
             undo-tree-auto-save-history t
             undo-tree-visualizer-timestamps t
