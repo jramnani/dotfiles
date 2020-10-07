@@ -111,6 +111,11 @@ or the current buffer directory."
   :init
   (setq company-minimum-prefix-length 3))
 
+;; evil-snipe
+;; Disable this package. I don't navigate files this way.
+(after! evil-snipe
+  (evil-snipe-mode -1))
+
 (use-package! projectile
   :config
   (setq projectile-project-search-path '("~/code" "~/work")))
