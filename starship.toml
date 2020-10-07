@@ -4,5 +4,18 @@ symbol = "🌱 "
 [hg_branch]
 symbol = "🌱 "
 
+[java]
+style = "normal"
+
+[hostname]
+format = "[$hostname]($style) in "
+style = "white"
+ssh_only = true
+disabled = false
+
 [status]
 disabled = false
+
+[username]
+style_user = "white"
+format = "[$user]($style)@"
