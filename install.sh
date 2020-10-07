@@ -102,7 +102,7 @@ install_profile () {
   done
 
   # Molecule
-  if [[ ! -L "$HOME/.config/molecule/config.yml" ]]; then
+  if [ ! -L "$HOME/.config/molecule/config.yml" ]; then
     echo "Linking Molecule config file: $HOME/.config/molecule/config.yml -> $SCRIPT_PATH/molecule.yml"
     mkdir -p "$HOME/.config/molecule"
     ln -f -s "$SCRIPT_PATH/molecule.yml" "$HOME/.config/molecule/config.yml"
@@ -115,7 +115,7 @@ install_profile () {
   link_file pythonrc
 
   # IPython
-  if [[ ! -L "$HOME/.ipython/profile_default/ipython_config.py" ]]; then
+  if [ ! -L "$HOME/.ipython/profile_default/ipython_config.py" ]; then
       echo "Linking IPython config file for the default profile: $HOME/.ipython/profile_default/ipython_config.py -> $SCRIPT_PATH/ipython/ipython_config.py"
       mkdir -p ~/.ipython/profile_default
       ln -f -s "$SCRIPT_PATH/ipython/ipython_config.py" "$HOME/.ipython/profile_default/ipython_config.py"
@@ -134,7 +134,7 @@ install_profile () {
   link_file screenrc
 
   # Starship CLI prompt
-  if [[ ! -L "$HOME/.config/starship.toml" ]]; then
+  if [ ! -L "$HOME/.config/starship.toml" ]; then
     echo "Linking Starship config file: $HOME/.config/starship.toml -> $SCRIPT_PATH/starship.toml"
     mkdir -p "$HOME/.config"
     ln -f -s "$SCRIPT_PATH/starship.toml" "$HOME/.config/starship.toml"
