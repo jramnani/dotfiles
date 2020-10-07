@@ -95,22 +95,6 @@ or the current buffer directory."
 
 (map! :leader "d" #'my-neotree-project-dir-toggle)
 
-;; (use-package! undo-tree
-;;   :bind (("C-c u" . undo-tree-visualize)
-;;          ("s-z" . undo-tree-undo)
-;;          ("s-Z" . undo-tree-redo))
-;;   :init
-;;   (progn
-;;     (global-undo-tree-mode)
-;;     (defalias 'redo 'undo-tree-redo)
-;;     (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/tmp/undo"))
-;;           undo-tree-auto-save-history t
-;;           undo-tree-visualizer-timestamps t
-;;           undo-tree-visualizer-diff t))
-;;   :diminish undo-tree-mode)
-
-;; (map! :leader "u" #'undo-tree-visualize)
-
 (use-package! ace-window
   :bind ("M-o" . 'ace-window))
 
