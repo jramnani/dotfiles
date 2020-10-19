@@ -88,7 +88,7 @@ install_profile () {
   fi
 
   # Git
-  for GIT_FILE in gitconfig gitignore_global; do
+  for GIT_FILE in gitconfig gitignore_global gitattributes; do
       link_file $GIT_FILE
   done
 
