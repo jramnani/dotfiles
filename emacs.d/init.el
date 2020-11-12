@@ -16,6 +16,12 @@
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=28603#5
 (setq gnutls-trustfiles '("/etc/ssl/cert.pem"))
 
+(defun in-user-emacs-directory
+    (relative-directory)
+  "Concat RELATIVE-DIRECTORY to user-emacs-directory.
+RELATIVE-DIRECTORY should end in a slash."
+  (concat user-emacs-directory relative-directory))
+
 (defun init-packages ()
   "Initialize Emacs package management."
 
@@ -26,13 +32,13 @@
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
   ;; Lisp code I find on the Internets that may not be packaged
-  (add-to-list 'load-path "~/.emacs.d/vendor/")
+  (add-to-list 'load-path (in-user-emacs-directory "vendor/"))
 
   ;; My personal lisp programs
-  (add-to-list 'load-path "~/.emacs.d/lisp/")
+  (add-to-list 'load-path (in-user-emacs-directory "lisp/"))
 
   ;; Keep customizations in a separate file
-  (setq custom-file "~/.emacs.d/customizations.el")
+  (setq custom-file (in-user-emacs-directory "customizations.el"))
   (load custom-file 'noerror))
 
 (defun install-packages ()
@@ -470,7 +476,7 @@
     (progn
       (global-undo-tree-mode)
       (defalias 'redo 'undo-tree-redo)
-      (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/tmp/undo"))
+      (setq undo-tree-history-directory-alist `(("." . ,(in-user-emacs-directory "tmp/undo")))
             undo-tree-auto-save-history t
             undo-tree-visualizer-timestamps t
             undo-tree-visualizer-diff t))
@@ -610,8 +616,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; don't litter the fs with backup and autosave files
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save/" t)))
+(setq backup-directory-alist `(("." . ,(in-user-emacs-directory "backups/"))))
+(setq auto-save-file-name-transforms `((".*" ,(in-user-emacs-directory "auto-save/") t)))
 ;; Use versioned backups
 (setq version-control t)
 ;; keep this many recent backup versions of a file
