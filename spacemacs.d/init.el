@@ -517,6 +517,14 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+  ;; Configure Evil to not suck at undoing things.
+  (setq-default evil-want-fine-undo t)
+
+  ;; Tell Magit to set the line length for git commit message body to 72.
+  (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
+  ;; When editing Git commit messages, start in insert mode.
+  (push '("COMMIT_EDITMSG" . insert) evil-buffer-regexps)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
