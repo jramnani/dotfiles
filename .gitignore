@@ -7,9 +7,11 @@ emacs.d/auto-save
 emacs.d/auto-save-list
 emacs.d/backups
 emacs.d/.cask
+emacs.d/customizations.el
 emacs.d/elpa
 emacs.d/elpa[-.]*
 emacs.d/gnu
+emacs.d/ido.last
 emacs.d/marmalade
 emacs.d/melpa
 emacs.d/network-security.*
@@ -18,11 +20,10 @@ emacs.d/.python-environments/
 emacs.d/recentf
 emacs.d/.smex-items
 emacs.d/SessionDesktop.el
+emacs.d/eshell/
 emacs.d/tramp
 emacs.d/transient
 emacs.d/url/
-emacs.d/ido.last
-emacs.d/customizations.el
 spacemacs.d/.spacemacs.env
 
 # OS X cruft
@@ -56,4 +57,3 @@ vim/bundle/vim-rails/.gitignore
 
 # Vagrant
 .vagrant/
-emacs.d/eshell/
