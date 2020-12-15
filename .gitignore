@@ -23,6 +23,7 @@ emacs.d/transient
 emacs.d/url/
 emacs.d/ido.last
 emacs.d/customizations.el
+spacemacs.d/.spacemacs.env
 
 # OS X cruft
 .DS_Store
