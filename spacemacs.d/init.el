@@ -523,6 +523,9 @@ before packages are loaded."
 
   ;; Configure Evil to not suck at undoing things.
   (setq-default evil-want-fine-undo t)
+  ;; Configure Evil to not put junk in your clipboard
+  ;; Source: https://github.com/syl20bnr/spacemacs/issues/1504
+  (fset 'evil-visual-update-x-selection 'ignore)
 
   ;; Tell Magit to set the line length for git commit message body to 72.
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
