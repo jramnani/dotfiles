@@ -535,6 +535,14 @@ before packages are loaded."
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
   ;; When editing Git commit messages, start in insert mode.
   (push '("COMMIT_EDITMSG" . insert) evil-buffer-regexps)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;
+  ;; Machine local config
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  (load "~/.emacs.local.el" 'noerror 'nomessage)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
