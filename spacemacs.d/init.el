@@ -52,6 +52,9 @@ This function should only modify configuration layer settings."
                  ;; Requires the npm package, import-js, to be installed on the
                  ;; host.
                  javascript-import-tool 'import-js
+                 ;; Requires the npm package, prettier or web-beautify, to be
+                 ;; installed on the host.
+                 javascript-fmt-tool 'web-beautify
                  ;; Configure indent level for all JS and JSON files.
                  js-indent-level 2)
      lsp
