@@ -536,6 +536,28 @@ before packages are loaded."
   ;; When editing Git commit messages, start in insert mode.
   (push '("COMMIT_EDITMSG" . insert) evil-buffer-regexps)
 
+  ;; Markdown
+  ;; When I'm on a Mac, try using the Marked application for live previews.
+  (use-package markdown-mode
+    :config
+    (progn
+      (when (eq system-type 'darwin)
+        (defun markdown-preview-file ()
+          "Use Marked.app to preview the current file"
+          (interactive)
+          (shell-command
+           (format "open -a 'Marked 2.app' %s"
+                   (shell-quote-argument (buffer-file-name))))
+          )
+        ;; This keybinding is currently shadowed by orgtbl.
+        ;; (define-key markdown-mode-map (kbd "C-c C-c p") 'markdown-preview-file)
+        ;; Quickest shortcut. Will I remember this?
+        (evil-define-key 'normal markdown-mode-map
+          (kbd "gp") 'markdown-preview-file)
+        ;; Do it the Spacemacs way since the mnemonic might be easier for me to
+        ;; remember.
+        (spacemacs/set-leader-keys "mp" 'markdown-preview-file))))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;
   ;; Machine local config
