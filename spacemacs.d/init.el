@@ -555,8 +555,9 @@ before packages are loaded."
         (evil-define-key 'normal markdown-mode-map
           (kbd "gp") 'markdown-preview-file)
         ;; Do it the Spacemacs way since the mnemonic might be easier for me to
-        ;; remember.
-        (spacemacs/set-leader-keys "mp" 'markdown-preview-file))))
+        ;; remember. Using the "o" namespace reserved for user customization.
+        ;; The resulting shortcut is: "SPC m o p"
+        (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "mop" 'markdown-preview-file))))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;
