@@ -41,6 +41,7 @@ This function should only modify configuration layer settings."
      ansible
      auto-completion
      ;; better-defaults
+     csv
      emacs-lisp
      elm
      git
@@ -89,7 +90,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(dokuwiki-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -538,6 +539,9 @@ before packages are loaded."
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
   ;; When editing Git commit messages, start in insert mode.
   (push '("COMMIT_EDITMSG" . insert) evil-buffer-regexps)
+
+  ;; Dokuwiki
+  (use-package dokuwiki-mode)
 
   ;; Markdown
   ;; When I'm on a Mac, try using the Marked application for live previews.
