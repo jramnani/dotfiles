@@ -1,3 +1,14 @@
+# The Ruby interpreter on my Mac is slow at printing its version.
+# Like over 300 ms slow.
+command_timeout = 400
+
+[character]
+# The default character is ">" which is sad because that's a redirection symbol in most shells.
+# See this article for why that's a bad idea:
+# https://tanelpoder.com/posts/how-to-stay-safe-in-shell/
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
+
 [git_branch]
 symbol = "🌱 "
 
