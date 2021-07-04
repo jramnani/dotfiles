@@ -31,6 +31,9 @@
 [github]
     user = jramnani
 
+[init]
+    defaultBranch = trunk
+
 [credential]
     helper = cache --timeout=3600
 
