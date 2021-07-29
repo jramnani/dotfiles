@@ -567,6 +567,12 @@ before packages are loaded."
         ;; The resulting shortcut is: "SPC m o p"
         (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "mop" 'markdown-preview-file))))
 
+  ;; Delete multiple blank lines.
+  ;; Credit: https://masteringemacs.org/article/removing-blank-lines-buffer
+  (defun flush-blank-lines (start end)
+    (interactive "r") (flush-lines "^\\s-*$" start end nil))
+  (spacemacs/set-leader-keys "xdl" 'flush-blank-lines)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;
   ;; Machine local config
