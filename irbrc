@@ -14,7 +14,6 @@ end
 class Object
     # methods that are relatively unique to the object in question.
     def my_methods(x)
-        (x.public_methods- Object.new.public_methods).sort
+        (x.public_methods - Object.new.public_methods).sort
     end
 end
-
