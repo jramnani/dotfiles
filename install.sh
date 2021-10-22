@@ -126,6 +126,7 @@ install_profile () {
 
   # Ruby
   link_file irbrc
+  ln -s $SCRIPT_PATH/irbrc $HOME/.pryrc
   link_file gemrc
 
   # RPM
