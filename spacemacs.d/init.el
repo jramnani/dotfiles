@@ -39,7 +39,8 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ansible
-     auto-completion
+     (auto-completion :variables
+                      company-emoji-insert-unicode nil)
      ;; better-defaults
      csv
      emacs-lisp
@@ -545,9 +546,6 @@ before packages are loaded."
   ;; Dokuwiki
   (use-package dokuwiki-mode)
 
-  ;; Emoji
-  (auto-completion :variables
-                   company-emoji-insert-unicode nil)
 
   ;; Markdown
   ;; When I'm on a Mac, try using the Marked application for live previews.
