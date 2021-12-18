@@ -79,6 +79,10 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      syntax-checking
      systemd
+     (xclipboard :variables
+                 ;; Disable history for now. I'll need to dig into later and
+                 ;; learn how to set it up for all the platforms I use.
+                 xclipboard-enable-cliphist nil)
      yaml
      ;; version-control
      windows-scripts
