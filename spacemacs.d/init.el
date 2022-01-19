@@ -640,7 +640,9 @@ This function is called at the very end of Spacemacs initialization."
      (setq create-lockfiles)
      (javascript-backend . tide)
      (javascript-backend . tern)
-     (javascript-backend . lsp))))
+     (javascript-backend . lsp)))
+ '(warning-suppress-types
+   '(((evil-collection)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
