@@ -554,6 +554,22 @@ before packages are loaded."
   ;; Configure Evil to not put junk in your clipboard
   ;; Source: https://github.com/syl20bnr/spacemacs/issues/1504
   (fset 'evil-visual-update-x-selection 'ignore)
+  ;; Configure evil search highlight behavior
+  (setq evil-search-highlight-string-min-len 4)
+  ;; Bring in some old muscle memory about clearing the current search highlight.
+  ;; (define-key evil-normal-state-map (kbd "<f2>") 'toggle-search-pattern-highlight)
+  ;; (global-set-key (kbd "<f2>") 'evil-ex-nohighlight)
+  (defun toggle-search-pattern-highlight ()
+    "Toggle the previous search patterns highlight On or Off."
+    (interactive)
+    (if (evil-ex-hl-active-p 'evil-ex-search)
+        (evil-ex-nohighlight)
+      (evil-ex-search-activate-highlight evil-ex-search-pattern)))
+
+  (global-set-key (kbd "<f2>") 'toggle-search-pattern-highlight)
+  (define-key evil-normal-state-map (kbd "<f2>") 'toggle-search-pattern-highlight)
+  (evil-define-key 'normal 'evil-normal-state-map (kbd "<f2>") 'toggle-search-pattern-highlight)
+
 
   ;; Tell Magit to set the line length for git commit message body to 72.
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
