@@ -40,6 +40,14 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ansible
      (auto-completion :variables
+                      ;; auto-completion introduces an annoying delay when
+                      ;; writing shell scripts. Disable automatic suggestions.
+                      ;; Use the TAB key to explicitly opt-in to them.
+                      ;; Otherwise check this documentation for how to disable
+                      ;; auto-complete for just the sh-mode layer.
+                      ;; https://develop.spacemacs.org/doc/DOCUMENTATION.html#disabling-layer-services-in-other-layers
+                      auto-completion-idle-delay nil
+                      auto-completion-minimum-prefix-length 3
                       company-emoji-insert-unicode nil)
      ;; better-defaults
      csv
@@ -75,12 +83,21 @@ This function should only modify configuration layer settings."
             shell-default-shell 'vterm
             shell-default-height 30
             shell-default-position 'bottom)
-     shell-scripts
+     ;; LSP mode is not working for me.
+     ;; The only language server available at the moment
+     ;; is in JavaScript, and I don't have time right now
+     ;; to mess about with configuring NVM + an NPM global
+     ;; install + configuring this layer to find the correct
+     ;; NPM shell script to invoke the LSP backend.
+     ;; Set it to nil for now and try to get it working later.
+     (shell-scripts :variables
+                    shell-scripts-backend nil)
      ;; spell-checking
      syntax-checking
      systemd
      yaml
      ;; version-control
+     vimscript
      windows-scripts
      )
 
@@ -599,7 +616,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(emojify emoji-cheat-sheet-plus company-emoji powershell bmx-mode seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby add-node-modules-path phpunit phpcbf php-extras php-auto-yasnippets geben drupal-mode cfrs company-phpactor phpactor composer php-runtime company-php ac-php-core xcscope php-mode flycheck-elm elm-test-runner elm-mode reformatter systemd toml-mode ron-mode racer flycheck-rust dap-mode posframe bui treemacs pfuture cargo rust-mode helm-gtags ggtags flycheck-bashate counsel-gtags counsel swiper ivy jinja2-mode company-ansible ansible-doc ansible yaml-mode tern web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc yapfify sphinx-doc pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda blacken anaconda-mode pythonic xterm-color vterm terminal-here shell-pop multi-term lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode dash-functional eshell-z eshell-prompt-extras esh-help smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company-shell company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete insert-shebang fish-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+   '(emojify emoji-cheat-sheet-plus company-emoji vimrc-mode dactyl-mode dokuwiki-mode csv-mode company-terraform terraform-mode hcl-mode powershell bmx-mode seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby add-node-modules-path phpunit phpcbf php-extras php-auto-yasnippets geben drupal-mode cfrs company-phpactor phpactor composer php-runtime company-php ac-php-core xcscope php-mode flycheck-elm elm-test-runner elm-mode reformatter systemd toml-mode ron-mode racer flycheck-rust dap-mode posframe bui treemacs pfuture cargo rust-mode helm-gtags ggtags flycheck-bashate counsel-gtags counsel swiper ivy jinja2-mode company-ansible ansible-doc ansible yaml-mode tern web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc yapfify sphinx-doc pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda blacken anaconda-mode pythonic xterm-color vterm terminal-here shell-pop multi-term lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode dash-functional eshell-z eshell-prompt-extras esh-help smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company-shell company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete insert-shebang fish-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(safe-local-variable-values
    '((ruby-backend quote lsp)
      (ruby-test-runner quote rspec)
