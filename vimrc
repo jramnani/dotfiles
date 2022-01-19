@@ -188,11 +188,11 @@ iab saturday   Saturday
 iab sunday     Sunday
 
 " Enable these if you mistype :w as :W or :q as :Q.
-nmap :W :w
+nnoremap W <Nop>
 " I never use 'Ex' mode. Intentionally.
-nmap :Q :q
+nnoremap Q <Nop>
 " Enable this if you mistype :x as :X.
-nmap :X :x
+nnoremap X <Nop>
 
 
 "------------------------------------------------------------------------------
