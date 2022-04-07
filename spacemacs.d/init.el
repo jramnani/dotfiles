@@ -577,6 +577,7 @@ before packages are loaded."
 
   ;; Tell Magit to set the line length for git commit message body to 72.
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
+  (setq git-commit-summary-max-length 50)
   ;; When editing Git commit messages, start in insert mode.
   (push '("COMMIT_EDITMSG" . insert) evil-buffer-regexps)
 
