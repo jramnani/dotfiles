@@ -1,6 +1,6 @@
 # The Ruby interpreter on my Mac is slow at printing its version.
 # Like over 300 ms slow.
-command_timeout = 400
+command_timeout = 200
 
 [character]
 # The default character is ">" which is sad because that's a redirection symbol in most shells.
@@ -30,3 +30,9 @@ disabled = false
 [username]
 style_user = "white"
 format = "[$user]($style)@"
+
+[vagrant]
+# Vagrant is really slow, and my personal laptop's config is broken
+# at the moment. Plus I'm using podman more for my dev environments
+# now.
+disabled = true
