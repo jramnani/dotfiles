@@ -56,6 +56,7 @@ This function should only modify configuration layer settings."
      elm
      git
      helm
+     html
      (javascript :variables
                  ;; Requires the npm package, typescript-language-server, to be
                  ;; installed on the host.
