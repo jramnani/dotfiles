@@ -558,6 +558,18 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Artist mode - draw ASCII art in Emacs
+  ;; Evil and artist-mode do not mix.
+  ;; Credit: https://github.com/syl20bnr/spacemacs/issues/4926#issuecomment-179694835
+  (defun artist-mode-toggle-emacs-state ()
+    (if artist-mode
+        (evil-emacs-state)
+      (evil-exit-emacs-state)))
+
+  (unless (eq dotspacemacs-editing-style 'emacs)
+    (add-hook 'artist-mode-hook #'artist-mode-toggle-emacs-state))
+
+
   ;; Configure Evil to not suck at undoing things.
   (setq-default evil-want-fine-undo t)
   ;; Configure Evil to not put junk in your clipboard
