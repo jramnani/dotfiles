@@ -538,6 +538,10 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default git-magit-status-fullscreen t)
+  ;; Started getting this warning recently.
+  ;; https://github.com/emacs-evil/evil-collection/issues/215
+  ;; https://github.com/emacs-evil/evil-collection/issues/60
+  (setq evil-want-keybinding nil)
   )
 
 (defun dotspacemacs/user-load ()
