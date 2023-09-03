@@ -625,6 +625,10 @@ before packages are loaded."
         ;; The resulting shortcut is: "SPC m o p"
         (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "mop" 'markdown-preview-file))))
 
+  ;; NeoTree
+  ;; Use my old Vim keybinding for this.
+  (spacemacs/set-leader-keys "d" 'neotree-find-project-root)
+
   ;; Delete multiple blank lines.
   ;; Credit: https://masteringemacs.org/article/removing-blank-lines-buffer
   (defun flush-blank-lines (start end)
