@@ -80,6 +80,8 @@ if [ $MYOS == "OSX" ]; then
     # Use Homebrew bash completion
     if [[ -f /usr/local/etc/bash_completion ]]; then
         . /usr/local/etc/bash_completion
+    elif [[ -f /opt/homebrew/etc/bash_completion ]]; then
+        . /opt/homebrew/etc/bash_completion
     fi
 fi
 
