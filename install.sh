@@ -72,6 +72,18 @@ install_profile () {
   done
   unset FISH_FILE
 
+  # Direnv
+  mkdir -p $HOME/.config/direnv
+  for DIRENV_FILE in $(ls $SCRIPT_PATH/direnv/); do
+      if [ ! -L $HOME/.config/direnv/$DIRENV_FILE ]; then
+          echo "Linking $HOME/.config/direnv/$DIRENV_FILE -> $SCRIPT_PATH/direnv/$DIRENV_FILE"
+          ln -s $SCRIPT_PATH/direnv/$DIRENV_FILE $HOME/.config/direnv/$DIRENV_FILE
+      else
+          echo "Link already exists for 'direnv/$DIRENV_FILE'. Nothing to do."
+      fi
+  done
+  unset DIRENV_FILE
+
   # Emacs
   # Doom emacs config
   link_file doom.d
