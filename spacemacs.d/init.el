@@ -650,6 +650,12 @@ before packages are loaded."
   ;; Use my old Vim keybinding for this.
   (spacemacs/set-leader-keys "d" 'neotree-find-project-root)
 
+  ;; Outline magic adds some extensions to Emacs vanilla outline-mode.
+  ;; It adds visibility cycling and adds structural editing.
+  ;; dokuwiki-mode supports outline-magic and makes it nicer to use.
+  (use-package outline-magic
+    :ensure t)
+
   ;; Delete multiple blank lines.
   ;; Credit: https://masteringemacs.org/article/removing-blank-lines-buffer
   (defun flush-blank-lines (start end)
