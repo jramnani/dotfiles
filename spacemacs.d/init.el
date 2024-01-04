@@ -608,7 +608,8 @@ before packages are loaded."
 
 
   ;; Dokuwiki
-  (use-package dokuwiki-mode)
+  (use-package dokuwiki-mode
+    :ensure t)
 
 
   ;; Helpful
@@ -617,7 +618,8 @@ before packages are loaded."
     (global-set-key (kbd "C-h f") #'helpful-callable)
     (global-set-key (kbd "C-h v") #'helpful-variable)
     (global-set-key (kbd "C-h k") #'helpful-key)
-    (global-set-key (kbd "C-h x") #'helpful-command))
+    (global-set-key (kbd "C-h x") #'helpful-command)
+    :ensure t)
 
 
   ;; Markdown
@@ -641,7 +643,8 @@ before packages are loaded."
         ;; Do it the Spacemacs way since the mnemonic might be easier for me to
         ;; remember. Using the "o" namespace reserved for user customization.
         ;; The resulting shortcut is: "SPC m o p"
-        (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "mop" 'markdown-preview-file))))
+        (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "mop" 'markdown-preview-file)))
+    :ensure t)
 
   ;; NeoTree
   ;; Use my old Vim keybinding for this.
