@@ -144,10 +144,19 @@ case ${MYOS} in
         fi
         # Homebrew installed? Like GNU Stow but better...
         if [[ -x /usr/local/bin/brew ]]; then
-            echo -e "Homebrew, \c"
-            pathmunge /usr/local/sbin
-            pathmunge /usr/local/bin
-            manpathmunge /usr/local/share/man
+            MY_CPU_ARCH=$(arch)
+            if [[ $MY_CPU_ARCH = "arm64" ]]; then
+               echo -e "Homebrew arm64, \c"
+               export PATH=/opt/homebrew/bin:$PATH
+               pathmunge /opt/homebrew/sbin
+               pathmunge /opt/homebrew/bin
+               manpathmunge /opt/homebrew/share/man
+            else
+                echo -e "Homebrew x86, \c"
+                pathmunge /usr/local/sbin
+                pathmunge /usr/local/bin
+                manpathmunge /usr/local/share/man
+            fi
         fi
         ;;
     *BSD|Linux)
