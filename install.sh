@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -138,7 +138,9 @@ install_profile () {
 
   # Ruby
   link_file irbrc
-  ln -s $SCRIPT_PATH/irbrc $HOME/.pryrc
+  if [ ! -L $HOME/.pryrc ]; then
+    ln -s $SCRIPT_PATH/irbrc $HOME/.pryrc
+  fi
   link_file gemrc
 
   # RPM
