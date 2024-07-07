@@ -538,6 +538,13 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  ;; Set font size to something comfortable. On Linux I usually have worse
+  ;; scaling sizes than when I'm on a Mac.
+  (if (eq system-type 'gnu/linux)
+      (setq-default dotspacemacs-default-font '("Source Code Pro"
+                                                :size 12.0
+                                                :weight normal
+                                                :width normal)))
   (setq-default git-magit-status-fullscreen t)
   ;; Started getting this warning recently.
   ;; https://github.com/emacs-evil/evil-collection/issues/215
