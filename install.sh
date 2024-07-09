@@ -109,6 +109,22 @@ install_profile () {
       echo "Missing ~/.gitconfig-user file.  It should contain a [user] section."
   fi
 
+  # Kitty terminal emulator
+  for KITTY_FILE in kitty/kitty.conf kitty/theme.conf; do
+      if [ ! -L "$HOME/.config/$KITTY_FILE" ]; then
+          _KITTY_DEST="$SCRIPT_PATH/$KITTY_FILE"
+          _KITTY_SRC="$HOME/.config/$KITTY_FILE"
+
+          echo "Installing Kitty terminal config: $_KITTY_SRC -> $_KITTY_DEST"
+
+          mkdir -p "$HOME/.config/kitty"
+          ln -f -s "$_KITTY_DEST" "$_KITTY_SRC"
+      else
+          echo "Link already exists for '$KITTY_FILE'. Nothing to do."
+      fi
+  done
+  unset KITTY_FILE
+
   # Mercurial
   for HG_FILE in hgext hgrc; do
     link_file $HG_FILE
