@@ -128,7 +128,8 @@ case ${MYOS} in
 
     "OSX")
         REV=`uname -r`
-        echo -e "Darwin $REV -- \c"
+        MY_CPU_ARCH=$(arch)
+        echo -e "Darwin $REV $MY_CPU_ARCH -- \c"
         # Fink installed?  If not, you should, it's a decent package manager...
         if [[ -d /sw ]]; then
             echo -e "Fink, \c"
@@ -143,8 +144,7 @@ case ${MYOS} in
             manpathmunge /opt/local/share/man
         fi
         # Homebrew installed? Like GNU Stow but better...
-        if [[ -x /usr/local/bin/brew ]]; then
-            MY_CPU_ARCH=$(arch)
+        if type brew >/dev/null 2>&1; then
             if [[ $MY_CPU_ARCH = "arm64" ]]; then
                echo -e "Homebrew arm64, \c"
                export PATH=/opt/homebrew/bin:$PATH
