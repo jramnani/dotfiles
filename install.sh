@@ -110,20 +110,24 @@ install_profile () {
   fi
 
   # Kitty terminal emulator
-  for KITTY_FILE in kitty/kitty.conf kitty/theme.conf; do
-      if [ ! -L "$HOME/.config/$KITTY_FILE" ]; then
-          _KITTY_DEST="$SCRIPT_PATH/$KITTY_FILE"
-          _KITTY_SRC="$HOME/.config/$KITTY_FILE"
+  KITTY_FILES=$(ls kitty/)
+  for KITTY_FILE in $KITTY_FILES; do
+      local _KITTY_DEST="$SCRIPT_PATH/kitty/$KITTY_FILE"
+      local _KITTY_SRC="$HOME/.config/kitty/$KITTY_FILE"
 
+      if [ ! -L "$_KITTY_SRC" ]; then
           echo "Installing Kitty terminal config: $_KITTY_SRC -> $_KITTY_DEST"
 
           mkdir -p "$HOME/.config/kitty"
           ln -f -s "$_KITTY_DEST" "$_KITTY_SRC"
       else
-          echo "Link already exists for '$KITTY_FILE'. Nothing to do."
+          echo "Link already exists for '$_KITTY_DEST'. Nothing to do."
       fi
   done
+  unset _KITTY_DEST
+  unset _KITTY_SRC
   unset KITTY_FILE
+  unset KITTY_FILES
 
   # Mercurial
   for HG_FILE in hgext hgrc; do
