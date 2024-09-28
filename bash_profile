@@ -198,14 +198,12 @@ if [[ -x /usr/bin/java ]]; then
         # OSX keeps it's own set of symlinks that point to the current Java version.
         export JAVA_HOME=`/usr/libexec/java_home`
         export CLASSPATH=$JAVA_HOME/lib
-    elif [ $MYOS == "Solaris" ]; then
+    fi
+
+    if [ $MYOS == "Solaris" ]; then
         # Solaris packages will install into /usr/java ...
         export JAVA_HOME=/usr/java
         export CLASSPATH=/usr/java/lib
-    else
-        # Everyone else seems to keep this convention...
-        export JAVA_HOME=/usr/lib/java
-        export CLASSPATH=/usr/lib/java
     fi
 fi
 
