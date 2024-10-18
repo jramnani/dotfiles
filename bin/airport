@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ $MYOS -eq "OSX" ]]; then
-    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $@
-else
-    echo "The 'airport' program is only available on OS X."
-    exit 1
-fi
