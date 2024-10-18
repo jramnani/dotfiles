@@ -676,6 +676,11 @@ before packages are loaded."
     (interactive "r") (flush-lines "^\\s-*$" start end nil))
   (spacemacs/set-leader-keys "xdl" 'flush-blank-lines)
 
+  ;; Set focus when we open the frame.
+  ;; https://apple.stackexchange.com/questions/467216/emacs-starts-up-without-window-focus-in-macos-sonoma
+  (when (eq system-type 'darwin)
+    (select-frame-set-input-focus (selected-frame)))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;
   ;; Machine local config
