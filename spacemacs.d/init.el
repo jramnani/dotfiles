@@ -50,6 +50,7 @@ This function should only modify configuration layer settings."
                       auto-completion-minimum-prefix-length 3
                       company-emoji-insert-unicode nil)
      ;; better-defaults
+     clojure
      csv
      emacs-lisp
      emoji
@@ -81,6 +82,7 @@ This function should only modify configuration layer settings."
      (ruby :variables
            ruby-backend 'lsp
            lsp-solargraph-use-bundler t)
+     ruby-on-rails
      rust
      (shell :variables
             shell-default-shell 'vterm
