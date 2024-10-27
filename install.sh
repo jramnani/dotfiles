@@ -192,6 +192,9 @@ install_profile () {
     ln -s $SCRIPT_PATH/vim $HOME/.vim
   fi
   link_file vimrc
+
+  # WezTerm
+  link_file wezterm.lua
 }
 
 
