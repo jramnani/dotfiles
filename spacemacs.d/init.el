@@ -583,6 +583,10 @@ before packages are loaded."
     (add-hook 'artist-mode-hook #'artist-mode-toggle-emacs-state))
 
 
+  ;; When I highlight a region and paste, I want to overwrite the region, not append to it.
+  (delete-selection-mode 1)
+
+
   ;; Configure Evil to not suck at undoing things.
   (setq-default evil-want-fine-undo t)
   ;; Configure Evil to not put junk in your clipboard
