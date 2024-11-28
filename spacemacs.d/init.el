@@ -688,6 +688,19 @@ before packages are loaded."
   (when (eq system-type 'darwin)
     (select-frame-set-input-focus (selected-frame)))
 
+  ;; Edit Server
+
+  (use-package edit-server
+    :ensure t
+    :commands edit-server-start
+    :init (progn
+            (setq edit-server-new-frame nil)
+
+            (if after-init-time
+                (edit-server-start)
+              (add-hook 'after-init-hook
+                        #'(lambda() (edit-server-start))))))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;
   ;; Machine local config
