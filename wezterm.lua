@@ -2,6 +2,11 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+-- https://github.com/wez/wezterm/discussions/4728
+local is_darwin <const> = wezterm.target_triple:find("darwin") ~= nil
+local is_linux <const> = wezterm.target_triple:find("linux") ~= nil
+
+
 -- Color
 config.color_scheme = 'Solarized (dark) (terminal.sexy)'
 
