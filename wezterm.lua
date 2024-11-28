@@ -20,5 +20,20 @@ config.scrollback_lines = 10000
 config.enable_scroll_bar = true
 
 
+-- Key bindings
+config.keys = {
+  {
+    key = 'LeftArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.MoveTabRelative(-1)
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.MoveTabRelative(1)
+  },
+}
+
+
 -- Final
 return config
