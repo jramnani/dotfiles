@@ -3700,6 +3700,9 @@ keymap("Firefox Browsers Overrides", {
     # Block shortcuts that might get confused with Shift+Cmd+[Left/Right]_Brace
     C("Shift-RC-Minus"):        ignore_combo,                       # Ignore alternate zoom out shortcut
     C("Shift-RC-Equal"):        ignore_combo,                       # Ignore alternate zoom in shortcut
+    # Try using the default macOS shortcuts even though they conflict with text navigation in textareas.
+    C("RC-Left"):               C("Alt-Left"),                  # Page nav: Back to prior page in history (conflict with wordwise)
+    C("RC-Right"):              C("Alt-Right"),                 # Page nav: Forward to next page in history (conflict with wordwise)
 }, when = matchProps(clas=browsers_firefoxStr))
 
 # Vivaldi is a Chromium based web browser
