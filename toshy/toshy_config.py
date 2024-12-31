@@ -700,6 +700,7 @@ keyboards_UserCustom_dct = {
     # Example:
     'My Keyboard Device Name': 'Apple',
     'Falbatech Redox': 'Apple',
+    'Framework Laptop 16 Keyboard Module - ANSI Keyboard': "Windows",
 }
 
 ###  SLICE_MARK_END: kbtype_override  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
