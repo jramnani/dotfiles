@@ -1794,6 +1794,18 @@ modmap("Cond modmap - Terms - Mac kbd", {
 ###  SLICE_MARK_START: user_custom_modmaps  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
 
 
+modmap("User modmap - Terms - Win kbd", {
+    # - Default Mac/Win
+    # - Default Win
+    # Key.LEFT_CTRL:              Key.LEFT_CTRL,                  # WinMac
+    # Key.LEFT_META:              Key.LEFT_ALT,                   # WinMac
+    # Key.LEFT_ALT:               Key.RIGHT_CTRL,                 # WinMac
+    Key.CAPSLOCK:               Key.LEFT_CTRL,                  # Caps Lock should act as another Ctrl key.
+}, when = lambda ctx:
+    isKBtype('Windows', map='mmap terms Win')(ctx) and
+    matchProps(clas=termStr)(ctx)
+)
+
 
 ###  SLICE_MARK_END: user_custom_modmaps  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
 ###################################################################################################
