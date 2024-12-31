@@ -3295,6 +3295,16 @@ keymap("User hardware keys", {
     matchProps(not_clas=remoteStr)(ctx)
 )
 
+# Terminal apps should not swallow the Super-t action so that my Tiling window
+# manager on Ubuntu, Tactile, continues to work.
+if DESKTOP_ENV == 'gnome':
+    keymap("Terminals allow Tactile", {
+        C("LC-t"):                  C("Super-t"),                 # Allow Tactile key Super-T to tile windows
+    }, when = lambda ctx:
+        cnfg.screen_has_focus and
+        matchProps(clas=termStr)(ctx)
+    )
+
 ###  SLICE_MARK_END: user_apps  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
 ###################################################################################################
 
