@@ -1807,6 +1807,19 @@ modmap("User modmap - Terms - Win kbd", {
 )
 
 
+modmap("User modmap - Terms - Mac kbd", {
+    # - Mac Only
+    # Left Ctrl Stays Left Ctrl
+    Key.LEFT_CTRL:              Key.LEFT_CTRL,                  # Mac (self-modmap)
+    Key.LEFT_ALT:               Key.LEFT_ALT,                   # Mac (self-modmap)
+    Key.LEFT_META:              Key.RIGHT_CTRL,                 # Mac
+    Key.RIGHT_ALT:              Key.RIGHT_ALT,                  # Mac (self-modmap)
+    Key.CAPSLOCK:               Key.LEFT_CTRL,                  # Caps Lock should act as another Ctrl key in terminals.
+}, when = lambda ctx:
+    isKBtype('Apple', map='mmap terms Apple')(ctx) and
+    matchProps(clas=termStr)(ctx)
+)
+
 ###  SLICE_MARK_END: user_custom_modmaps  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
 ###################################################################################################
 
