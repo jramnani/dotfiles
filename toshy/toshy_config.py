@@ -699,6 +699,7 @@ keyboards_UserCustom_dct = {
     # Valid types to map device to: Apple, Windows, IBM, Chromebook (case sensitive)
     # Example:
     'My Keyboard Device Name': 'Apple',
+    'Falbatech Redox': 'Apple',
 }
 
 ###  SLICE_MARK_END: kbtype_override  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
@@ -4314,8 +4315,8 @@ if DISTRO_ID == 'pop':
 if DISTRO_ID in ['ubuntu', 'fedora'] and DESKTOP_ENV == 'gnome':
     keymap("GenTerms overrides: Ubuntu/Fedora", {
         C("LC-RC-Q"):               C("Super-L"),                   # Lock screen (ubuntu/fedora)
-        C("LC-Right"):              [bind,C("Super-Page_Up")],      # SL - Change workspace (ubuntu/fedora)
-        C("LC-Left"):               [bind,C("Super-Page_Down")],    # SL - Change workspace (ubuntu/fedora)
+        C("LC-Right"):              [bind,C("Super-Page_Down")],    # SL - Change workspace (ubuntu/fedora)
+        C("LC-Left"):               [bind,C("Super-Page_Up")],      # SL - Change workspace (ubuntu/fedora)
     }, when = lambda ctx:
         cnfg.screen_has_focus and
         matchProps(clas=termStr)(ctx)
