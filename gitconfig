@@ -16,6 +16,7 @@
     hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
     w = whatchanged
     recent = branch --sort=-committerdate
+    tag-log = log --no-walk --tags --pretty='%h %d %s' --decorate=full
 
 [color]
     ui = true
