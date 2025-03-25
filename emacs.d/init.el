@@ -474,7 +474,6 @@ RELATIVE-DIRECTORY should end in a slash."
            ("s-Z" . undo-tree-redo))
     :init
     (progn
-      (global-undo-tree-mode)
       (defalias 'redo 'undo-tree-redo)
       (setq undo-tree-history-directory-alist `(("." . ,(in-user-emacs-directory "tmp/undo")))
             undo-tree-auto-save-history t
@@ -584,10 +583,7 @@ RELATIVE-DIRECTORY should end in a slash."
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Show line numbers
-(global-linum-mode t)
-;; Give line numbers some breathing room
-(setq linum-format "%4d ")
-
+(global-display-line-numbers-mode 1)
 ;; Show column numbers in the mode line
 (column-number-mode)
 
