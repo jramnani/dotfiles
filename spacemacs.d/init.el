@@ -587,6 +587,10 @@ before packages are loaded."
   ;; When I highlight a region and paste, I want to overwrite the region, not append to it.
   (delete-selection-mode 1)
 
+  ;; When I open a new buffer, I do not want whitespace-mode on by default. I
+  ;; don't know why Spacemacs started doing this automatically when opening a
+  ;; new buffer, but it is annoying.
+  (spacemacs/toggle-whitespace-globally-off)
 
   ;; Configure Evil to not suck at undoing things.
   (setq-default evil-want-fine-undo t)
@@ -618,6 +622,10 @@ before packages are loaded."
 
   ;; Tell Magit to set the line length for git commit message body to 72.
   (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
+  ;; When I open a new git commit buffer, I do not want whitespace-mode on by
+  ;; default. I don't know why Spacemacs started doing this automatically when
+  ;; opening a new buffer, but it is annoying.
+  (add-hook 'helm-ls-git-commit-mode-hook (lambda () (whitespace-mode -1)))
   (setq git-commit-summary-max-length 50)
 
   ;; When editing Git commit messages, start in insert mode.
