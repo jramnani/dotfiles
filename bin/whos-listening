@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+import argparse
+import subprocess
+import sys
+
+def parse_args(args):
+    parser = argparse.ArgumentParser(description="Who's listening on this network port?")
+    parser.add_argument("--port", "-p", required=True, help="The network port")
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args(sys.argv[1:])
+
+    command = f"lsof -P -i :{args.port}"
+    result = subprocess.run(command.split(), capture_output=True, encoding="UTF-8")
+    output = []
+    for line in result.stdout.split("\n"):
+
+        if "COMMAND" in line:
+            output.append(line)
+
+        if "LISTEN" in line:
+            output.append(line)
+
+    if len(output) == 0:
+        print("Nobody is listening")
+        sys.exit(1)
+
+    print("\n".join(output))
+
+
+if __name__ == '__main__':
+    main()
