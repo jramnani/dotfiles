@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+kernel=$(uname -s)
+
+if [[ "$kernel" -eq "Darwin" ]]; then
+    lsof -nP -iTCP -sTCP:LISTEN
+    exit 0
+fi
+
+if [[ -x $(which ss) ]]; then
+    ss -ntpl
+    exit 0
+fi
+
+if [[ -x $(which netstat) ]]; then
+    netstat -ntpl
+    exit 0
+fi
