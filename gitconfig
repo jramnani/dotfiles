@@ -61,6 +61,8 @@
        name = ansible-vault merge driver
        driver = /usr/local/bin/ansible-vault-merge -- %O %A %B %P
 
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
 
-[include]
-    path = .gitconfig-user
+[includeIf "gitdir:~/code/"]
+    path = ~/code/.gitconfig
