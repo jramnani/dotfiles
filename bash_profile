@@ -68,7 +68,7 @@ fi
 case ${MYOS} in
     "Solaris")
         REV=`uname -r`
-        echo -e "Solaris $REV --  \c"
+        _interactive_shell_echo -e "Solaris $REV --  \c"
         # Old Solaris compiler stuff...
         if [[ -d /usr/ucb ]]; then
             pathmunge /usr/ucb after
@@ -79,35 +79,35 @@ case ${MYOS} in
         platform=`uname -i`;
         # platform specific binaries?
         if [[ -d /usr/platform/$platform/sbin ]]; then
-            echo -e "prtdiag, \c"
+            _interactive_shell_echo -e "prtdiag, \c"
             pathmunge /usr/platform/$platform/sbin after
         fi
         # rsc ???
         if [[ -d /usr/platform/$platform/rsc ]]; then
-            echo -e "rsc tool, \c"
+            _interactive_shell_echo -e "rsc tool, \c"
             pathmunge /usr/platform/$platform/rsc after
         fi
         # veritas crap
         if [[ -d /opt/VRTS ]]; then
-            echo -e "veritas, \c"
+            _interactive_shell_echo -e "veritas, \c"
             pathmunge /opt/VRTS/bin after
             manpathmunge /opt/VRTS/man after
         fi
         # sun C compiler
         if [[ -d /opt/SUNWspro/bin ]]; then
-                echo -e "forte, \c"
+                _interactive_shell_echo -e "forte, \c"
                 pathmunge /opt/SUNWspro/bin after
                 manpathmunge /opt/SUNWspro/man after
         fi
         # solaris xwindows. Can you say "cruft"?
         if [[ -d /usr/openwin/bin ]]; then
-                echo -e "openwin, \c"
+                _interactive_shell_echo -e "openwin, \c"
                 pathmunge /usr/openwin/bin after
                 manpathmunge /usr/openwin/man after
         fi
         # solaris location for GNU software. why solaris, why??
         if [[ -d /usr/sfw ]]; then
-                echo -e "sfw, \c"
+                _interactive_shell_echo -e "sfw, \c"
                 pathmunge /usr/sfw/bin
                 manpathmunge /usr/sfw/man after
         fi
@@ -118,27 +118,27 @@ case ${MYOS} in
     # in Windows' system properties.
     "Cygwin")
         REV=`uname -r`
-        echo -e "Cygwin $REV --  \c"
+        _interactive_shell_echo -e "Cygwin $REV --  \c"
 
         # Windows Resource Kit installed?
         if [[ -d "/cygdrive/c/Program Files/Resource Kit" ]]; then
-            echo -e "Win Resource kit, \c"
+            _interactive_shell_echo -e "Win Resource kit, \c"
         fi
         ;;
 
     "OSX")
         REV=`uname -r`
         MY_CPU_ARCH=$(arch)
-        echo -e "Darwin $REV $MY_CPU_ARCH -- \c"
+        _interactive_shell_echo -e "Darwin $REV $MY_CPU_ARCH -- \c"
         # Fink installed?  If not, you should, it's a decent package manager...
         if [[ -d /sw ]]; then
-            echo -e "Fink, \c"
+            _interactive_shell_echo -e "Fink, \c"
             # This script sets up all Fink required environment stuff.
             . /sw/bin/init.sh
         fi
         # MacPorts installed? Perhaps even better than Fink...
         if [[ -d /opt/local ]]; then
-            echo -e "MacPorts, \c"
+            _interactive_shell_echo -e "MacPorts, \c"
             pathmunge /opt/local/bin
             pathmunge /opt/local/sbin
             manpathmunge /opt/local/share/man
@@ -146,13 +146,13 @@ case ${MYOS} in
         # Homebrew installed? Like GNU Stow but better...
         if type brew >/dev/null 2>&1; then
             if [[ $MY_CPU_ARCH = "arm64" ]]; then
-               echo -e "Homebrew arm64, \c"
+               _interactive_shell_echo -e "Homebrew arm64, \c"
                export PATH=/opt/homebrew/bin:$PATH
                pathmunge /opt/homebrew/sbin
                pathmunge /opt/homebrew/bin
                manpathmunge /opt/homebrew/share/man
             else
-                echo -e "Homebrew x86, \c"
+                _interactive_shell_echo -e "Homebrew x86, \c"
                 pathmunge /usr/local/sbin
                 pathmunge /usr/local/bin
                 manpathmunge /usr/local/share/man
@@ -162,7 +162,7 @@ case ${MYOS} in
     *BSD|Linux)
         REV=`uname -r`
         MYOS_NAME=`uname -s`
-        echo -e "$MYOS_NAME $REV -- \c"
+        _interactive_shell_echo -e "$MYOS_NAME $REV -- \c"
         ;;
     *)
         ;;
@@ -193,7 +193,7 @@ export PAGER
 
 if [[ -x /usr/bin/java ]]; then
     JAVA_VERSION=`java -version 2>&1 | head -1 | awk '{print $3}'`
-    echo -e "Java ${JAVA_VERSION}, \c"
+    _interactive_shell_echo -e "Java ${JAVA_VERSION}, \c"
     if [ $MYOS == "OSX" ]; then
         # OSX keeps it's own set of symlinks that point to the current Java version.
         export JAVA_HOME=`/usr/libexec/java_home`
@@ -212,7 +212,7 @@ fi
 if which python >/dev/null 2>&1; then
     # Python prints version information from '-V' to STDERR.
     PYFULLVERSION=`python -V 2>&1 | awk '{print $2}'`
-    echo -e "Python $PYFULLVERSION, \c"
+    _interactive_shell_echo -e "Python $PYFULLVERSION, \c"
     # Always use 'Distribute' for virtualenvs.
     export VIRTUALENV_USE_DISTRIBUTE=1
     # Use my python startup file.
@@ -224,7 +224,7 @@ fi
 if which ruby >/dev/null 2>&1; then
     # Print which Ruby is in my path.
     RUBY_VERSION=`ruby --version 2>&1 | awk '{print $2}'`
-    echo -e "Ruby $RUBY_VERSION, \c"
+    _interactive_shell_echo -e "Ruby $RUBY_VERSION, \c"
 fi
 
 
@@ -255,7 +255,7 @@ if [ $MYOS == "Solaris" ]; then
 
     # Let me know if vim is installed
     if [[ -x /usr/local/bin/vim ]]; then
-        echo -e "VIM, \c"
+        _interactive_shell_echo -e "VIM, \c"
     fi
 fi
 
@@ -307,4 +307,4 @@ if [ -r "$HOME/.bashrc" ]; then
 fi
 
 # Add a new line after we've printed all the stuff about our environment.
-echo ""
+_interactive_shell_echo ""
