@@ -1,3 +1,14 @@
+# Echo function that only outputs in interactive shells.
+# Used during shell initialization to suppress informational output
+# when running non-interactive commands (e.g., from automation tools)
+_interactive_shell_echo() {
+    # The variable '$-' contains the options set for the current shell.
+    # "i" is for "interactive".
+    if [[ $- == *i* ]]; then
+        echo "$@"
+    fi
+}
+
 # Make it easier to mess with $PATH (stolen from Red Hat /etc/profile)
 # Helps to keep duplicate pathnames from showing up in your path.
 pathmunge () {
