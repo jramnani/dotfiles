@@ -38,9 +38,44 @@ alias rm='rm -i'
 
 ## Completions
 
-if [[ -f /etc/bash_completion ]]; then
-  source /etc/bash_completion
-fi
+_load_bash_completions() {
+    # Homebrew bash-completion@2 (bash 4.2+)
+    # This is the preferred method for modern Homebrew + bash setups.
+
+    # bash-completion@2 (for bash 4.2+) MUST be loaded before any individual
+    # completion scripts, as they depend on functions defined in the main script.
+    # See: https://docs.brew.sh/Shell-Completion
+    if type brew &>/dev/null; then
+        local homebrew_prefix
+        homebrew_prefix="$(brew --prefix)"
+
+        if [[ -r "${homebrew_prefix}/etc/profile.d/bash_completion.sh" ]]; then
+            source "${homebrew_prefix}/etc/profile.d/bash_completion.sh"
+            return
+        fi
+
+        # Homebrew bash-completion v1 (older bash < 4.2)
+        if [[ -r "${homebrew_prefix}/etc/bash_completion" ]]; then
+            source "${homebrew_prefix}/etc/bash_completion"
+            return
+        fi
+    fi
+
+    # MacPorts
+    if [[ -r /opt/local/etc/bash_completion ]]; then
+        source /opt/local/etc/bash_completion
+        return
+    fi
+
+    # Linux and other systems
+    if [[ -r /etc/bash_completion ]]; then
+        source /etc/bash_completion
+        return
+    fi
+}
+
+_load_bash_completions
+unset -f _load_bash_completions
 
 
 ## Solaris quirks
@@ -72,16 +107,6 @@ if [ $MYOS == "OSX" ]; then
     if [[ -x /opt/local/bin/vim ]]; then
         alias vi='/opt/local/bin/vim'
         alias vim='/opt/local/bin/vim'
-    fi
-    # Use MacPorts bash completion
-    if [ -f /opt/local/etc/bash_completion ]; then
-        . /opt/local/etc/bash_completion
-    fi
-    # Use Homebrew bash completion
-    if [[ -f /usr/local/etc/bash_completion ]]; then
-        . /usr/local/etc/bash_completion
-    elif [[ -f /opt/homebrew/etc/bash_completion ]]; then
-        . /opt/homebrew/etc/bash_completion
     fi
 fi
 
