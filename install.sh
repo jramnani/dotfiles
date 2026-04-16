@@ -156,6 +156,9 @@ install_profile () {
       echo "Link already exists for $HOME/.ipython/profile_default/ipython_config.py. Nothing to do."
   fi
 
+  # Ripgrep
+  link_file ripgreprc
+
   # Ruby
   link_file irbrc
   if [ ! -L $HOME/.pryrc ]; then

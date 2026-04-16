@@ -301,6 +301,11 @@ fi
 #
 ########################################################################
 
+# Ripgrep
+if [ -r "$HOME/.ripgreprc" ]; then
+   export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+fi
+
 # Get our functions and aliases.
 if [ -r "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
