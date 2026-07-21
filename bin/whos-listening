@@ -6,7 +6,7 @@ import sys
 
 def parse_args(args):
     parser = argparse.ArgumentParser(description="Who's listening on this network port?")
-    parser.add_argument("--port", "-p", required=True, help="The network port")
+    parser.add_argument("port", help="The network port")
 
     return parser.parse_args()
 
