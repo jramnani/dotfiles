@@ -46,7 +46,7 @@
     ff = only
 
 [push]
-    default = upstream
+    default = simple
 
 [rerere]
     enabled = true
