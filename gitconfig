@@ -69,3 +69,6 @@
 
 [includeIf "gitdir:~/code/"]
     path = ~/code/.gitconfig
+
+[include]
+    path = ~/.gitconfig-local
