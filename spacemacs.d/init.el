@@ -597,6 +597,14 @@ before packages are loaded."
   ;; Configure Evil to not put junk in your clipboard
   ;; Source: https://github.com/syl20bnr/spacemacs/issues/1504
   (fset 'evil-visual-update-x-selection 'ignore)
+
+  ;; Send all evil-delete operations to the blackhole register so they
+  ;; never clobber the system clipboard.
+  (defun jramnani/evil-delete (orig-fn beg end &optional type _ &rest args)
+    (apply orig-fn beg end type ?_ args))
+
+  (advice-add 'evil-delete :around #'jramnani/evil-delete)
+
   ;; Configure evil search highlight behavior
   (setq evil-search-highlight-string-min-len 4)
   ;; Bring in some old muscle memory about clearing the current search highlight.
