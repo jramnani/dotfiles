@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+
+TOGGLE=$1
+
+if [[ -z $TOGGLE ]]; then
+    echo "Usage $0: on|off"
+    exit 1;
+
+fi
+
+if [[ $TOGGLE = 'on' ]]; then
+    # Turn on IPv6 for the Wi-Fi network
+    networksetup -setv6automatic Wi-Fi
+fi
+
+if [[ $TOGGLE = 'off' ]]; then
+    # Turn off IPv6 for the Wi-Fi network
+    networksetup -setv6off Wi-Fi
+fi
