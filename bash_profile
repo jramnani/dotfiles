@@ -63,9 +63,6 @@ fi
 if [[ -d /usr/local/man ]]; then
     manpathmunge /usr/local/man
 fi
-if [[ -d ~/bin ]]; then
-    pathmunge ~/bin
-fi
 
 case ${MYOS} in
     "Solaris")
@@ -311,6 +308,11 @@ fi
 # Get our functions and aliases.
 if [ -r "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
+fi
+
+# Finally, add my personal bin folder to the beginning of the path.
+if [[ -d ~/bin ]]; then
+    pathmunge ~/bin
 fi
 
 # Add a new line after we've printed all the stuff about our environment.
