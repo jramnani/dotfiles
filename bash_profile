@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 # One profile to rule them all...and in the terminal bind them.
 # Terminal settings, environment variables, and path munging.
 # Functions and aliases stored in .bashrc
