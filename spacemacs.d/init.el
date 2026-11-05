@@ -644,6 +644,15 @@ before packages are loaded."
   (use-package dokuwiki-mode
     :ensure t)
 
+  ;; Dotenv
+  ;; dotenv treats "=" as an "_" character, so searching with "*" will include the equal sign
+  ;; when you are searching for a variable name. Which is annoying. Appeared in Emacs 31.1.
+  (use-package dotenv-mode
+    :ensure t
+    :config
+    ;; '=' must be punctuation so that 'FOO', not 'FOO=' is the symbol at point.
+    ;; dotenv-mode-syntax-table is a shared object, so this fixes all .env buffers.
+    (modify-syntax-entry ?= "." dotenv-mode-syntax-table))
 
   ;; Elixir
   (use-package elixir-mode
