@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -741,14 +741,68 @@ This function is called at the very end of Spacemacs initialization."
    ;; If there is more than one, they won't work right.
    '(evil-want-Y-yank-to-eol nil)
    '(package-selected-packages
-     '(edit-server mermaid-mode outline-magic company-lua lua-mode elixir-mode flycheck-credo ob-elixir helpful sql-indent sqlup-mode emojify emoji-cheat-sheet-plus company-emoji vimrc-mode dactyl-mode dokuwiki-mode csv-mode company-terraform terraform-mode hcl-mode powershell bmx-mode seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby add-node-modules-path phpunit phpcbf php-extras php-auto-yasnippets geben drupal-mode cfrs company-phpactor phpactor composer php-runtime company-php ac-php-core xcscope php-mode flycheck-elm elm-test-runner elm-mode reformatter systemd toml-mode ron-mode racer flycheck-rust dap-mode posframe bui treemacs pfuture cargo rust-mode helm-gtags ggtags flycheck-bashate counsel-gtags counsel swiper ivy jinja2-mode company-ansible ansible-doc ansible yaml-mode tern web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc yapfify sphinx-doc pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent deferred helm-pydoc cython-mode company-anaconda blacken anaconda-mode pythonic xterm-color vterm terminal-here shell-pop multi-term lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode dash-functional eshell-z eshell-prompt-extras esh-help smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company-shell company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete insert-shebang fish-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+     '(ac-ispell ac-php-core ace-jump-helm-line ace-link ace-window adaptive-wrap
+                 add-node-modules-path aggressive-indent alert anaconda-mode
+                 ansible ansible-doc anzu async auto-compile auto-complete
+                 auto-dictionary auto-highlight-symbol auto-yasnippet avy bind-key
+                 bind-map blacken bmx-mode bui bundler cargo cfrs chruby
+                 clean-aindent-mode column-enforce-mode company company-anaconda
+                 company-ansible company-emoji company-lua company-php
+                 company-phpactor company-shell company-statistics
+                 company-terraform composer concurrent counsel counsel-gtags
+                 csv-mode ctable cython-mode dactyl-mode dap-mode dash
+                 dash-functional deferred define-word diminish dokuwiki-mode
+                 drupal-mode dumb-jump edit-server elisp-slime-nav elixir-mode
+                 elm-mode elm-test-runner emoji-cheat-sheet-plus emojify
+                 enh-ruby-mode epc epl esh-help eshell-prompt-extras eshell-z
+                 eval-sexp-fu evil evil-anzu evil-args evil-ediff evil-escape
+                 evil-exchange evil-iedit-state evil-indent-plus evil-lisp-state
+                 evil-magit evil-matchit evil-mc evil-nerd-commenter evil-numbers
+                 evil-search-highlight-persist evil-surround evil-tutor
+                 evil-unimpaired evil-visual-mark-mode evil-visualstar
+                 exec-path-from-shell expand-region eyebrowse f fancy-battery
+                 fill-column-indicator fish-mode flx flx-ido flycheck
+                 flycheck-bashate flycheck-credo flycheck-elm flycheck-pos-tip
+                 flycheck-rust flyspell-correct flyspell-correct-helm fuzzy geben
+                 ggtags gh-md git-commit git-link git-messenger git-timemachine
+                 gitattributes-mode gitconfig-mode gitignore-mode gntp gnuplot
+                 golden-ratio google-translate goto-chg grizzl hcl-mode helm
+                 helm-ag helm-c-yasnippet helm-company helm-core helm-descbinds
+                 helm-flx helm-gitignore helm-gtags helm-lsp helm-make
+                 helm-mode-manager helm-projectile helm-pydoc helm-swoop
+                 helm-themes helpful hierarchy highlight highlight-indentation
+                 highlight-numbers highlight-parentheses hl-todo htmlize
+                 hungry-delete hydra iedit import-js importmagic indent-guide
+                 inf-ruby insert-shebang ivy jinja2-mode js-doc js2-mode
+                 js2-refactor json-mode json-navigator json-reformat json-snatcher
+                 link-hint linum-relative live-py-mode livid-mode log4e
+                 lorem-ipsum lsp-mode lsp-origami lsp-pyright lsp-python-ms
+                 lsp-treemacs lsp-ui lua-mode lv macrostep magit magit-gitflow
+                 magit-popup markdown-mode markdown-toc mermaid-mode minitest
+                 mmm-mode move-text multi-term multiple-cursors neotree
+                 nodejs-repl ob-elixir open-junk-file org-bullets
+                 org-category-capture org-download org-mime org-plus-contrib
+                 org-pomodoro org-present org-projectile orgit origami
+                 outline-magic packed paradox parent-mode pcre2el persp-mode
+                 pfuture php-auto-yasnippets php-extras php-mode php-runtime
+                 phpactor phpcbf phpunit pip-requirements pipenv pippel pkg-info
+                 popup popwin pos-tip posframe powerline powershell prettier-js
+                 projectile py-isort pyenv-mode pytest pythonic pyvenv racer
+                 rainbow-delimiters rake rbenv reformatter request restart-emacs
+                 robe ron-mode rspec-mode rubocop rubocopfmt ruby-hash-syntax
+                 ruby-refactor ruby-test-mode ruby-tools rust-mode rvm s
+                 seeing-is-believing shell-pop simple-httpd skewer-mode
+                 smartparens smeargle spaceline sphinx-doc spinner sql-indent
+                 sqlup-mode swiper systemd terminal-here tern terraform-mode
+                 toc-org toml-mode transient treemacs typescript-mode undo-tree
+                 use-package uuidgen vi-tilde-fringe vimrc-mode
+                 volatile-highlights vterm web-beautify which-key winum
+                 with-editor ws-butler xcscope xterm-color yaml-mode yapfify
+                 yasnippet))
    '(safe-local-variable-values
-     '((ruby-backend quote lsp)
-       (ruby-test-runner quote rspec)
-       (ruby-backend quote robe)
-       (setq create-lockfiles)
-       (javascript-backend . tide)
-       (javascript-backend . tern)
+     '((ruby-backend quote lsp) (ruby-test-runner quote rspec)
+       (ruby-backend quote robe) (setq create-lockfiles)
+       (javascript-backend . tide) (javascript-backend . tern)
        (javascript-backend . lsp)))
    '(warning-suppress-types '(((evil-collection)))))
   (custom-set-faces
