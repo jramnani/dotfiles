@@ -544,6 +544,13 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  ;; Fix for a native compilation issue on macOS 27 Golden Gate.
+  ;; Context: https://www.reddit.com/r/emacs/comments/1uy4xid/native_compilation_error_on_macos_27/
+  (when (eq system-type 'darwin)
+    (setenv "MACOSX_DEPLOYMENT_TARGET"
+            (or (getenv "MACOSX_DEPLOYMENT_TARGET")
+                (string-trim (shell-command-to-string "sw_vers -productVersion")))))
+
   ;; Set font size to something comfortable. On Linux I usually have worse
   ;; scaling sizes than when I'm on a Mac.
   (if (eq system-type 'gnu/linux)
